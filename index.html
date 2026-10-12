@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elena Brutau</title>
+  <meta name="description" content="Un acceso a la mente de Elena Brutau: libretas con su arte, sus escritos, las cosas que ve y sus piezas de clay.">
+  <meta property="og:title" content="Elena Brutau">
+  <meta property="og:description" content="Entra y saca una libreta.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='14' y='6' width='36' height='52' rx='5' fill='%23181716'/%3E%3Crect x='42' y='6' width='3' height='52' fill='%23000'/%3E%3Crect x='20' y='26' width='20' height='8' rx='1' fill='%23B3302B'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@600;700&family=Reenie+Beanie&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- La puerta: una cerradura y una llave -->
+  <div class="entrada" id="entrada">
+    <div class="entrada-centro">
+    <div class="cerradura" aria-hidden="true">
+      <div class="placa"><span class="ojo"></span></div>
+    </div>
+    <button class="llave" id="llave" type="button">
+      <svg class="llave-dibujo" viewBox="0 0 60 160" aria-hidden="true">
+        <defs>
+          <linearGradient id="laton" x1="0" x2="1">
+            <stop offset="0" stop-color="#8A6A2E"/>
+            <stop offset=".45" stop-color="#E2C27A"/>
+            <stop offset="1" stop-color="#9C7834"/>
+          </linearGradient>
+        </defs>
+        <path d="M30 4c-12 0-22 9-22 21 0 9 6 17 15 20v95h-6v6h6v8h14v-8h-3v-7h8v-6h-8v-6h6v-6h-6V45c9-3 15-11 15-20C52 13 42 4 30 4zm0 9a12 12 0 110 24 12 12 0 010-24z" fill="url(#laton)"/>
+        <path d="M30 18c-4 0-7 3-7 7 0 2 1 4 2 5" stroke="#5E4519" stroke-width="1.6" fill="none" opacity=".5"/>
+      </svg>
+      <span class="llave-texto">Gira la llave para entrar</span>
+    </button>
+    </div>
+  </div>
+
+  <!-- La habitación -->
+  <main class="cuarto" id="cuarto" aria-label="Estante de libretas de Elena Brutau">
+    <div class="lampara" aria-hidden="true">
+      <span class="cable"></span>
+      <span class="pantalla"></span>
+      <span class="bombilla"></span>
+    </div>
+    <div class="luz" aria-hidden="true"></div>
+
+    <h1 class="sr-only">Elena Brutau</h1>
+
+    <section class="estante">
+      <div class="libros" id="libros" role="list"></div>
+      <div class="tabla">
+        <span class="placa-nombre">Elena Brutau</span>
+      </div>
+      <div class="sombra-tabla" aria-hidden="true"></div>
+    </section>
+
+    <p class="pista">Saca una libreta para abrirla</p>
+  </main>
+
+  <!-- La libreta abierta -->
+  <div class="lector" id="lector" hidden>
+    <div class="fondo-lector" data-cerrar></div>
+    <div class="libreta" id="libreta" role="dialog" aria-modal="true" aria-labelledby="titulo-libreta">
+      <div class="contratapa"><div class="hoja hoja-der" id="hoja-der" tabindex="-1"></div></div>
+      <div class="tapa" id="tapa">
+        <div class="tapa-frente">
+          <span class="elastico"></span>
+          <span class="cinta-tapa" id="cinta-tapa"></span>
+        </div>
+        <div class="tapa-dorso"><div class="hoja hoja-izq" id="hoja-izq"></div></div>
+      </div>
+    </div>
+    <button class="volver" id="volver" type="button" data-cerrar>Devolver al estante</button>
+  </div>
+
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
