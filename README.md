@@ -12,7 +12,7 @@ Un acceso a mi mente: entras por una puertecita con tu llave y llegas a un cuart
 
 ## Letras del sitio
 
-- **Borel** (gordita, relleno lila con contorno): títulos y frases grandes. Es de reemplazo hasta tener la fuente de Elena.
+- **Letra de cinta** (cinta.js + fonts/cinta-script.json): títulos y frases grandes. Cada trazo se dibuja rosa con su propio contorno negro, así se ven los cruces, como en el lettering de Elena. La forma de las letras es Hershey Script (Dr. A. V. Hershey, U.S. National Bureau of Standards; datos de James Hurt, Cognition, Inc.) hasta tener la fuente de Elena.
 - **Sacramento** (cursiva): notas a mano, firmas y pies de foto.
 - **Courier Prime** (máquina de escribir): todo el texto normal, como descripciones, escritos, precios y fechas.
 - **Archivo Narrow** (label maker): solo las cintas de los lomos, los cajones y la vitrina.

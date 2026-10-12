@@ -82,6 +82,7 @@
   function aplicarIdioma() {
     document.documentElement.lang = idioma;
     document.querySelectorAll("[data-t]").forEach((el) => { el.textContent = tx(el.dataset.t); });
+    pintarCintas();
     mundo.setAttribute("aria-label", tx("estante"));
     $("vitrina").setAttribute("aria-label", tx("abrirTienda"));
     pintarCorcho();
@@ -102,6 +103,12 @@
       aplicarIdioma();
     });
   });
+
+  /* letra de cinta (rosa con contorno negro, se ven los cruces) para títulos y frases grandes */
+  function pintarCintas(raiz) {
+    if (!window.Cinta) return;
+    (raiz || document).querySelectorAll(".letra, .hoja h2:not(.sr-only)").forEach((el) => Cinta.pintar(el));
+  }
 
   /* ---------- Utilidades ---------- */
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -323,6 +330,7 @@
     hojaIzq.insertAdjacentHTML("beforeend", `<p class="mas-abajo" aria-hidden="true">${esc(tx("sigue"))}</p>`);
     hojaDer.insertAdjacentHTML("beforeend", `<p class="mas-abajo" aria-hidden="true">${esc(tx("sigue"))}</p>`);
     hojaDer.querySelectorAll("details").forEach((d) => d.addEventListener("toggle", () => { alinear(); revisarScroll(); }));
+    pintarCintas(libreta);
     cintaTapa.textContent = L(g.etiqueta);
     libreta.style.setProperty("--color-cinta", g.cinta);
     libreta.style.setProperty("--color-tinta", g.tinta);
@@ -377,6 +385,7 @@
     visorDesde = desde;
     visor.querySelector("img").src = src;
     visor.querySelector(".visor-cerrar").textContent = tx("cerrar");
+    pintarCintas(visor);
     visor.hidden = false;
     visor.querySelector(".visor-scroll").scrollTop = 0;
     visor.querySelector(".visor-cerrar").focus();

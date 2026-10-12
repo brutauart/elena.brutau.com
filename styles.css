@@ -16,7 +16,8 @@
   --grafito: #7D7570;        /* lápiz */
 
   /* LETRAS DEL SITIO: una para cada cosa
-     --f-letra   → títulos y frases grandes (gordita, relleno lila con contorno)
+     --f-letra   → títulos y frases grandes: se dibujan con cinta.js (trazo rosa con contorno negro);
+                   esta fuente solo se ve un instante mientras carga
      --f-cursiva → notas a mano, firmas, pies de foto
      --f-texto   → todo el texto normal: descripciones, escritos, precios, fechas (máquina de escribir)
      --f-cinta   → solo las cintas de label maker (lomos, cajones, vitrina) */
@@ -66,6 +67,16 @@ button { font: inherit; color: inherit; }
   color: var(--carbon);
   line-height: 1.5;
 }
+
+/* letra de cinta: cada trazo rosa con su propio contorno negro */
+.con-cinta { -webkit-text-stroke: 0; }
+.cinta-letra {
+  --alto: 1.75em;
+  display: inline-block; height: var(--alto); width: auto; overflow: visible;
+  vertical-align: calc(-1 * var(--baja) * var(--alto));
+}
+.cinta-letra .cb { fill: none; stroke: var(--carbon); stroke-width: calc((var(--g) + var(--b) * 2) * 1px); stroke-linecap: round; stroke-linejoin: round; }
+.cinta-letra .cr { fill: none; stroke: var(--rosa); stroke-width: calc(var(--g) * 1px); stroke-linecap: round; stroke-linejoin: round; }
 
 .encabezado {
   position: absolute; top: 16px; left: 22px; z-index: 6; margin: 0;
