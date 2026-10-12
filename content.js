@@ -126,8 +126,36 @@ const GAVETAS = [
     nota: { es: "Mis días, uno por uno, en papel.", en: "My days, one by one, on paper." },
     tipo: "spreads",
     items: [
-      { titulo: { es: "Spread de ejemplo", en: "Sample spread" }, fecha: { es: "Octubre 2026", en: "October 2026" }, imagen: "" },
-      { titulo: { es: "Otro spread", en: "Another spread" }, fecha: { es: "Septiembre 2026", en: "September 2026" }, imagen: "" }
+      { imagen: "img/diario/diario-01.webp", fecha: "14 sep 2026" },
+      { imagen: "img/diario/diario-02.webp", fecha: "15 sep 2026" },
+      { imagen: "img/diario/diario-03.webp", fecha: "" },
+      { imagen: "img/diario/diario-04.webp", fecha: "16 sep 2026" },
+      { imagen: "img/diario/diario-05.webp", fecha: "17 sep 2026" },
+      { imagen: "img/diario/diario-06.webp", fecha: "" },
+      { imagen: "img/diario/diario-07.webp", fecha: "18 sep 2026" },
+      { imagen: "img/diario/diario-08.webp", fecha: "19–20 sep 2026" },
+      { imagen: "img/diario/diario-09.webp", fecha: "" },
+      { imagen: "img/diario/diario-10.webp", fecha: "" },
+      { imagen: "img/diario/diario-11.webp", fecha: "21 sep 2026" },
+      { imagen: "img/diario/diario-12.webp", fecha: "22 sep 2026" },
+      { imagen: "img/diario/diario-13.webp", fecha: "22 sep 2026" },
+      { imagen: "img/diario/diario-14.webp", fecha: "23 sep 2026" },
+      { imagen: "img/diario/diario-15.webp", fecha: "" },
+      { imagen: "img/diario/diario-16.webp", fecha: "" },
+      { imagen: "img/diario/diario-17.webp", fecha: "" },
+      { imagen: "img/diario/diario-18.webp", fecha: "" },
+      { imagen: "img/diario/diario-19.webp", fecha: "" },
+      { imagen: "img/diario/diario-20.webp", fecha: "" },
+      { imagen: "img/diario/diario-21.webp", fecha: "" },
+      { imagen: "img/diario/diario-22.webp", fecha: "" },
+      { imagen: "img/diario/diario-23.webp", fecha: "25 sep 2026" },
+      { imagen: "img/diario/diario-24.webp", fecha: "" },
+      { imagen: "img/diario/diario-25.webp", fecha: "26 sep 2026" },
+      { imagen: "img/diario/diario-26.webp", fecha: "27 sep 2026" },
+      { imagen: "img/diario/diario-27.webp", fecha: "28 sep 2026" },
+      { imagen: "img/diario/diario-28.webp", fecha: "29–30 sep 2026" },
+      { imagen: "img/diario/diario-29.webp", fecha: "" },
+      { imagen: "img/diario/diario-30.webp", fecha: "" }
     ]
   }
 ];

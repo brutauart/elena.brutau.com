@@ -25,6 +25,8 @@
       pista: "saca una libreta para abrirla",
       volver: "devolver al estante",
       sigue: "sigue leyendo ↓",
+      verGrande: "Ver en grande",
+      cerrar: "cerrar",
       fecha: "Fecha:",
       devolver: "Si encuentras esta libreta, devuélvela a",
       foto: "foto pendiente",
@@ -46,6 +48,8 @@
       pista: "pull out a notebook to open it",
       volver: "put it back on the shelf",
       sigue: "keep reading ↓",
+      verGrande: "See it larger",
+      cerrar: "close",
       fecha: "Date:",
       devolver: "If found, please return to",
       foto: "photo coming soon",
@@ -258,10 +262,13 @@
         <figcaption>${esc(L(o.titulo))}<span>${esc(L(o.tecnica))}</span></figcaption>
       </figure>`).join("")}</div>`,
 
-    spreads: (items) => `<div class="spreads">${items.map((o) => `
-      <figure class="spread">${foto(o.imagen, L(o.titulo))}
-        <figcaption>${esc(L(o.titulo))}<span>${esc(L(o.fecha))}</span></figcaption>
-      </figure>`).join("")}</div>`,
+    spreads: (items) => `<div class="spreads">${items.map((o) => o.imagen ? `
+      <figure class="spread">
+        <button type="button" class="abrir-spread" data-src="${esc(o.imagen)}" aria-label="${esc(tx("verGrande"))}${o.fecha ? " · " + esc(L(o.fecha)) : ""}">
+          <img src="${esc(o.imagen)}" alt="" loading="lazy">
+        </button>
+        ${L(o.fecha) || L(o.titulo) ? `<figcaption>${esc(L(o.titulo))}<span>${esc(L(o.fecha))}</span></figcaption>` : ""}
+      </figure>` : `<figure class="spread">${foto("", L(o.titulo))}</figure>`).join("")}</div>`,
 
     textos: (items) => `<div class="escritos">${items.map((e, i) => `
       <details class="escrito"${i === 0 ? " open" : ""}>
@@ -359,6 +366,30 @@
       .forEach((f) => { try { document.fonts.load(f); } catch (e) {} });
     document.fonts.addEventListener("loadingdone", () => { if (abierta) { alinear(); revisarScroll(); } });
   }
+
+  /* ---------- Ver un spread en grande ---------- */
+  const visor = document.createElement("div");
+  visor.className = "visor"; visor.hidden = true;
+  visor.innerHTML = `<button type="button" class="visor-cerrar letra"></button><div class="visor-scroll"><img alt=""></div>`;
+  document.body.appendChild(visor);
+  let visorDesde = null;
+  function abrirVisor(src, desde) {
+    visorDesde = desde;
+    visor.querySelector("img").src = src;
+    visor.querySelector(".visor-cerrar").textContent = tx("cerrar");
+    visor.hidden = false;
+    visor.querySelector(".visor-scroll").scrollTop = 0;
+    visor.querySelector(".visor-cerrar").focus();
+  }
+  function cerrarVisor() { visor.hidden = true; if (visorDesde) visorDesde.focus({ preventScroll: true }); }
+  visor.addEventListener("click", (e) => { if (!e.target.closest("img")) cerrarVisor(); });
+  hojaDer.addEventListener("click", (e) => {
+    const b = e.target.closest(".abrir-spread");
+    if (b) abrirVisor(b.dataset.src, b);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (!visor.hidden && e.key === "Escape") { e.stopImmediatePropagation(); cerrarVisor(); }
+  }, true);
 
   /* ---------- Abrir y cerrar ---------- */
   function abrir(g, lomo) {

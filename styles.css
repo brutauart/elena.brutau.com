@@ -613,13 +613,25 @@ a.estampita:hover { border-style: solid; }
 .obra figcaption { font-size: 10.5px; line-height: var(--c); margin-top: 8px; }
 .obra figcaption span { display: block; font-family: var(--f-maquina); font-size: 9px; line-height: var(--c); color: var(--grafito); }
 
-/* Spreads (Commonplacing y Diario): fotos horizontales, una por renglón */
+/* Spreads (Commonplacing y Diario): el escaneo completo, se abre en grande al tocarlo */
 .spreads { display: grid; gap: calc(var(--c) * 2); padding-top: var(--c); }
+.spread { margin: 0; }
+.abrir-spread { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.abrir-spread img { display: block; width: 100%; height: auto; filter: drop-shadow(2px 4px 4px rgba(28,26,30,.3)); transition: transform .2s; }
+.abrir-spread:hover img { transform: scale(1.015) rotate(-.4deg); }
+.spread figcaption { font-size: 10px; line-height: var(--c); margin-top: 6px; display: flex; justify-content: flex-end; gap: var(--c); color: var(--grafito); }
 .spread .foto { aspect-ratio: 3 / 2; }
-.spread:nth-child(odd) { transform: rotate(-.8deg); }
-.spread:nth-child(even) { transform: rotate(.9deg); }
-.spread figcaption { font-size: 11px; line-height: var(--c); margin-top: 8px; display: flex; justify-content: space-between; gap: var(--c); }
-.spread figcaption span { font-family: var(--f-maquina); font-size: 9px; color: var(--grafito); }
+
+/* visor a pantalla completa */
+.visor { position: fixed; inset: 0; z-index: 60; background: rgba(22,22,22,.92); display: flex; flex-direction: column; }
+.visor[hidden] { display: none; }
+.visor-scroll { flex: 1; overflow: auto; display: flex; justify-content: center; align-items: flex-start; padding: 8px 12px 24px; }
+.visor-scroll img { width: min(1700px, 100%); height: auto; cursor: default; }
+.visor-cerrar { align-self: flex-end; margin: 8px 14px 0; padding: 4px 10px; background: none; border: 0; cursor: pointer; color: var(--crema) !important; font-size: 26px; }
+@media (max-width: 720px) {
+  .visor-scroll img { width: auto; height: calc(100svh - 70px); max-width: none; }
+  .visor-scroll { justify-content: flex-start; align-items: center; }
+}
 
 /* Escritos */
 .escritos { display: grid; }
