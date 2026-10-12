@@ -232,14 +232,7 @@ button { font: inherit; color: inherit; }
 }
 .marco img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .marco-rosa { left: 34%; top: 18%; width: 30%; height: 52%; transform: rotate(-2deg); }
-.cartel { position: absolute; left: 28%; top: 14%; width: 40%; margin: 0; transform: rotate(2deg); }
-.cartel img { display: block; width: 100%; }
-.cartel::before, .cartel::after {   /* cinta adhesiva */
-  content: ""; position: absolute; top: -4%; width: 26%; height: 7%;
-  background-color: rgba(207,173,196,.75); background-image: var(--grano-claro);
-}
-.cartel::before { left: 6%; transform: rotate(-12deg); }
-.cartel::after { right: 6%; transform: rotate(10deg); }
+
 
 /* la lámpara colgando a media habitación */
 .lampara3d {
@@ -339,15 +332,14 @@ button { font: inherit; color: inherit; }
 /* Luna, sentada en el estante */
 .luna {
   position: relative; flex: 0 0 auto; align-self: flex-end;
-  width: calc(var(--ancho-lomo) * 4); margin: 0 6px 0 14px;
+  width: calc(var(--ancho-lomo) * 3.1); margin: 0 4px 0 12px;
   transform-origin: 50% 100%;
   animation: respirar 4.5s ease-in-out infinite;
 }
-.luna img, .luna svg { display: block; width: 100%; height: auto; }
-.luna svg { position: absolute; inset: 0; height: 100%; }
+.luna svg { display: block; width: 100%; height: auto; overflow: visible; filter: url(#tinta); }
 .pupila { transition: transform .25s ease-out; }
 .parpado { transform-box: fill-box; transform-origin: 50% 0; transform: scaleY(0); animation: parpadear 6s infinite; }
-@keyframes respirar { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.025); } }
+@keyframes respirar { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.02); } }
 @keyframes parpadear { 0%, 92%, 100% { transform: scaleY(0); } 95% { transform: scaleY(1); } }
 
 .pista {
@@ -587,7 +579,7 @@ button { font: inherit; color: inherit; }
   .libros { gap: 3px; padding: 0 1%; }
   .estante { width: 96%; bottom: 12%; }
   .vasija, .lomo.extra { display: none; }
-  .luna { width: calc(var(--ancho-lomo) * 3.2); margin-left: 8px; }
+  .luna { width: calc(var(--ancho-lomo) * 2.8); margin-left: 6px; }
   .ventana { width: 20%; left: 5%; top: 6%; }
   .lampara3d { width: 110px; }
   .pista { font-size: 22px; }

@@ -126,20 +126,37 @@
     l.className = "luna";
     l.id = "luna";
     l.setAttribute("aria-hidden", "true");
-    l.innerHTML = `<img src="img/luna.png" alt="">
-      <svg viewBox="0 0 494 215" preserveAspectRatio="none">
-        <defs><mask id="ojos-luna" maskUnits="userSpaceOnUse" x="0" y="0" width="494" height="215">
-          <image href="img/luna-ojos.png" width="494" height="215"/>
-        </mask></defs>
-        <g mask="url(#ojos-luna)">
-          <rect width="494" height="215" fill="#CBA455"/>
-          <g class="pupila" id="pupila">
-            <path d="M171 126 q8 24 0 48 q-8 -24 0 -48z" fill="#161616"/>
-            <path d="M357 124 q8 23 0 46 q-8 -23 0 -46z" fill="#161616"/>
-          </g>
-          <rect class="parpado" x="120" y="118" width="290" height="62" fill="#161616"/>
+    // Luna sentadita, a partir del doodle de Elena
+    l.innerHTML = `<svg viewBox="0 0 300 345">
+      <defs>
+        <clipPath id="ojos-luna">
+          <path d="M54 133 Q90 100 129 135 Q92 168 54 133 Z"/>
+          <path d="M160 139 Q200 103 234 132 Q200 167 160 139 Z"/>
+        </clipPath>
+      </defs>
+      <g class="cuerpo-luna">
+        <path d="M164 292 Q210 270 199 236 Q192 216 173 213" fill="none" stroke="#161616" stroke-width="10" stroke-linecap="round"/>
+        <path d="M131 178 Q120 238 92 296 Q88 312 104 312 L168 306 Q172 270 162 238 Q151 205 147 178 Z" fill="#161616"/>
+        <path d="M112 262 L117 340 Q123 345 129 340 L134 264 Z" fill="#161616"/>
+        <path d="M145 264 L141 340 Q147 345 153 340 L158 262 Z" fill="#161616"/>
+        <path d="M59 22 L68 64 L212 65 L224 16 L240 62 Q262 120 261 152 Q258 171 230 177 Q160 187 90 181 Q36 177 32 156 Q36 110 52 68 Z" fill="#161616"/>
+        <g stroke="#161616" stroke-width="2.4" stroke-linecap="round" fill="none">
+          <path d="M40 146 L2 140 M38 154 L0 156 M40 162 L6 172"/>
+          <path d="M254 144 L296 136 M256 152 L298 152 M254 160 L292 168"/>
         </g>
-      </svg>`;
+      </g>
+      <g clip-path="url(#ojos-luna)">
+        <rect x="40" y="95" width="210" height="80" fill="#CBA455"/>
+        <g class="pupila" id="pupila" fill="#161616">
+          <path d="M97 108 L84 160 L89 160 Z"/>
+          <path d="M205 108 L192 160 L197 160 Z"/>
+        </g>
+        <rect class="parpado" x="40" y="95" width="210" height="80" fill="#161616"/>
+      </g>
+      <g stroke="#CFADC4" stroke-width="3" stroke-linecap="round" fill="none">
+        <path d="M136 137 H152 M144 139 L131 172 M144 139 L150 175"/>
+      </g>
+    </svg>`;
     return l;
   }
 
@@ -379,10 +396,10 @@
     const p = pupila(), l = lunaEl();
     if (p && l) {
       const r = l.getBoundingClientRect();
-      const cx = r.left + r.width / 2, cy = r.top + r.height * 0.7;
+      const cx = r.left + r.width / 2, cy = r.top + r.height * 0.4;
       const dx = Math.max(-1, Math.min(1, (puntero.x - cx) / (innerWidth / 2)));
       const dy = Math.max(-1, Math.min(1, (puntero.y - cy) / (innerHeight / 2)));
-      p.setAttribute("transform", `translate(${(dx * 16).toFixed(1)} ${(dy * 5).toFixed(1)})`);
+      p.setAttribute("transform", `translate(${(dx * 13).toFixed(1)} ${(dy * 6).toFixed(1)})`);
     }
     requestAnimationFrame(cuadro);
   }
