@@ -305,7 +305,7 @@ button { font: inherit; color: inherit; }
 /* hoja izquierda: todo pegadito */
 .devolver-a { font-family: var(--f-maquina); font-size: 11px; line-height: var(--c); }
 .hoja h2 { font-weight: 400; font-size: 40px; line-height: calc(var(--c) * 3); margin-top: calc(var(--c) * 2); }
-.nota { font-family: var(--f-cursiva); font-size: 25px; line-height: calc(var(--c) * 2); max-width: 24ch; }
+.nota { font-family: var(--f-cursiva); font-size: 24px; line-height: calc(var(--c) * 1.5); max-width: 26ch; padding-top: 4px; }
 .firma { font-family: var(--f-cursiva); font-size: 26px; line-height: calc(var(--c) * 2); margin-top: var(--c) !important; align-self: flex-end; }
 .estrellita { display: inline-block; width: 18px; vertical-align: middle; margin-left: 4px; filter: url(#tinta); }
 .estrellita path { fill: var(--carbon); }
@@ -357,8 +357,8 @@ button { font: inherit; color: inherit; }
 .recorte:nth-child(even) { grid-template-columns: 1fr 40%; }
 .recorte:nth-child(even) .foto { order: 2; transform: rotate(2.4deg); }
 .recorte .foto { aspect-ratio: 1; transform: rotate(-2deg); }
-.recorte h3 { font-weight: 400; font-size: 17px; line-height: calc(var(--c) * 2); }
-.recorte p { font-family: var(--f-cursiva); font-size: 22px; line-height: calc(var(--c) * 2); }
+.recorte h3 { font-weight: 400; font-size: 17px; line-height: calc(var(--c) * 1.5); }
+.recorte p { font-family: var(--f-cursiva); font-size: 22px; line-height: calc(var(--c) * 1.5); }
 .recorte a { font-family: var(--f-maquina); font-size: 11px; color: var(--carbon); }
 
 /* Tienda (Clay): piezas como pegatinas redondas */
@@ -370,7 +370,7 @@ button { font: inherit; color: inherit; }
 .pieza:nth-child(3n+1) .foto:not(.pendiente) { box-shadow: 0 0 0 5px var(--mostaza), 1px 3px 5px 5px rgba(38,37,35,.2); }
 .pieza:nth-child(3n+2) .foto:not(.pendiente) { box-shadow: 0 0 0 5px var(--salvia), 1px 3px 5px 5px rgba(38,37,35,.2); }
 .pieza:nth-child(3n) .foto:not(.pendiente) { box-shadow: 0 0 0 5px var(--oxido), 1px 3px 5px 5px rgba(38,37,35,.2); }
-.pieza h3 { font-weight: 400; font-size: 18px; line-height: calc(var(--c) * 2); }
+.pieza h3 { font-weight: 400; font-size: 18px; line-height: calc(var(--c) * 1.5); }
 .pieza .precio { font-family: var(--f-maquina); font-size: 13px; line-height: var(--c); }
 .pieza p { font-size: 13px; line-height: var(--c); color: var(--grafito); margin-top: calc(var(--c) * .5) !important; }
 .comprar {
