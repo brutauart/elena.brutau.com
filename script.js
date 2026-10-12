@@ -34,7 +34,9 @@
       abrir: "Abrir la libreta",
       estante: "Estante de libretas de Elena Brutau",
       tienda: "LUNA & FRIENDS · TIENDA",
-      abrirTienda: "Abrir la tienda de luna & friends"
+      abrirTienda: "Abrir la tienda de luna & friends",
+      cerrarTienda: "cerrar la vitrina",
+      vacio: "Este cajón todavía está vacío."
     },
     en: {
       entrar: "turn the key to come in",
@@ -50,7 +52,9 @@
       abrir: "Open the notebook",
       estante: "Elena Brutau's shelf of notebooks",
       tienda: "LUNA & FRIENDS · SHOP",
-      abrirTienda: "Open the luna & friends shop"
+      abrirTienda: "Open the luna & friends shop",
+      cerrarTienda: "close the cabinet",
+      vacio: "This drawer is still empty."
     }
   };
 
@@ -77,6 +81,7 @@
       b.setAttribute("aria-label", `${tx("abrir")}: ${L(g.titulo)}`);
     });
     if (abierta) { llenar(abierta); alinear(); }
+    if (tiendaAbierta) pintarTienda(catActual);
   }
 
   document.querySelectorAll(".idiomas button").forEach((b) => {
@@ -356,6 +361,127 @@
     }
   });
 
+  /* ---------- La vitrina abierta (tienda) ---------- */
+  const tienda = $("tienda");
+  const cajones = $("cajones");
+  const compartimentos = $("compartimentos");
+  let tiendaAbierta = false;
+  let catActual = (TIENDA.categorias[0] || {}).id;
+
+  const dibujosCajon = {
+    clay: `<svg viewBox="0 0 90 60" aria-hidden="true">
+      <rect class="trazo" x="50" y="34" width="10" height="20" rx="3" fill="#F5F2DF" stroke-width="2"/>
+      <path class="trazo" d="M40 36 Q55 12 70 36 Z" fill="#D7ABC6" stroke-width="2"/>
+      <g fill="#F5F2DF"><circle cx="50" cy="28" r="2.2"/><circle cx="58" cy="24" r="1.8"/><circle cx="63" cy="31" r="1.8"/></g>
+      <path d="M32 50 q7 -2 5 -9" fill="none" stroke="#161616" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M24 38 L19 55 H32 L28 38 Z" fill="#161616"/>
+      <path d="M15 31 L17 22 L21 28 H29 L33 21 L35 31 Q35 38 25 38 Q15 38 15 31 Z" fill="#161616"/>
+      <ellipse cx="21" cy="31" rx="2.6" ry="1.7" fill="#CBA455"/><ellipse cx="29" cy="31" rx="2.6" ry="1.7" fill="#CBA455"/>
+    </svg>`,
+    stickers: `<svg viewBox="0 0 90 60" aria-hidden="true">
+      <g transform="rotate(-5 45 30)">
+        <rect class="trazo" x="26" y="6" width="40" height="50" rx="2" fill="#F5F2DF" stroke-width="2"/>
+        <path class="trazo" d="M37 24 c-8 -6 -3 -12 0 -7 c3 -5 8 1 0 7 z" fill="#CFADC4" stroke-width="1.2"/>
+        <path class="trazo" d="M55 13 l1.8 4.4 4.6 .4 -3.4 3 1 4.6 -4 -2.4 -4 2.4 1 -4.6 -3.4 -3 4.6 -.4 z" fill="#CBA455" stroke-width="1"/>
+        <path d="M33 47 L34 39 L37 43 H43 L46 39 L47 47 Q47 51 40 51 Q33 51 33 47 Z" fill="#161616"/>
+        <path class="trazo" d="M57 38 a6 6 0 1 0 3 10 a4.6 4.6 0 1 1 -3 -10 z" fill="#CBA455" stroke-width="1"/>
+      </g>
+    </svg>`,
+    mas: `<svg viewBox="0 0 90 60" aria-hidden="true">
+      <path class="trazo" d="M30 54 H52 L48 48 H32" fill="#CFADC4" stroke-width="1.8"/>
+      <circle class="trazo" cx="30" cy="38" r="16" fill="#CFADC4" stroke-width="2"/>
+      <circle class="trazo" cx="30" cy="38" r="7" fill="#7A5643" stroke-width="2"/>
+      <g transform="rotate(6 66 32)">
+        <rect class="trazo" x="54" y="14" width="26" height="36" fill="#F5F2DF" stroke-width="2"/>
+        <path d="M58 21 q4 -3 8 0 t8 0" fill="none" stroke="#CFADC4" stroke-width="2" stroke-linecap="round"/>
+        <path d="M60 41 L61 33 L64 37 H70 L73 33 L74 41 Q74 45 67 45 Q60 45 60 41 Z" fill="#161616"/>
+      </g>
+    </svg>`
+  };
+
+  function pintarTienda(catId) {
+    catActual = catId;
+    $("nota-tienda").textContent = L(TIENDA.nota);
+    cajones.innerHTML = TIENDA.categorias.map((c, i) => `
+      <button type="button" class="cajon" role="tab" id="cajon-${c.id}" data-cat="${c.id}"
+        aria-selected="${c.id === catId}" aria-controls="compartimentos" tabindex="${c.id === catId ? 0 : -1}">
+        ${dibujosCajon[c.id] || dibujosCajon.mas}
+        <span class="cinta-cajon c${i % 3}">${esc(L(c.nombre))}</span>
+      </button>`).join("");
+    const cat = TIENDA.categorias.find((c) => c.id === catId) || TIENDA.categorias[0];
+    compartimentos.setAttribute("aria-labelledby", "cajon-" + cat.id);
+    compartimentos.innerHTML = (cat.productos || []).length
+      ? cat.productos.map((p) => `
+        <article class="cubiculo">
+          ${foto(p.imagen, L(p.nombre))}
+          <div class="etiqueta-precio">
+            <h3>${esc(L(p.nombre))}</h3>
+            <p class="precio">${esc(L(p.precio))}</p>
+            <p class="detalle">${esc(L(p.detalle))}</p>
+            ${p.enlace
+              ? `<a class="comprar" href="${esc(p.enlace)}" target="_blank" rel="noopener">${esc(tx("comprar"))}</a>`
+              : `<span class="comprar" aria-disabled="true">${esc(tx("pronto"))}</span>`}
+          </div>
+        </article>`).join("")
+      : `<p class="cajon-vacio">${esc(tx("vacio"))}</p>`;
+    cajones.querySelectorAll(".cajon").forEach((b) => b.addEventListener("click", () => {
+      pintarTienda(b.dataset.cat);
+      const nuevo = $("cajon-" + b.dataset.cat);
+      if (nuevo) nuevo.focus({ preventScroll: true });
+    }));
+  }
+
+  cajones.addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    const ids = TIENDA.categorias.map((c) => c.id);
+    let i = ids.indexOf(catActual) + (e.key === "ArrowRight" ? 1 : -1);
+    i = (i + ids.length) % ids.length;
+    pintarTienda(ids[i]);
+    $("cajon-" + ids[i]).focus();
+  });
+
+  function abrirTienda() {
+    if (tiendaAbierta || abierta) return;
+    tiendaAbierta = true;
+    pintarTienda(catActual);
+    compartimentos.scrollTop = 0;
+    cuarto3d.classList.add("acercando");
+    try { history.replaceState(null, "", "#tienda"); } catch (e) {}
+    tienda.hidden = false;
+    void tienda.offsetWidth;
+    tienda.classList.add("visible");
+    setTimeout(() => { const c = $("cajon-" + catActual); if (c) c.focus({ preventScroll: true }); }, t(500));
+  }
+
+  function cerrarTienda() {
+    if (!tiendaAbierta) return;
+    tienda.classList.remove("visible");
+    setTimeout(() => {
+      tienda.hidden = true;
+      tiendaAbierta = false;
+      cuarto3d.classList.remove("acercando");
+      $("vitrina").focus({ preventScroll: true });
+    }, t(450));
+    try { history.replaceState(null, "", location.pathname); } catch (e) {}
+  }
+
+  tienda.addEventListener("click", (e) => {
+    if (e.target.closest("[data-cerrar-tienda]")) cerrarTienda();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (!tiendaAbierta) return;
+    if (e.key === "Escape") { cerrarTienda(); return; }
+    if (e.key === "Tab") {
+      const foco = [...tienda.querySelectorAll('a[href], button:not([tabindex="-1"]), [tabindex="0"]')]
+        .filter((el) => el.offsetParent !== null);
+      if (!foco.length) return;
+      const primero = foco[0], ultimo = foco[foco.length - 1];
+      if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+      else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+    }
+  });
+
   /* ---------- La entrada con la llave ---------- */
   function encender() {
     mundo.classList.add("encendida");
@@ -372,10 +498,7 @@
   }
 
   $("llave").addEventListener("click", entrar);
-  $("vitrina").addEventListener("click", () => {
-    const tienda = GAVETAS.find((g) => g.id === "luna");
-    if (tienda) abrir(tienda);
-  });
+  $("vitrina").addEventListener("click", abrirTienda);
 
   /* ---------- El mundo se mueve contigo ---------- */
   const aire = $("aire");
@@ -454,7 +577,12 @@
   // la puerta con la llave sale siempre, salvo si alguien llega con el enlace directo a una libreta
   const directa = GAVETAS.find((g) => "#" + g.id === location.hash);
 
-  if (directa) {
+  if (location.hash === "#tienda") {
+    entrada.classList.add("abierta");
+    entrada.style.transition = "none";
+    encender();
+    setTimeout(abrirTienda, 300);
+  } else if (directa) {
     entrada.classList.add("abierta");
     entrada.style.transition = "none";
     encender();

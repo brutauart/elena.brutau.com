@@ -80,22 +80,6 @@ const GAVETAS = [
     ]
   },
   {
-    id: "luna",
-    etiqueta: "LUNA & FRIENDS",
-    cinta: "#CBA455",
-    tinta: "#1C1A1E",
-    alto: 0.9,
-    titulo: "luna & friends",
-    logo: "img/luna-friends.png",   // en vez del título escrito, se muestra este dibujo
-    nota: { es: "Stickers y piezas de clay hechas a mano, con Luna vigilando.", en: "Handmade stickers and clay pieces, with Luna keeping watch." },
-    tipo: "tienda",
-    items: [
-      { nombre: { es: "Sticker de ejemplo", en: "Sample sticker" }, precio: "$00", detalle: { es: "Tamaño, acabado (mate o brillante).", en: "Size, finish (matte or glossy)." }, imagen: "", enlace: "" },
-      { nombre: { es: "Pieza de clay de ejemplo", en: "Sample clay piece" }, precio: "$00", detalle: { es: "Medidas, colores, si es única.", en: "Size, colors, whether it's one of a kind." }, imagen: "", enlace: "" },
-      { nombre: { es: "Otra pieza", en: "Another piece" }, precio: "$00", detalle: { es: "Medidas, colores, si es única.", en: "Size, colors, whether it's one of a kind." }, imagen: "", enlace: "" }
-    ]
-  },
-  {
     id: "yo",
     etiqueta: { es: "SOBRE MÍ", en: "ABOUT ME" },
     cinta: "#2A2D5E",
@@ -147,6 +131,43 @@ const GAVETAS = [
     ]
   }
 ];
+
+/*
+  LA TIENDA DE LUNA & FRIENDS (se abre al tocar la vitrina de la pared)
+  ---------------------------------------------------------------------
+  Cada categoría es un cajón de la vitrina. Cada producto:
+    nombre, precio, detalle, imagen ("img/..." o vacío) y enlace (Etsy, Stripe, Shopify...).
+  Si "enlace" está vacío, el botón dice "Pronto a la venta".
+*/
+const TIENDA = {
+  nota: { es: "Stickers y piezas de clay hechas a mano, con Luna vigilando.", en: "Handmade stickers and clay pieces, with Luna keeping watch." },
+  categorias: [
+    {
+      id: "clay",
+      nombre: "Clay",
+      productos: [
+        { nombre: { es: "Pieza de clay de ejemplo", en: "Sample clay piece" }, precio: "$00", detalle: { es: "Medidas, colores, si es única.", en: "Size, colors, whether it's one of a kind." }, imagen: "", enlace: "" },
+        { nombre: { es: "Otra pieza", en: "Another piece" }, precio: "$00", detalle: { es: "Medidas, colores, si es única.", en: "Size, colors, whether it's one of a kind." }, imagen: "", enlace: "" },
+        { nombre: { es: "Una más", en: "One more" }, precio: "$00", detalle: { es: "Medidas, colores, si es única.", en: "Size, colors, whether it's one of a kind." }, imagen: "", enlace: "" }
+      ]
+    },
+    {
+      id: "stickers",
+      nombre: "Stickers",
+      productos: [
+        { nombre: { es: "Sticker de ejemplo", en: "Sample sticker" }, precio: "$00", detalle: { es: "Tamaño, acabado (mate o brillante).", en: "Size, finish (matte or glossy)." }, imagen: "", enlace: "" },
+        { nombre: { es: "Hoja de stickers", en: "Sticker sheet" }, precio: "$00", detalle: { es: "Cuántos trae y de qué tamaño.", en: "How many and what size." }, imagen: "", enlace: "" }
+      ]
+    },
+    {
+      id: "mas",
+      nombre: { es: "Y más", en: "And more" },
+      productos: [
+        { nombre: { es: "Cinta washi de ejemplo", en: "Sample washi tape" }, precio: "$00", detalle: { es: "Ancho y largo.", en: "Width and length." }, imagen: "", enlace: "" }
+      ]
+    }
+  ]
+};
 
 /* Libretas sin etiqueta: gavetas que todavía no se abren. Solo decoran el estante. */
 const LIBRETAS_VACIAS = 2;
