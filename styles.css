@@ -368,6 +368,12 @@ button { font: inherit; color: inherit; }
   opacity: 0; transition: opacity 1s 2s;
 }
 
+/* fotos en marquitos dorados */
+.cuadro-dorado { position: absolute; margin: 0; }
+.cuadro-dorado svg { display: block; width: 100%; height: auto; overflow: visible; }
+.cuadro-1 { left: 3.5%; top: 13%; width: 13.5%; transform: rotate(-2deg); }
+.cuadro-2 { right: 4%; top: 9%; width: 9.5%; transform: rotate(2.5deg); }
+
 /* la vitrina de tipógrafo (tienda) */
 .vitrina {
   position: absolute; right: 3%; bottom: 4%; width: 14%;
@@ -556,7 +562,7 @@ button { font: inherit; color: inherit; }
 .escrito summary time { font-family: var(--f-maquina); font-size: 9px; color: var(--grafito); white-space: nowrap; }
 .escrito summary:hover h3 { font-style: italic; }
 .escrito p { font-size: 12.5px; max-width: 70ch; }
-.escrito p + p, .carta p + p { text-indent: calc(var(--c) * 2); }
+.escrito p + p, .carta p + p { margin-top: var(--c) !important; }   /* una línea en blanco entre párrafos */
 .escrito p:first-of-type { margin-top: var(--c) !important; }
 .escrito p:last-child { margin-bottom: calc(var(--c) * 2) !important; }
 
@@ -756,6 +762,7 @@ button { font: inherit; color: inherit; }
   .ventana.en-fondo { display: none; }
   .marco-rosa.en-fondo { left: 10%; right: auto; top: 6%; width: 30%; height: 24%; transform: rotate(-1.5deg); }
   .vitrina { right: 11%; bottom: auto; top: 5%; width: 25%; }
+  .cuadro-dorado { display: none; }
   .cinta-vitrina { font-size: 7px; padding: 2px 5px; }
   .izq .marco-rosa, .der .ventana { display: none; }
   body { font-size: 18px; }
