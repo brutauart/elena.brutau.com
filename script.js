@@ -37,7 +37,9 @@
       tienda: "LUNA & FRIENDS · TIENDA",
       abrirTienda: "Abrir la tienda de luna & friends",
       cerrarTienda: "cerrar la vitrina",
-      vacio: "Este cajón todavía está vacío."
+      vacio: "Este cajón todavía está vacío.",
+      sigueme: "Sígueme",
+      prontoRed: "pronto"
     },
     en: {
       entrar: "turn the key to come in",
@@ -56,7 +58,9 @@
       tienda: "LUNA & FRIENDS · SHOP",
       abrirTienda: "Open the luna & friends shop",
       cerrarTienda: "close the cabinet",
-      vacio: "This drawer is still empty."
+      vacio: "This drawer is still empty.",
+      sigueme: "Follow me",
+      prontoRed: "soon"
     }
   };
 
@@ -76,6 +80,7 @@
     document.querySelectorAll("[data-t]").forEach((el) => { el.textContent = tx(el.dataset.t); });
     mundo.setAttribute("aria-label", tx("estante"));
     $("vitrina").setAttribute("aria-label", tx("abrirTienda"));
+    pintarCorcho();
     document.querySelectorAll(".idiomas button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.idioma === idioma)));
     libros.querySelectorAll("button.lomo").forEach((b) => {
       const g = GAVETAS.find((x) => x.id === b.dataset.id);
@@ -214,6 +219,27 @@
     }
   }
 
+  /* ---------- Redes ---------- */
+  const iconosRed = {
+    instagram: `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="5" width="30" height="30" rx="9" fill="none" stroke="currentColor" stroke-width="3.2"/><circle cx="20" cy="20" r="7" fill="none" stroke="currentColor" stroke-width="3.2"/><circle cx="28.5" cy="11.5" r="2.2" fill="currentColor"/></svg>`,
+    youtube: `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="8" width="34" height="24" rx="8" fill="none" stroke="currentColor" stroke-width="3.2"/><path d="M17 14 L26 20 L17 26 Z" fill="currentColor"/></svg>`
+  };
+  const redes = (typeof REDES !== "undefined" ? REDES : []);
+  function enlaceRed(r, clase) {
+    const dentro = `${iconosRed[r.id] || ""}<span class="nombre-red">${esc(r.nombre)}</span><span class="usuario-red">${esc(r.usuario || (r.enlace ? "" : tx("prontoRed")))}</span>`;
+    return r.enlace
+      ? `<a class="${clase} red-${r.id}" href="${esc(r.enlace)}" target="_blank" rel="noopener">${dentro}</a>`
+      : `<span class="${clase} red-${r.id} sin-enlace">${dentro}</span>`;
+  }
+  function pintarCorcho() {
+    const c = $("corcho");
+    if (!c) return;
+    c.innerHTML = `<span class="titulo-corcho">${esc(tx("sigueme"))}</span>` +
+      redes.map((r, i) => `<div class="pin-red p${i}"><span class="chinche" aria-hidden="true"></span>${enlaceRed(r, "sticker-red")}</div>`).join("");
+  }
+  const estampitas = () => redes.length
+    ? `<div class="estampitas">${redes.map((r) => enlaceRed(r, "estampita")).join("")}</div>` : "";
+
   /* estrellitas y rosas alrededor del texto de Sobre mí */
   const est4 = "M50 2 L60 40 L98 50 L60 60 L50 98 L40 60 L2 50 L40 40 Z";
   const est8 = "M50 2 L58 38 L96 26 L66 52 L92 86 L54 66 L40 98 L38 62 L4 70 L30 46 L10 14 L44 32 Z";
@@ -262,7 +288,7 @@
         <figcaption>${esc(L(c.pie))}</figcaption>
       </figure>
       <div class="carta carta-adornada">${adornos}${parrafos(c.texto).replace(/<p>/g, '<p class="renglon">')}
-      ${c.contacto ? `<p class="renglon">${esc(tx("escribeme"))} <a href="mailto:${esc(c.contacto)}">${esc(c.contacto)}</a></p>` : ""}</div>
+      ${c.contacto ? `<p class="renglon">${esc(tx("escribeme"))} <a href="mailto:${esc(c.contacto)}">${esc(c.contacto)}</a></p>` : ""}${estampitas()}</div>
     </div>`).join("")
   };
   tipos.carta = tipos.perfil;

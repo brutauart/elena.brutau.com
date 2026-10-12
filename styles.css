@@ -381,6 +381,68 @@ button { font: inherit; color: inherit; }
 .cuadro-3 { left: 4.2%; top: 38%; width: 9.4%; transform: rotate(1deg); }
 .cuadro-4 { right: 3.5%; top: 34%; width: 10%; transform: none; }
 
+/* tablerito de corcho con las redes */
+.corcho {
+  position: absolute; left: 11.5%; top: 60%; width: 11%; aspect-ratio: 5 / 4;
+  pointer-events: auto;
+  background-color: #B98A5C;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(90,59,44,.35) 0 1.2px, transparent 1.6px),
+    radial-gradient(circle at 70% 60%, rgba(90,59,44,.3) 0 1px, transparent 1.4px),
+    radial-gradient(circle at 45% 80%, rgba(255,240,210,.35) 0 1px, transparent 1.4px);
+  background-size: 9px 9px, 11px 11px, 13px 13px;
+  border: 5px solid var(--madera);
+  outline: 2px solid var(--carbon);
+  box-shadow: 0 0 0 2px var(--carbon) inset, 5px 7px 0 rgba(28,26,30,.13);
+  filter: url(#tinta);
+  transform: rotate(-1.5deg);
+}
+.titulo-corcho {
+  position: absolute; left: 50%; top: -11px; transform: translateX(-50%) rotate(2deg);
+  padding: 1px 8px;
+  font-family: var(--f-cursiva); font-size: clamp(13px, 1.3vw, 18px); line-height: 1.2; white-space: nowrap;
+  background: var(--crema); border: 1.5px solid var(--carbon);
+}
+.pin-red { position: absolute; width: 44%; }
+.pin-red.p0 { left: 6%; top: 22%; transform: rotate(-5deg); }
+.pin-red.p1 { right: 6%; top: 34%; transform: rotate(4deg); }
+.chinche {
+  position: absolute; left: 50%; top: -4px; z-index: 2; width: 9px; height: 9px; margin-left: -4.5px;
+  border-radius: 50%; background: var(--rosa); border: 1.5px solid var(--carbon);
+  box-shadow: 1px 2px 0 rgba(0,0,0,.25);
+}
+.sticker-red {
+  display: flex; flex-direction: column; align-items: center; gap: 1px;
+  padding: 7px 4px 5px;
+  border: 1.5px solid var(--carbon); border-radius: 6px;
+  color: var(--carbon); text-decoration: none;
+  box-shadow: 0 0 0 3px var(--crema), 2px 3px 0 3px rgba(0,0,0,.2);
+  transition: transform .2s;
+}
+.sticker-red svg { width: 46%; height: auto; display: block; }
+.sticker-red .nombre-red { font-family: var(--f-cinta); font-weight: 700; font-size: clamp(7px, .62vw, 9px); letter-spacing: .08em; text-transform: uppercase; }
+.sticker-red .usuario-red { font-family: var(--f-texto); font-size: clamp(6px, .55vw, 8px); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.red-instagram.sticker-red { background: var(--lila); }
+.red-youtube.sticker-red { background: var(--mostaza); }
+a.sticker-red:hover, a.sticker-red:focus-visible { transform: scale(1.08) rotate(-2deg); }
+.sticker-red.sin-enlace { cursor: default; }
+
+/* estampitas de redes en Sobre mí */
+.estampitas { display: flex; justify-content: center; gap: var(--c); margin-top: calc(var(--c) * 2) !important; position: relative; z-index: 1; }
+.estampita {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: calc(var(--c) * 2); padding: 0 10px;
+  font-family: var(--f-texto); font-size: 11px; color: var(--carbon); text-decoration: none;
+  border: 1.5px dashed var(--carbon); border-radius: 3px;
+  background: var(--crema);
+}
+.estampita svg { width: 16px; height: 16px; }
+.estampita .nombre-red { font-weight: 700; }
+.estampita .usuario-red:empty { display: none; }
+.red-instagram.estampita { background: #EBD9E4; }
+.red-youtube.estampita { background: #F1E1B5; }
+a.estampita:hover { border-style: solid; }
+
 /* la vitrina de tipógrafo (tienda) */
 .vitrina {
   position: absolute; right: 3%; bottom: 4%; width: 14%;
@@ -785,6 +847,7 @@ button { font: inherit; color: inherit; }
   .marco-rosa.en-fondo { left: 10%; right: auto; top: 6%; width: 30%; height: 24%; transform: rotate(-1.5deg); }
   .vitrina { right: 11%; bottom: auto; top: 5%; width: 25%; }
   .cuadro-dorado { display: none; }
+  .corcho { display: none; }
   .cinta-vitrina { font-size: 7px; padding: 2px 5px; }
   .izq .marco-rosa, .der .ventana { display: none; }
   body { font-size: 18px; }

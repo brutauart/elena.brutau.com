@@ -169,5 +169,14 @@ const TIENDA = {
   ]
 };
 
+/*
+  REDES (el tablerito de corcho del cuarto y las estampitas de Sobre mí)
+  Pon el enlace completo de cada una. Si "enlace" está vacío, sale como "pronto".
+*/
+const REDES = [
+  { id: "instagram", nombre: "Instagram", usuario: "", enlace: "" },
+  { id: "youtube", nombre: "YouTube", usuario: "", enlace: "" }
+];
+
 /* Libretas sin etiqueta: gavetas que todavía no se abren. Solo decoran el estante. */
 const LIBRETAS_VACIAS = 2;
