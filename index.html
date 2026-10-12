@@ -35,6 +35,11 @@
     </filter>
   </svg>
 
+  <!-- Idioma -->
+  <div class="idiomas" role="group" aria-label="Idioma / Language">
+    <button type="button" data-idioma="es" lang="es" aria-pressed="true">ES</button><span aria-hidden="true">/</span><button type="button" data-idioma="en" lang="en" aria-pressed="false">EN</button>
+  </div>
+
   <!-- La entrada: una cerradura y una llave -->
   <div class="entrada" id="entrada">
     <p class="encabezado">elenabrutau.com</p>
@@ -60,14 +65,14 @@
           </g>
           <path d="M8 6 l4 8 M4 10 l12 0" class="trazo" stroke-width="1.2"/>
         </svg>
-        <span class="llave-texto">gira la llave para entrar</span>
+        <span class="llave-texto" data-t="entrar">gira la llave para entrar</span>
       </button>
     </div>
   </div>
 
   <!-- La habitación -->
   <main class="cuarto" id="cuarto" aria-label="Estante de libretas de Elena Brutau">
-    <p class="encabezado"><span class="fecha-txt">Fecha: </span><span id="fecha"></span><span class="sep"> / </span>elenabrutau.com</p>
+    <p class="encabezado"><span class="fecha-txt" data-t="fecha">Fecha:</span> <span id="fecha"></span><span class="sep"> / </span>elenabrutau.com</p>
 
     <!-- La lámpara -->
     <svg class="lampara" viewBox="0 0 200 260" aria-hidden="true">
@@ -113,7 +118,7 @@
       <p class="placa-nombre">Elena Brutau</p>
     </section>
 
-    <p class="pista">saca una libreta para abrirla</p>
+    <p class="pista" data-t="pista">saca una libreta para abrirla</p>
   </main>
 
   <!-- La libreta abierta -->
@@ -129,7 +134,7 @@
         <div class="tapa-dorso"><div class="hoja hoja-izq" id="hoja-izq"></div></div>
       </div>
     </div>
-    <button class="volver" id="volver" type="button" data-cerrar>devolver al estante</button>
+    <button class="volver" id="volver" type="button" data-cerrar data-t="volver">devolver al estante</button>
   </div>
 
   <script src="content.js"></script>

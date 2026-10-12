@@ -17,12 +17,78 @@
   let abierta = null;      // gaveta abierta
   let lomoActivo = null;   // botón del estante que se sacó
 
+  /* ---------- Idioma ---------- */
+  const TEXTOS = {
+    es: {
+      entrar: "gira la llave para entrar",
+      pista: "saca una libreta para abrirla",
+      volver: "devolver al estante",
+      fecha: "Fecha:",
+      devolver: "Si encuentras esta libreta, devuélvela a",
+      foto: "foto pendiente",
+      ver: "Ver de dónde viene",
+      comprar: "Comprar",
+      pronto: "Pronto a la venta",
+      escribeme: "Escríbeme:",
+      abrir: "Abrir la libreta",
+      estante: "Estante de libretas de Elena Brutau"
+    },
+    en: {
+      entrar: "turn the key to come in",
+      pista: "pull out a notebook to open it",
+      volver: "put it back on the shelf",
+      fecha: "Date:",
+      devolver: "If found, please return to",
+      foto: "photo coming soon",
+      ver: "See where it's from",
+      comprar: "Buy",
+      pronto: "Coming soon",
+      escribeme: "Write to me:",
+      abrir: "Open the notebook",
+      estante: "Elena Brutau's shelf of notebooks"
+    }
+  };
+
+  let idioma = "es";
+  try {
+    const guardado = localStorage.getItem("idioma");
+    if (guardado === "es" || guardado === "en") idioma = guardado;
+    else if (!/^es\b/i.test(navigator.language || "")) idioma = "en";
+  } catch (e) {}
+
+  const tx = (clave) => TEXTOS[idioma][clave];
+  // un campo puede ser texto o { es, en }
+  const L = (v) => (v && typeof v === "object" ? (v[idioma] ?? v.es ?? "") : (v ?? ""));
+
+  function aplicarIdioma() {
+    document.documentElement.lang = idioma;
+    document.querySelectorAll("[data-t]").forEach((el) => { el.textContent = tx(el.dataset.t); });
+    cuarto.setAttribute("aria-label", tx("estante"));
+    document.querySelectorAll(".idiomas button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.idioma === idioma)));
+    libros.querySelectorAll("button.lomo").forEach((b) => {
+      const g = GAVETAS.find((x) => x.id === b.dataset.id);
+      b.querySelector(".cinta span").textContent = L(g.etiqueta);
+      b.setAttribute("aria-label", `${tx("abrir")}: ${L(g.titulo)}`);
+    });
+    if (abierta) { llenar(abierta); alinear(); }
+  }
+
+  document.querySelectorAll(".idiomas button").forEach((b) => {
+    b.addEventListener("click", () => {
+      idioma = b.dataset.idioma;
+      try { localStorage.setItem("idioma", idioma); } catch (e) {}
+      aplicarIdioma();
+    });
+  });
+
   /* ---------- Utilidades ---------- */
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const parrafos = (v) => String(L(v)).split(/\n\s*\n/).filter(Boolean).map((p) => `<p>${esc(p)}</p>`).join("");
 
-  function foto(imagen, alt) {
-    if (!imagen) return `<div class="foto pendiente" role="img" aria-label="Foto pendiente">foto pendiente</div>`;
-    return `<div class="foto"><img src="${esc(imagen)}" alt="${esc(alt)}" loading="lazy"></div>`;
+  function foto(imagen, alt, clase) {
+    const c = clase ? " " + clase : "";
+    if (!imagen) return `<div class="foto pendiente${c}" role="img" aria-label="${esc(tx("foto"))}">${esc(tx("foto"))}</div>`;
+    return `<div class="foto${c}"><img src="${esc(imagen)}" alt="${esc(alt)}" loading="lazy"></div>`;
   }
 
   const giros = [-1.5, 1, -0.5, 1.8, -1, 0.6];
@@ -67,8 +133,7 @@
       b.style.setProperty("--color-cinta", g.cinta);
       b.style.setProperty("--color-tinta", g.tinta);
       b.style.setProperty("--giro", giros[i % giros.length] + "deg");
-      b.setAttribute("aria-label", `Abrir la libreta ${g.titulo}`);
-      b.innerHTML = `<span class="cinta"><span>${esc(g.etiqueta)}</span></span>`;
+      b.innerHTML = `<span class="cinta"><span></span></span>`;
       b.addEventListener("click", () => abrir(g, b));
       libros.appendChild(b);
     });
@@ -80,57 +145,83 @@
   /* ---------- Contenido de cada tipo de libreta ---------- */
   const tipos = {
     galeria: (items) => `<div class="galeria">${items.map((o) => `
-      <figure class="obra">${foto(o.imagen, o.titulo)}
-        <figcaption>${esc(o.titulo)}<span>${esc(o.tecnica)}</span></figcaption>
+      <figure class="obra">${foto(o.imagen, L(o.titulo))}
+        <figcaption>${esc(L(o.titulo))}<span>${esc(L(o.tecnica))}</span></figcaption>
       </figure>`).join("")}</div>`,
 
     textos: (items) => `<div class="escritos">${items.map((e, i) => `
       <details class="escrito"${i === 0 ? " open" : ""}>
-        <summary><h3>${esc(e.titulo)}</h3><time>${esc(e.fecha)}</time></summary>
-        ${String(e.texto || "").split(/\n\s*\n/).map((p) => `<p>${esc(p)}</p>`).join("")}
+        <summary><h3 class="renglon">${esc(L(e.titulo))}</h3><time>${esc(L(e.fecha))}</time></summary>
+        ${parrafos(e.texto).replace(/<p>/g, '<p class="renglon">')}
       </details>`).join("")}</div>`,
 
     recortes: (items) => `<div class="recortes">${items.map((r) => `
-      <article class="recorte">${foto(r.imagen, r.titulo)}
-        <div><h3>${esc(r.titulo)}</h3><p>${esc(r.comentario)}</p>
-        ${r.enlace ? `<a href="${esc(r.enlace)}" target="_blank" rel="noopener">Ver de dónde viene</a>` : ""}</div>
+      <article class="recorte">${foto(r.imagen, L(r.titulo))}
+        <div><h3 class="renglon">${esc(L(r.titulo))}</h3><p class="comentario renglon">${esc(L(r.comentario))}</p>
+        ${r.enlace ? `<a href="${esc(r.enlace)}" target="_blank" rel="noopener">${esc(tx("ver"))}</a>` : ""}</div>
       </article>`).join("")}</div>`,
 
     tienda: (items) => `<div class="tienda">${items.map((p) => `
-      <article class="pieza">${foto(p.imagen, p.nombre)}
-        <div><h3>${esc(p.nombre)}</h3><p class="precio">${esc(p.precio)}</p><p>${esc(p.detalle)}</p>
+      <article class="pieza">${foto(p.imagen, L(p.nombre))}
+        <div><h3 class="renglon">${esc(L(p.nombre))}</h3><p class="precio renglon">${esc(L(p.precio))}</p><p class="detalle renglon">${esc(L(p.detalle))}</p>
         ${p.enlace
-          ? `<a class="comprar" href="${esc(p.enlace)}" target="_blank" rel="noopener">Comprar</a>`
-          : `<span class="comprar" aria-disabled="true">Pronto a la venta</span>`}</div>
+          ? `<a class="comprar" href="${esc(p.enlace)}" target="_blank" rel="noopener">${esc(tx("comprar"))}</a>`
+          : `<span class="comprar" aria-disabled="true">${esc(tx("pronto"))}</span>`}</div>
       </article>`).join("")}</div>`,
 
-    carta: (items) => items.map((c) => `<div class="carta">
-      ${String(c.texto || "").split(/\n\s*\n/).map((p) => `<p>${esc(p)}</p>`).join("")}
-      ${c.contacto ? `<p>Escríbeme: <a href="mailto:${esc(c.contacto)}">${esc(c.contacto)}</a></p>` : ""}
+    perfil: (items) => items.map((c) => `<div class="perfil">
+      <figure class="retrato">${foto(c.imagen, "Elena Brutau", "polaroid")}
+        <figcaption>${esc(L(c.pie))}</figcaption>
+      </figure>
+      <div class="carta">${parrafos(c.texto).replace(/<p>/g, '<p class="renglon">')}
+      ${c.contacto ? `<p class="renglon">${esc(tx("escribeme"))} <a href="mailto:${esc(c.contacto)}">${esc(c.contacto)}</a></p>` : ""}</div>
     </div>`).join("")
   };
+  tipos.carta = tipos.perfil;
 
   function cabecera(g, idTitulo) {
-    return `<p class="devolver-a">Si encuentras esta libreta, devuélvela a <strong>elenabrutau.com</strong></p>
-      <h2${idTitulo ? ` id="${idTitulo}"` : ""}>${esc(g.titulo)}</h2>
-      <p class="nota">${esc(g.nota)}</p>`;
+    return `<p class="devolver-a renglon">${esc(tx("devolver"))} <strong>elenabrutau.com</strong></p>
+      <h2 class="renglon"${idTitulo ? ` id="${idTitulo}"` : ""}>${esc(L(g.titulo))}</h2>
+      <p class="nota renglon">${esc(L(g.nota))}</p>`;
   }
 
   const estrellita = `<svg class="estrellita" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 2 L58 38 L96 26 L66 52 L92 86 L54 66 L40 98 L38 62 L4 70 L30 46 L10 14 L44 32 Z"/></svg>`;
 
   function llenar(g) {
     const n = GAVETAS.indexOf(g) * 14 + 12;
-    const fecha = `<p class="fecha-hoja">Fecha:</p>`;
+    const fecha = `<p class="fecha-hoja renglon">${esc(tx("fecha"))}</p>`;
     hojaIzq.innerHTML = fecha + cabecera(g, "titulo-libreta") +
-      `<p class="firma">E.${estrellita}</p><p class="pagina">${n}</p>`;
+      `<p class="firma renglon">E.${estrellita}</p><p class="pagina renglon">${n}</p>`;
     hojaDer.innerHTML = fecha + `<div class="solo-movil">${cabecera(g)}</div>` +
-      (tipos[g.tipo] || tipos.carta)(g.items || []) + `<p class="pagina">${n + 1}</p>`;
-    hojaIzq.scrollTop = 0;
-    hojaDer.scrollTop = 0;
-    cintaTapa.textContent = g.etiqueta;
+      (tipos[g.tipo] || tipos.perfil)(g.items || []) + `<p class="pagina renglon">${n + 1}</p>`;
+    hojaDer.querySelectorAll("details").forEach((d) => d.addEventListener("toggle", alinear));
+    cintaTapa.textContent = L(g.etiqueta);
     libreta.style.setProperty("--color-cinta", g.cinta);
     libreta.style.setProperty("--color-tinta", g.tinta);
   }
+
+  /* ---------- Escribir sobre las líneas ----------
+     Mide dónde cae la línea base de cada texto y lo baja o sube unos píxeles
+     para que las letras queden apoyadas en una línea de la cuadrícula. */
+  function alinear() {
+    [hojaIzq, hojaDer].forEach((hoja) => {
+      const c = parseFloat(getComputedStyle(hoja).getPropertyValue("--c")) || 14;
+      hoja.querySelectorAll(".renglon").forEach((el) => {
+        if (el.offsetParent === null) return;          // oculto
+        el.style.top = "0px";
+        const marca = document.createElement("span");
+        marca.className = "marca-base";
+        el.insertBefore(marca, el.firstChild);
+        let y = 0, n = marca;
+        while (n && n !== hoja) { y += n.offsetTop; n = n.offsetParent; }
+        marca.remove();
+        if (n !== hoja) return;
+        const d = Math.round(y / c) * c - y;            // distancia a la línea más cercana
+        el.style.top = d.toFixed(2) + "px";
+      });
+    });
+  }
+  window.addEventListener("resize", () => { if (abierta) alinear(); });
 
   /* ---------- Abrir y cerrar ---------- */
   function abrir(g, lomo) {
@@ -138,16 +229,19 @@
     abierta = g;
     lomoActivo = lomo || libros.querySelector(`[data-id="${g.id}"]`);
     llenar(g);
+    hojaIzq.scrollTop = 0;
+    hojaDer.scrollTop = 0;
     if (lomoActivo) lomoActivo.classList.add("sacada");
     try { history.replaceState(null, "", "#" + g.id); } catch (e) {}
 
     setTimeout(() => {
       lector.hidden = false;
+      alinear();
       void lector.offsetWidth;            // fuerza el estado inicial antes de animar
       lector.classList.add("visible");
       setTimeout(() => {
         lector.classList.add("abierta");
-        setTimeout(() => hojaDer.focus({ preventScroll: true }), t(900));
+        setTimeout(() => { alinear(); hojaDer.focus({ preventScroll: true }); }, t(900));
       }, t(700));
     }, t(350));
   }
@@ -195,7 +289,7 @@
   function entrar(e) {
     const conTeclado = e && e.detail === 0;
     entrada.classList.add("abierta");
-    try { sessionStorage.setItem("entro", "1"); } catch (e) {}
+    try { sessionStorage.setItem("entro", "1"); } catch (err) {}
     setTimeout(encender, t(1100));
     setTimeout(() => {
       const primero = libros.querySelector("button.lomo");
@@ -209,6 +303,8 @@
   const hoy = new Date();
   $("fecha").textContent = [hoy.getDate(), hoy.getMonth() + 1, hoy.getFullYear()].map((x) => String(x).padStart(2, "0")).join(" / ");
   construirEstante();
+  aplicarIdioma();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (abierta) alinear(); });
 
   let yaEntro = false;
   try { yaEntro = sessionStorage.getItem("entro") === "1"; } catch (e) {}
