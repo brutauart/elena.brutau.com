@@ -86,12 +86,12 @@ const GAVETAS = [
     tinta: "#F5F2DF",
     alto: 0.9,
     titulo: { es: "Sobre mí", en: "About me" },
-    nota: { es: "Si llegaste hasta aquí, ya conoces casi todo.", en: "If you made it this far, you already know almost everything." },
+    nota: { es: "Gracias por visitarme.", en: "Thank you for visiting me." },
     tipo: "perfil",
     items: [
       {
         imagen: "img/elena.jpg",
-        pie: { es: "yo, más o menos", en: "me, more or less" },
+        pie: { es: "yo, cuando me río", en: "me, when I laugh" },
         texto: {
           es: "¡Hola! Me llamo Elena Brutau. Desde pequeña he estado obsesionada con plasmar mi vida en libretas.\n\nCuando me fui de Cuba a México a los 17, lo único que me llevé fueron mis diarios. Hice lo mismo nueve años más tarde, cuando vine a vivir a Estados Unidos.\n\nA esa obsesión temprana se le han sumado algunas nuevas: escribir historias, el polymer clay y hacer stickers (además del café, los libros y mis four cat babies: Tom, Ash, Luna y Félix, por supuesto).\n\nEsta página no solo agrupa todas mis obsesiones: también me permite compartirlas con ustedes, mis fellow journal friends.",
           en: "Hi! My name is Elena Brutau. Ever since I was little, I've been obsessed with capturing my life in notebooks.\n\nWhen I left Cuba for Mexico at 17, the only things I took with me were my journals. I did the same nine years later, when I moved to the United States.\n\nOver time, new obsessions joined that early one: writing stories, polymer clay and making stickers (plus coffee, books and my four cat babies: Tom, Ash, Luna and Felix, of course).\n\nThis page doesn't just gather all my obsessions in one place: it lets me share them with you, my fellow journal friends."
