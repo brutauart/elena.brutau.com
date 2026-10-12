@@ -428,7 +428,7 @@ a.sticker-red:hover, a.sticker-red:focus-visible { transform: scale(1.08) rotate
 .sticker-red.sin-enlace { cursor: default; }
 
 /* estampitas de redes en Sobre mí */
-.estampitas { display: flex; justify-content: center; gap: var(--c); margin-top: calc(var(--c) * 2) !important; position: relative; z-index: 1; }
+.estampitas { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px var(--c); margin-top: calc(var(--c) * 2) !important; position: relative; z-index: 1; }
 .estampita {
   display: inline-flex; align-items: center; gap: 6px;
   height: calc(var(--c) * 2); padding: 0 10px;
@@ -437,7 +437,7 @@ a.sticker-red:hover, a.sticker-red:focus-visible { transform: scale(1.08) rotate
   background: var(--crema);
 }
 .estampita svg { width: 16px; height: 16px; }
-.estampita .nombre-red { font-weight: 700; }
+.estampita .nombre-red { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .estampita .usuario-red:empty { display: none; }
 .red-instagram.estampita { background: #EBD9E4; }
 .red-youtube.estampita { background: #F1E1B5; }

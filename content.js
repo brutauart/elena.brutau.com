@@ -174,8 +174,8 @@ const TIENDA = {
   Pon el enlace completo de cada una. Si "enlace" está vacío, sale como "pronto".
 */
 const REDES = [
-  { id: "instagram", nombre: "Instagram", usuario: "", enlace: "" },
-  { id: "youtube", nombre: "YouTube", usuario: "", enlace: "" }
+  { id: "instagram", nombre: "Instagram", usuario: "@elenabrutau", enlace: "https://www.instagram.com/elenabrutau/" },
+  { id: "youtube", nombre: "YouTube", usuario: "@elenabrutau", enlace: "https://www.youtube.com/@elenabrutau" }
 ];
 
 /* Libretas sin etiqueta: gavetas que todavía no se abren. Solo decoran el estante. */
