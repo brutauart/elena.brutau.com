@@ -478,7 +478,7 @@ button { font: inherit; color: inherit; }
   overflow-y: auto; overscroll-behavior: contain;
   padding: calc(var(--c) * 2) calc(var(--c) * 2) calc(var(--c) * 3);
   color: var(--carbon);
-  font-size: 14px; line-height: calc(var(--c) * 2);
+  font-size: 12.5px; line-height: var(--c);   /* una línea por cuadrito */
   background-color: var(--papel);
   background-image:
     linear-gradient(rgba(38,37,35,.09) 1px, transparent 1px),
@@ -555,7 +555,9 @@ button { font: inherit; color: inherit; }
 .escrito summary h3 { font-weight: 400; font-size: 17px; line-height: calc(var(--c) * 2); }
 .escrito summary time { font-family: var(--f-maquina); font-size: 9px; color: var(--grafito); white-space: nowrap; }
 .escrito summary:hover h3 { font-style: italic; }
-.escrito p { font-size: 14px; max-width: 62ch; }
+.escrito p { font-size: 12.5px; max-width: 70ch; }
+.escrito p + p, .carta p + p { text-indent: calc(var(--c) * 2); }
+.escrito p:first-of-type { margin-top: var(--c) !important; }
 .escrito p:last-child { margin-bottom: calc(var(--c) * 2) !important; }
 
 /* Recortes (Cosas que veo) */
@@ -599,8 +601,7 @@ button { font: inherit; color: inherit; }
 .retrato-der { display: none; }
 .retrato-izq { width: min(58%, 230px); margin: calc(var(--c) * 3) auto 0 !important; transform: rotate(-2.5deg); }
 .perfil { padding-top: calc(var(--c) * 2); }
-.carta p { font-size: 14px; max-width: 54ch; }
-.carta p + p { margin-top: calc(var(--c) * 2) !important; }
+.carta p { font-size: 12.5px; max-width: 62ch; }
 .carta a { color: var(--carbon); }
 
 /* Botón para volver */
@@ -615,6 +616,19 @@ button { font: inherit; color: inherit; }
 .volver:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
 
 .solo-movil { display: none; }
+
+/* aviso de que la hoja sigue más abajo */
+.mas-abajo {
+  position: sticky; bottom: calc(var(--c) * -3); z-index: 2;
+  margin: 0 calc(var(--c) * -2) calc(var(--c) * -3) !important;
+  padding: calc(var(--c) * 2) 0 10px;
+  text-align: center;
+  font-family: var(--f-cursiva); font-size: 20px; line-height: 1; color: var(--lila-honda);
+  background: linear-gradient(180deg, rgba(245,242,223,0), var(--papel) 55%);
+  pointer-events: none;
+  opacity: 0; transition: opacity .3s;
+}
+.hoja.con-scroll .mas-abajo { opacity: 1; }
 
 /* Selector de idioma */
 .idiomas {

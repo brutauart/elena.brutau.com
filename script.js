@@ -24,6 +24,7 @@
       entrar: "gira la llave para entrar",
       pista: "saca una libreta para abrirla",
       volver: "devolver al estante",
+      sigue: "sigue leyendo ↓",
       fecha: "Fecha:",
       devolver: "Si encuentras esta libreta, devuélvela a",
       foto: "foto pendiente",
@@ -42,6 +43,7 @@
       entrar: "turn the key to come in",
       pista: "pull out a notebook to open it",
       volver: "put it back on the shelf",
+      sigue: "keep reading ↓",
       fecha: "Date:",
       devolver: "If found, please return to",
       foto: "photo coming soon",
@@ -80,7 +82,7 @@
       b.querySelector(".cinta span").textContent = L(g.etiqueta);
       b.setAttribute("aria-label", `${tx("abrir")}: ${L(g.titulo)}`);
     });
-    if (abierta) { llenar(abierta); alinear(); }
+    if (abierta) { llenar(abierta); alinear(); revisarScroll(); }
     if (tiendaAbierta) pintarTienda(catActual);
   }
 
@@ -274,7 +276,9 @@
       `<p class="firma renglon">E.${estrellita}</p><p class="pagina renglon">${n}</p>`;
     hojaDer.innerHTML = fecha + `<div class="solo-movil">${cabecera(g)}</div>` +
       (tipos[g.tipo] || tipos.perfil)(g.items || []) + `<p class="pagina renglon">${n + 1}</p>`;
-    hojaDer.querySelectorAll("details").forEach((d) => d.addEventListener("toggle", alinear));
+    hojaIzq.insertAdjacentHTML("beforeend", `<p class="mas-abajo" aria-hidden="true">${esc(tx("sigue"))}</p>`);
+    hojaDer.insertAdjacentHTML("beforeend", `<p class="mas-abajo" aria-hidden="true">${esc(tx("sigue"))}</p>`);
+    hojaDer.querySelectorAll("details").forEach((d) => d.addEventListener("toggle", () => { alinear(); revisarScroll(); }));
     cintaTapa.textContent = L(g.etiqueta);
     libreta.style.setProperty("--color-cinta", g.cinta);
     libreta.style.setProperty("--color-tinta", g.tinta);
@@ -301,7 +305,23 @@
       });
     });
   }
-  window.addEventListener("resize", () => { if (abierta) alinear(); });
+  window.addEventListener("resize", () => { if (abierta) { alinear(); revisarScroll(); } });
+
+  // "sigue leyendo": solo si la hoja tiene más contenido abajo
+  function revisarScroll() {
+    [hojaIzq, hojaDer].forEach((h) => {
+      const falta = h.scrollHeight - h.clientHeight - h.scrollTop;
+      h.classList.toggle("con-scroll", falta > 24);
+    });
+  }
+  [hojaIzq, hojaDer].forEach((h) => h.addEventListener("scroll", revisarScroll, { passive: true }));
+
+  // las letras llegan de internet un momento después: cuando terminan de cargar, volver a apoyar el texto en las líneas
+  if (document.fonts) {
+    ['14px "IM Fell English"', '14px "Courier Prime"', '20px "Sacramento"', '20px "Borel"', '14px "Archivo Narrow"']
+      .forEach((f) => { try { document.fonts.load(f); } catch (e) {} });
+    document.fonts.addEventListener("loadingdone", () => { if (abierta) { alinear(); revisarScroll(); } });
+  }
 
   /* ---------- Abrir y cerrar ---------- */
   function abrir(g, lomo) {
@@ -322,7 +342,8 @@
       lector.classList.add("visible");
       setTimeout(() => {
         lector.classList.add("abierta");
-        setTimeout(() => { alinear(); hojaDer.focus({ preventScroll: true }); }, t(900));
+        setTimeout(() => { alinear(); revisarScroll(); hojaDer.focus({ preventScroll: true }); }, t(900));
+        setTimeout(() => { if (abierta) { alinear(); revisarScroll(); } }, 2500);
       }, t(700));
     }, t(350));
   }
