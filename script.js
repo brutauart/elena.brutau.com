@@ -135,9 +135,9 @@
         <path d="M88 24 Q86 10 98 8 Q104 20 94 28 Z" fill="#CFADC4"/>
       </g>
       <g class="trazo" stroke-width="1"><path d="M40 64 L22 44 M78 60 L98 42 M59 44 L52 22"/></g>
-      <path class="trazo" d="M48 108 H72 V118 C96 130 100 170 88 186 Q60 200 32 186 C20 170 24 130 48 118 Z" fill="#D7ABC6" stroke-width="2.6"/>
-      <path class="trazo" d="M44 106 H76 V114 H44 Z" fill="#CFADC4" stroke-width="2.4"/>
-      <path d="M40 140 v10 M46 140 v6 M78 168 v8" stroke="#1C1A1E" stroke-width="2" stroke-linecap="round"/>
+      <path class="trazo" d="M48 108 H72 V118 C96 130 100 170 88 186 Q60 200 32 186 C20 170 24 130 48 118 Z" fill="#161616" stroke-width="2.6"/>
+      <path class="trazo" d="M44 106 H76 V114 H44 Z" fill="#161616" stroke-width="2.4"/>
+      <path d="M40 140 v10 M46 140 v6 M78 168 v8" stroke="#F5F2DF" stroke-width="2" stroke-linecap="round"/>
     </svg>`;
     return v;
   }
