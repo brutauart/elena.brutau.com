@@ -29,7 +29,7 @@
   --fondo: clamp(420px, 64vh, 640px);   /* profundidad */
   --persp: 1100px;
   --alto-estante: clamp(200px, 36vh, 380px);
-  --ancho-lomo: clamp(36px, 4.2vw, 60px);
+  --ancho-lomo: clamp(26px, 2.7vw, 40px);
   color-scheme: light;
 }
 
@@ -140,7 +140,9 @@ button { font: inherit; color: inherit; }
   transform-origin: 50% 50% calc(var(--fondo) * -.5);
   transform: translateZ(var(--dolly)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
   transition: --dolly 1.8s cubic-bezier(.2,.7,.2,1);
+  pointer-events: none;            /* el cuarto es un "vidrio": solo las libretas reciben clics */
 }
+.cuarto3d .lomo:not(.vacia) { pointer-events: auto; }
 .encendida .cuarto3d { --dolly: 0px; }
 .cuarto3d.acercando { --dolly: 260px; transition-duration: .9s; }
 
@@ -222,7 +224,7 @@ button { font: inherit; color: inherit; }
 .mancha-pared svg { width: 100%; display: block; overflow: visible; }
 .mancha-pared path { fill: var(--lila); opacity: .38; filter: url(#mancha); }
 
-.ventana { position: absolute; left: 22%; top: 14%; width: 46%; filter: url(#tinta); }
+.ventana { position: absolute; left: 14%; top: 8%; width: 66%; filter: url(#tinta); }
 .trazo.madera { fill: var(--madera); }
 .ventana svg { width: 100%; display: block; overflow: visible; }
 
@@ -292,15 +294,15 @@ button { font: inherit; color: inherit; }
   height: calc(var(--alto-estante) * var(--h));
   border: 0; padding: 0; cursor: pointer;
   border-radius: 7px 7px 3px 3px;
-  background-color: var(--negro);
-  background-image: var(--grano-claro), linear-gradient(90deg, rgba(255,255,255,.1) 0 2px, transparent 2px calc(100% - 3px), rgba(0,0,0,.35) calc(100% - 3px));
+  background-color: #0B0B0B;
+  background-image: linear-gradient(90deg, rgba(255,255,255,.09) 0 2px, transparent 2px calc(100% - 3px), rgba(0,0,0,.5) calc(100% - 3px));
   box-shadow: 3px 0 0 rgba(28,26,30,.18);
   filter: url(#tinta);
   transition: transform .35s cubic-bezier(.3,.7,.3,1);
 }
 .lomo::before, .lomo::after {
   content: ""; position: absolute; left: 10%; right: 10%; height: 0;
-  border-top: 1.5px dashed rgba(245,242,223,.35);
+  border-top: 1.5px dashed rgba(245,242,223,.22);
 }
 .lomo::before { top: 12px; }
 .lomo::after { bottom: 12px; }
@@ -311,7 +313,7 @@ button { font: inherit; color: inherit; }
   position: absolute; left: 50%; top: 24%;
   transform: translateX(-50%) rotate(var(--giro, 0deg));
   writing-mode: vertical-rl;
-  padding: 12px 4px;
+  padding: 10px 3px;
   background-color: var(--color-cinta);
   background-image: var(--grano-claro), linear-gradient(90deg, rgba(255,255,255,.22), transparent 35%, transparent 70%, rgba(0,0,0,.18));
   box-shadow: 1px 1px 2px rgba(0,0,0,.5);
@@ -320,7 +322,7 @@ button { font: inherit; color: inherit; }
 .cinta span {
   display: block;
   font-family: var(--f-cinta); font-weight: 700;
-  font-size: clamp(12px, 1.35vw, 17px); letter-spacing: .14em; line-height: 1;
+  font-size: clamp(10px, 1.05vw, 14px); letter-spacing: .12em; line-height: 1;
   color: var(--color-tinta);
   text-shadow: 0 1px 0 rgba(0,0,0,.3), 0 -1px 0 rgba(255,255,255,.25);
   white-space: nowrap;
@@ -335,7 +337,7 @@ button { font: inherit; color: inherit; }
 
 /* Luna, sentada en el estante */
 .luna {
-  --w: calc(var(--ancho-lomo) * 2.5);
+  --w: calc(var(--ancho-lomo) * 3.6);
   position: relative; flex: 0 0 auto; align-self: flex-end;
   width: var(--w); margin: 0 4px calc(var(--w) * -0.2) 12px;   /* las patitas cuelgan por delante del estante */
   transform-origin: 50% 100%;
@@ -587,16 +589,17 @@ button { font: inherit; color: inherit; }
 
 /* ---------- Pantallas pequeñas ---------- */
 @media (max-width: 720px) {
-  :root { --fondo: 46vh; --persp: 700px; --alto-estante: clamp(190px, 40vh, 330px); --ancho-lomo: clamp(28px, 7.4vw, 40px); }
+  :root { --fondo: 40vh; --persp: 640px; --alto-estante: clamp(150px, 26vh, 230px); --ancho-lomo: clamp(20px, 5.6vw, 28px); }
   body { font-size: 18px; }
   .encabezado { font-size: 12px; }
   #fecha, .encabezado .sep, .encabezado .fecha-txt { display: none; }
   .libros { gap: 3px; padding: 0 1%; }
-  .estante { width: 96%; bottom: 34%; }
-  .escritorio { width: 92%; }
-  .planta3d { width: 90px; left: 1%; }
+  .estante { width: 96%; bottom: 40%; }
+  .escritorio { width: 100%; }
+  .planta3d { width: 54px; left: 2%; transform: translateZ(calc(var(--fondo) * -.9)); }
+  .ventana { left: 6%; width: 80%; }
   .vasija, .lomo.extra { display: none; }
-  .luna { --w: calc(var(--ancho-lomo) * 2.4); margin-left: 6px; }
+  .luna { --w: calc(var(--ancho-lomo) * 3.4); margin-left: 6px; }
   .lampara3d { width: 110px; }
   .pista { font-size: 24px; }
 
