@@ -612,8 +612,8 @@ button { font: inherit; color: inherit; }
 @media (max-width: 720px) {
   :root { --fondo: 22vh; --persp: 900px; --alto-estante: clamp(150px, 25vh, 220px); --ancho-lomo: clamp(20px, 5.6vw, 28px); }
   .en-fondo { display: block; }
-  .ventana.en-fondo { left: 7%; top: 5%; width: 30%; }
-  .marco-rosa.en-fondo { left: auto; right: 9%; top: 7%; width: 24%; height: 21%; transform: rotate(2deg); }
+  .ventana.en-fondo { display: none; }
+  .marco-rosa.en-fondo { left: 50%; right: auto; top: 6%; width: 30%; height: 24%; transform: translateX(-50%) rotate(-1.5deg); }
   .izq .marco-rosa, .der .ventana { display: none; }
   body { font-size: 18px; }
   .encabezado { font-size: 12px; }
