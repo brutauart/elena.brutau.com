@@ -22,11 +22,11 @@
 const GAVETAS = [
   {
     id: "arte",
-    etiqueta: { es: "ARTE", en: "ART" },
+    etiqueta: { es: "ARTE", en: "SKETCHBOOK" },
     cinta: "#CFADC4",
     tinta: "#1C1A1E",
     alto: 0.92,
-    titulo: { es: "Arte", en: "Art" },
+    titulo: { es: "Arte", en: "Sketchbook" },
     nota: { es: "Lo que sale de mis manos cuando nadie me está mirando.", en: "What comes out of my hands when no one is watching." },
     tipo: "galeria",
     items: [
