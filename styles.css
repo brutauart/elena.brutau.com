@@ -273,47 +273,52 @@ button { font: inherit; color: inherit; }
   padding: 9px 0 9px 9px;
 }
 
-/* El papel cuadriculado */
+/* El papel cuadriculado (cuadro de 3.7 mm, como Hobonichi = 14px).
+   Todo el texto se alinea a esa cuadrícula: los renglones miden 1 o 2 cuadros. */
 .hoja {
+  --c: 14px;
   position: relative;
   height: 100%;
   overflow-y: auto; overscroll-behavior: contain;
-  padding: 56px clamp(20px, 3.4vw, 44px) 40px;
+  padding: calc(var(--c) * 4) calc(var(--c) * 2) calc(var(--c) * 3);
   color: var(--carbon);
+  font-size: 15px; line-height: calc(var(--c) * 2);
   background-color: var(--papel);
   background-image:
-    linear-gradient(rgba(38,37,35,.075) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(38,37,35,.075) 1px, transparent 1px);
-  background-size: 22px 22px;
-  background-position: -1px -1px;
+    linear-gradient(rgba(38,37,35,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(38,37,35,.08) 1px, transparent 1px);
+  background-size: var(--c) var(--c);
+  background-position: 0 0;
+  background-attachment: local;
   scrollbar-width: thin; scrollbar-color: rgba(38,37,35,.3) transparent;
 }
+.hoja p, .hoja h2, .hoja h3, .hoja figure { margin: 0; }
 .hoja-der { border-radius: 0 6px 6px 0; box-shadow: inset 16px 0 18px -14px rgba(0,0,0,.35); }
 .hoja-izq { border-radius: 6px 0 0 6px; box-shadow: inset -16px 0 18px -14px rgba(0,0,0,.35); display: flex; flex-direction: column; }
 .hoja:focus { outline: none; }
 
-.fecha-hoja { position: absolute; top: 16px; left: clamp(20px, 3.4vw, 44px); margin: 0; font-size: 15px; color: var(--grafito); }
-.pagina { margin: 34px 0 0; font-size: 14px; color: var(--grafito); }
-.hoja-izq .pagina { margin-top: auto; padding-top: 24px; }
+.fecha-hoja { position: absolute; top: calc(var(--c) * 1); left: calc(var(--c) * 2); font-size: 12px; line-height: calc(var(--c) * 2); color: var(--grafito); }
+.pagina { font-size: 11px; line-height: var(--c); color: var(--grafito); padding-top: calc(var(--c) * 2); }
+.hoja-izq .pagina { margin-top: auto; }
 .hoja-der .pagina { text-align: right; }
 
-/* hoja izquierda */
-.devolver-a { font-family: var(--f-maquina); font-size: 13px; line-height: 1.5; margin: 0; }
-.hoja h2 { font-weight: 400; font-size: clamp(46px, 5.4vw, 70px); line-height: 1; margin: 26px 0 14px; }
-.nota { font-family: var(--f-cursiva); font-size: clamp(34px, 3.2vw, 42px); line-height: 1.05; margin: 0; max-width: 18ch; }
-.firma { font-family: var(--f-cursiva); font-size: 40px; line-height: 1; margin: 24px 0 0; align-self: flex-end; }
-.estrellita { display: inline-block; width: 26px; vertical-align: middle; margin-left: 6px; filter: url(#tinta); }
+/* hoja izquierda: todo pegadito */
+.devolver-a { font-family: var(--f-maquina); font-size: 11px; line-height: var(--c); }
+.hoja h2 { font-weight: 400; font-size: 40px; line-height: calc(var(--c) * 3); margin-top: calc(var(--c) * 2); }
+.nota { font-family: var(--f-cursiva); font-size: 25px; line-height: calc(var(--c) * 2); max-width: 24ch; }
+.firma { font-family: var(--f-cursiva); font-size: 26px; line-height: calc(var(--c) * 2); margin-top: var(--c) !important; align-self: flex-end; }
+.estrellita { display: inline-block; width: 18px; vertical-align: middle; margin-left: 4px; filter: url(#tinta); }
 .estrellita path { fill: var(--carbon); }
 
 /* Fotos como recortes pegados */
 .foto {
   position: relative; aspect-ratio: 4 / 5;
-  background: #fff; padding: 7px;
+  background: #fff; padding: 6px;
   box-shadow: 1px 2px 4px rgba(38,37,35,.22);
 }
 .foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .foto::after {
-  content: ""; position: absolute; top: -10px; left: 50%; width: 44%; height: 20px;
+  content: ""; position: absolute; top: -9px; left: 50%; width: 44%; height: 18px;
   transform: translateX(-50%) rotate(-4deg);
   background-color: rgba(185,180,173,.55);
   background-image: var(--grano-claro);
@@ -322,58 +327,56 @@ button { font: inherit; color: inherit; }
   display: grid; place-items: center; text-align: center;
   background: transparent; box-shadow: none;
   border: 1.5px dashed var(--grafito);
-  font-family: var(--f-maquina); font-size: 13px; color: var(--grafito);
+  font-family: var(--f-maquina); font-size: 11px; color: var(--grafito);
 }
 .foto.pendiente::after { display: none; }
 
 /* Galería (Arte) */
-.galeria { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px 20px; }
-.obra { margin: 0; }
+.galeria { display: grid; grid-template-columns: repeat(2, 1fr); gap: calc(var(--c) * 2) var(--c); }
 .obra:nth-child(odd) { transform: rotate(-1.6deg); }
-.obra:nth-child(even) { transform: rotate(1.4deg) translateY(12px); }
-.obra figcaption { font-size: 17px; line-height: 1.3; margin-top: 10px; }
-.obra figcaption span { display: block; font-family: var(--f-maquina); font-size: 12px; color: var(--grafito); }
+.obra:nth-child(even) { transform: rotate(1.4deg) translateY(var(--c)); }
+.obra figcaption { font-size: 14px; line-height: var(--c); margin-top: var(--c); }
+.obra figcaption span { display: block; font-family: var(--f-maquina); font-size: 10px; line-height: var(--c); color: var(--grafito); }
 
 /* Escritos */
 .escritos { display: grid; }
 .escrito summary {
   cursor: pointer; list-style: none;
-  padding: 11px 0;
-  display: flex; justify-content: space-between; align-items: baseline; gap: 14px;
-  border-bottom: 1.5px solid var(--carbon);
+  display: flex; justify-content: space-between; align-items: baseline; gap: var(--c);
 }
 .escrito summary::-webkit-details-marker { display: none; }
-.escrito summary h3 { font-weight: 400; font-size: 25px; margin: 0; line-height: 1.2; }
-.escrito summary time { font-family: var(--f-maquina); font-size: 12px; color: var(--grafito); white-space: nowrap; }
+.escrito summary h3 { font-weight: 400; font-size: 19px; line-height: calc(var(--c) * 2); }
+.escrito summary time { font-family: var(--f-maquina); font-size: 10px; color: var(--grafito); white-space: nowrap; }
 .escrito summary:hover h3 { font-style: italic; }
-.escrito p { margin: 14px 0 20px; font-size: 19px; line-height: 1.75; letter-spacing: .02em; max-width: 60ch; text-align: justify; hyphens: auto; }
+.escrito p { font-size: 15px; letter-spacing: .02em; max-width: 60ch; text-align: justify; hyphens: auto; }
+.escrito p:last-child { margin-bottom: calc(var(--c) * 2); }
 
 /* Recortes (Cosas que veo) */
-.recortes { display: grid; gap: 34px; }
-.recorte { display: grid; grid-template-columns: 40% 1fr; gap: 18px; align-items: start; }
+.recortes { display: grid; gap: calc(var(--c) * 2); }
+.recorte { display: grid; grid-template-columns: 40% 1fr; gap: var(--c); align-items: start; }
 .recorte:nth-child(even) { grid-template-columns: 1fr 40%; }
 .recorte:nth-child(even) .foto { order: 2; transform: rotate(2.4deg); }
 .recorte .foto { aspect-ratio: 1; transform: rotate(-2deg); }
-.recorte h3 { font-weight: 400; font-size: 22px; line-height: 1.2; margin: 4px 0 6px; }
-.recorte p { margin: 0; font-family: var(--f-cursiva); font-size: 32px; line-height: 1.05; }
-.recorte a { font-family: var(--f-maquina); font-size: 13px; color: var(--carbon); }
+.recorte h3 { font-weight: 400; font-size: 17px; line-height: calc(var(--c) * 2); }
+.recorte p { font-family: var(--f-cursiva); font-size: 22px; line-height: calc(var(--c) * 2); }
+.recorte a { font-family: var(--f-maquina); font-size: 11px; color: var(--carbon); }
 
 /* Tienda (Clay): piezas como pegatinas redondas */
-.tienda { display: grid; gap: 30px; }
-.pieza { display: grid; grid-template-columns: 38% 1fr; gap: 20px; align-items: center; }
+.tienda { display: grid; gap: calc(var(--c) * 2); }
+.pieza { display: grid; grid-template-columns: 34% 1fr; gap: var(--c); align-items: center; }
 .pieza .foto { aspect-ratio: 1; border-radius: 50%; padding: 0; }
 .pieza .foto img { border-radius: 50%; }
 .pieza .foto::after { display: none; }
-.pieza:nth-child(3n+1) .foto:not(.pendiente) { box-shadow: 0 0 0 6px var(--mostaza), 1px 3px 5px 6px rgba(38,37,35,.2); }
-.pieza:nth-child(3n+2) .foto:not(.pendiente) { box-shadow: 0 0 0 6px var(--salvia), 1px 3px 5px 6px rgba(38,37,35,.2); }
-.pieza:nth-child(3n) .foto:not(.pendiente) { box-shadow: 0 0 0 6px var(--oxido), 1px 3px 5px 6px rgba(38,37,35,.2); }
-.pieza h3 { font-weight: 400; font-size: 23px; margin: 0; line-height: 1.2; }
-.pieza .precio { font-family: var(--f-maquina); font-size: 17px; margin: 4px 0; }
-.pieza p { font-size: 16px; margin: 0 0 12px; color: var(--grafito); line-height: 1.4; }
+.pieza:nth-child(3n+1) .foto:not(.pendiente) { box-shadow: 0 0 0 5px var(--mostaza), 1px 3px 5px 5px rgba(38,37,35,.2); }
+.pieza:nth-child(3n+2) .foto:not(.pendiente) { box-shadow: 0 0 0 5px var(--salvia), 1px 3px 5px 5px rgba(38,37,35,.2); }
+.pieza:nth-child(3n) .foto:not(.pendiente) { box-shadow: 0 0 0 5px var(--oxido), 1px 3px 5px 5px rgba(38,37,35,.2); }
+.pieza h3 { font-weight: 400; font-size: 18px; line-height: calc(var(--c) * 2); }
+.pieza .precio { font-family: var(--f-maquina); font-size: 13px; line-height: var(--c); }
+.pieza p { font-size: 13px; line-height: var(--c); color: var(--grafito); margin-top: calc(var(--c) * .5) !important; }
 .comprar {
-  display: inline-block;
-  font-family: var(--f-maquina); font-size: 14px; text-decoration: none;
-  padding: 5px 14px;
+  display: inline-block; margin-top: var(--c);
+  font-family: var(--f-maquina); font-size: 11px; line-height: calc(var(--c) * 1.5); text-decoration: none;
+  padding: 0 12px;
   color: var(--papel); background: var(--carbon);
   border-radius: 999px; white-space: nowrap;
 }
@@ -381,7 +384,8 @@ button { font: inherit; color: inherit; }
 .comprar[aria-disabled="true"] { background: transparent; color: var(--carbon); border: 1.5px dashed var(--carbon); cursor: default; }
 
 /* Carta (Sobre mí) */
-.carta p { font-size: 20px; line-height: 1.8; letter-spacing: .02em; max-width: 52ch; }
+.carta p { font-size: 15px; letter-spacing: .02em; max-width: 52ch; }
+.carta p + p { margin-top: calc(var(--c) * 2); }
 .carta a { color: var(--carbon); }
 
 /* Botón para volver */
@@ -417,8 +421,8 @@ button { font: inherit; color: inherit; }
   .lector.abierta .tapa { opacity: 0; pointer-events: none; }
   .contratapa { padding: 8px; border-radius: 10px; }
   .hoja-der { border-radius: 4px; box-shadow: none; }
-  .solo-movil { display: block; margin-bottom: 30px; }
-  .galeria { gap: 24px 14px; }
+  .solo-movil { display: block; margin-bottom: 28px; }
+  .hoja { padding-left: 28px; padding-right: 28px; }
   .recorte, .recorte:nth-child(even), .pieza { grid-template-columns: 1fr 1.2fr; }
   .recorte:nth-child(even) .foto { order: 0; }
   .escrito p { text-align: left; }
