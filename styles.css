@@ -428,15 +428,16 @@ a.sticker-red:hover, a.sticker-red:focus-visible { transform: scale(1.08) rotate
 .sticker-red.sin-enlace { cursor: default; }
 
 /* estampitas de redes en Sobre mí */
-.estampitas { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: calc(var(--c) * 2) !important; position: relative; z-index: 1; }
+.estampitas { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: calc(var(--c) * 2) !important; position: relative; z-index: 1; }
 .estampita {
-  display: inline-flex; align-items: center; gap: 6px;
-  height: calc(var(--c) * 2); padding: 0 10px;
+  display: inline-grid; place-items: center;
+  width: calc(var(--c) * 2.5); height: calc(var(--c) * 2.5); padding: 0;
   font-family: var(--f-texto); font-size: 11px; color: var(--carbon); text-decoration: none;
   border: 1.5px dashed var(--carbon); border-radius: 3px;
   background: var(--crema);
 }
-.estampita svg { width: 16px; height: 16px; }
+.estampita svg { width: 20px; height: 20px; }
+.estampita .usuario-red { display: none; }
 .estampita .nombre-red { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .estampita .usuario-red:empty { display: none; }
 .red-instagram.estampita { background: #EBD9E4; }

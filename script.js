@@ -228,7 +228,7 @@
   function enlaceRed(r, clase) {
     const dentro = `${iconosRed[r.id] || ""}<span class="nombre-red">${esc(r.nombre)}</span><span class="usuario-red">${esc(r.usuario || (r.enlace ? "" : tx("prontoRed")))}</span>`;
     return r.enlace
-      ? `<a class="${clase} red-${r.id}" href="${esc(r.enlace)}" target="_blank" rel="noopener">${dentro}</a>`
+      ? `<a class="${clase} red-${r.id}" href="${esc(r.enlace)}" target="_blank" rel="noopener" title="${esc(r.nombre)}${r.usuario ? " · " + esc(r.usuario) : ""}">${dentro}</a>`
       : `<span class="${clase} red-${r.id} sin-enlace">${dentro}</span>`;
   }
   function pintarCorcho() {
