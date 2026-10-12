@@ -108,15 +108,18 @@
     v.className = "vasija";
     v.setAttribute("aria-hidden", "true");
     v.innerHTML = `<svg viewBox="0 0 120 200">
-      <path d="M30 120 C10 150 22 196 60 196 C98 196 112 150 88 120 Z" fill="#1C1A1E" opacity=".12" transform="translate(6 4)"/>
-      <g class="trazo">
-        <path d="M44 110 h32 v12 C104 140 104 196 60 196 C16 196 16 140 44 122 Z" fill="#CFADC4"/>
-        <path d="M30 150 C50 158 72 158 92 150" stroke-width="1.2"/>
-        <path d="M34 166 l6 8 l6 -8 l6 8 l6 -8 l6 8 l6 -8 l6 8 l6 -8 l6 8" stroke-width="1.2"/>
-        <path d="M58 110 C56 80 44 56 22 34"/><path d="M40 70 C30 66 22 66 14 70"/><path d="M32 52 C30 42 32 34 38 28"/>
-        <path d="M62 110 C66 76 76 48 98 20"/><path d="M76 66 C86 64 92 58 96 50"/><path d="M86 38 C84 30 86 22 92 16"/>
+      <g class="trazo" stroke-width="2.4">
+        <path d="M60 112 C58 80 50 56 30 34"/><path d="M62 112 C66 74 74 50 92 26"/><path d="M61 112 C60 80 62 52 60 20"/>
+        <path d="M42 66 Q20 58 16 40 Q36 44 42 66 Z" fill="#979B82"/>
+        <path d="M76 62 Q98 56 104 38 Q84 40 76 62 Z" fill="#979B82"/>
+        <path d="M60 46 Q46 34 50 16 Q62 28 60 46 Z" fill="#979B82"/>
+        <path d="M28 32 Q22 18 34 12 Q44 18 36 32 Z" fill="#D7ABC6"/>
+        <path d="M88 24 Q86 10 98 8 Q104 20 94 28 Z" fill="#CFADC4"/>
       </g>
-      <g fill="#CBA455" stroke="#1C1A1E" stroke-width="1.2"><circle cx="22" cy="33" r="3.2"/><circle cx="98" cy="19" r="3.2"/><circle cx="38" cy="27" r="2.6"/><circle cx="96" cy="49" r="2.6"/><circle cx="14" cy="70" r="2.4"/></g>
+      <g class="trazo" stroke-width="1"><path d="M40 64 L22 44 M78 60 L98 42 M59 44 L52 22"/></g>
+      <path class="trazo" d="M48 108 H72 V118 C96 130 100 170 88 186 Q60 200 32 186 C20 170 24 130 48 118 Z" fill="#D7ABC6" stroke-width="2.6"/>
+      <path class="trazo" d="M44 106 H76 V114 H44 Z" fill="#CFADC4" stroke-width="2.4"/>
+      <path d="M40 140 v10 M46 140 v6 M78 168 v8" stroke="#1C1A1E" stroke-width="2" stroke-linecap="round"/>
     </svg>`;
     return v;
   }
@@ -127,34 +130,39 @@
     l.id = "luna";
     l.setAttribute("aria-hidden", "true");
     // Luna sentadita, a partir del doodle de Elena
-    l.innerHTML = `<svg viewBox="0 0 300 345">
+    l.innerHTML = `<svg viewBox="0 0 300 420">
       <defs>
         <clipPath id="ojos-luna">
-          <path d="M54 133 Q90 100 129 135 Q92 168 54 133 Z"/>
-          <path d="M160 139 Q200 103 234 132 Q200 167 160 139 Z"/>
+          <path d="M42 140 Q84 83 128 147 Q84 210 42 140 Z"/>
+          <path d="M167 152 Q212 88 251 142 Q210 201 167 152 Z"/>
         </clipPath>
       </defs>
-      <g class="cuerpo-luna">
-        <path d="M164 292 Q210 270 199 236 Q192 216 173 213" fill="none" stroke="#161616" stroke-width="10" stroke-linecap="round"/>
-        <path d="M131 178 Q120 238 92 296 Q88 312 104 312 L168 306 Q172 270 162 238 Q151 205 147 178 Z" fill="#161616"/>
-        <path d="M112 262 L117 340 Q123 345 129 340 L134 264 Z" fill="#161616"/>
-        <path d="M145 264 L141 340 Q147 345 153 340 L158 262 Z" fill="#161616"/>
-        <path d="M59 22 L68 64 L212 65 L224 16 L240 62 Q262 120 261 152 Q258 171 230 177 Q160 187 90 181 Q36 177 32 156 Q36 110 52 68 Z" fill="#161616"/>
-        <g stroke="#161616" stroke-width="2.4" stroke-linecap="round" fill="none">
-          <path d="M40 146 L2 140 M38 154 L0 156 M40 162 L6 172"/>
-          <path d="M254 144 L296 136 M256 152 L298 152 M254 160 L292 168"/>
-        </g>
+      <!-- cola -->
+      <path d="M170 330 Q214 318 211 278 Q208 246 180 238" fill="none" stroke="#161616" stroke-width="11" stroke-linecap="round"/>
+      <!-- cuerpo en triángulo, como el doodle -->
+      <path d="M134 198 Q118 260 86 334 Q82 358 96 360 L176 350 Q182 300 166 260 Q154 226 148 198 Z" fill="#161616"/>
+      <!-- patitas delanteras colgando por el borde del estante -->
+      <path d="M106 300 L112 412 Q118 418 125 412 L132 304 Z" fill="#161616"/>
+      <path d="M142 302 L138 414 Q144 420 151 414 L158 300 Z" fill="#161616"/>
+      <!-- cabeza -->
+      <path d="M46 10 L58 62 L229 62 L243 4 L262 70 Q284 120 287 160 Q288 178 272 182 Q200 206 144 204 Q80 202 28 176 Q12 170 13 160 Q20 104 46 10 Z" fill="#161616"/>
+      <!-- bigotes -->
+      <g stroke="#161616" stroke-width="2.4" stroke-linecap="round" fill="none">
+        <path d="M20 150 L-18 142 M18 158 L-20 160 M20 166 L-14 178"/>
+        <path d="M282 146 L318 136 M284 154 L322 154 M282 162 L316 172"/>
       </g>
+      <!-- ojos como limones, con la rayita inclinada -->
       <g clip-path="url(#ojos-luna)">
-        <rect x="40" y="95" width="210" height="80" fill="#CBA455"/>
+        <rect x="30" y="80" width="240" height="130" fill="#CBA455"/>
         <g class="pupila" id="pupila" fill="#161616">
-          <path d="M97 108 L84 160 L89 160 Z"/>
-          <path d="M205 108 L192 160 L197 160 Z"/>
+          <path d="M82 113 L96 112 L73 175 Z"/>
+          <path d="M204 118 L222 115 L201 174 Z"/>
         </g>
-        <rect class="parpado" x="40" y="95" width="210" height="80" fill="#161616"/>
+        <rect class="parpado" x="30" y="80" width="240" height="130" fill="#161616"/>
       </g>
-      <g stroke="#CFADC4" stroke-width="3" stroke-linecap="round" fill="none">
-        <path d="M136 137 H152 M144 139 L131 172 M144 139 L150 175"/>
+      <!-- nariz -->
+      <g stroke="#CFADC4" stroke-width="3.2" stroke-linecap="round" fill="none">
+        <path d="M139 147 H158 M147 149 L130 191 M147 149 L154 194"/>
       </g>
     </svg>`;
     return l;
@@ -399,7 +407,7 @@
       const cx = r.left + r.width / 2, cy = r.top + r.height * 0.4;
       const dx = Math.max(-1, Math.min(1, (puntero.x - cx) / (innerWidth / 2)));
       const dy = Math.max(-1, Math.min(1, (puntero.y - cy) / (innerHeight / 2)));
-      p.setAttribute("transform", `translate(${(dx * 13).toFixed(1)} ${(dy * 6).toFixed(1)})`);
+      p.setAttribute("transform", `translate(${(dx * 14).toFixed(1)} ${(dy * 5).toFixed(1)})`);
     }
     requestAnimationFrame(cuadro);
   }
