@@ -376,10 +376,10 @@ button { font: inherit; color: inherit; }
 /* fotos en marquitos dorados */
 .cuadro-dorado { position: absolute; margin: 0; }
 .cuadro-dorado svg { display: block; width: 100%; height: auto; overflow: visible; }
-.cuadro-1 { left: 3.5%; top: 12%; width: 13.5%; transform: rotate(-2deg); }
-.cuadro-2 { right: 4%; top: 7%; width: 10.5%; transform: rotate(2deg); }
-.cuadro-3 { left: 4.5%; top: 37%; width: 10.2%; transform: rotate(1.5deg); }
-.cuadro-4 { right: 1%; top: 35%; width: 12.4%; transform: rotate(-1.5deg); }
+.cuadro-1 { left: 3%; top: 11%; width: 14%; transform: rotate(-1.5deg); }
+.cuadro-2 { right: 4%; top: 5%; width: 10%; transform: rotate(1deg); }
+.cuadro-3 { left: 4.2%; top: 38%; width: 9.4%; transform: rotate(1deg); }
+.cuadro-4 { right: 3.5%; top: 34%; width: 10%; transform: none; }
 
 /* la vitrina de tipógrafo (tienda) */
 .vitrina {
