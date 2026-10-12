@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Elena Brutau</title>
-  <meta name="description" content="Un acceso a la mente de Elena Brutau: libretas con su arte, sus escritos, las cosas que ve y sus piezas de clay.">
+  <meta name="description" content="Un acceso a la mente de Elena Brutau: libretas con su arte, sus escritos, las cosas que ve y luna & friends.">
   <meta property="og:title" content="Elena Brutau">
   <meta property="og:description" content="Entra y saca una libreta.">
-  <meta name="theme-color" content="#E6E0D9">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='14' y='6' width='36' height='52' rx='5' fill='%23262523'/%3E%3Crect x='42' y='6' width='3' height='52' fill='%23000'/%3E%3Crect x='20' y='26' width='20' height='8' rx='1' fill='%23D9A63A'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#F5F2DF">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M8 30 L14 10 L24 22 H40 L50 8 L56 30 Q58 52 32 52 Q6 52 8 30Z' fill='%23161616'/%3E%3Cpath d='M18 34 Q24 28 28 34 Q24 38 18 34Z M36 34 Q40 28 46 34 Q40 38 36 34Z' fill='%23CBA455'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@600;700&family=Courier+Prime:wght@400;700&family=IM+Fell+English:ital@0;1&family=Sacramento&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@600;700&family=Borel&family=Courier+Prime:wght@400;700&family=IM+Fell+English:ital@0;1&family=Sacramento&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,12 +21,6 @@
     <filter id="tinta" x="-5%" y="-5%" width="110%" height="110%">
       <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="1" seed="7" result="ruido"/>
       <feDisplacementMap in="SourceGraphic" in2="ruido" scale="2" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-    <filter id="pincel" x="-10%" y="-10%" width="120%" height="120%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="grano"/>
-      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="9" result="onda"/>
-      <feDisplacementMap in="SourceGraphic" in2="onda" scale="7" xChannelSelector="R" yChannelSelector="G" result="forma"/>
-      <feComposite in="forma" in2="grano" operator="arithmetic" k1="0" k2="1" k3="-0.35" k4="0"/>
     </filter>
     <filter id="mancha" x="-20%" y="-20%" width="140%" height="140%">
       <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="4" seed="3" result="ruido"/>
@@ -40,85 +34,118 @@
     <button type="button" data-idioma="es" lang="es" aria-pressed="true">ES</button><span aria-hidden="true">/</span><button type="button" data-idioma="en" lang="en" aria-pressed="false">EN</button>
   </div>
 
-  <!-- La entrada: una cerradura y una llave -->
+  <!-- La entrada: una puertecita y su llave -->
   <div class="entrada" id="entrada">
     <p class="encabezado">elenabrutau.com</p>
     <div class="entrada-centro">
-      <svg class="cerradura" viewBox="0 0 120 190" aria-hidden="true">
-        <path class="mancha-gris" d="M20 40 C10 90 30 170 70 175 C120 180 112 70 96 30 C84 2 30 0 20 40Z"/>
-        <g class="trazo">
-          <rect x="22" y="12" width="76" height="160" rx="38"/>
-          <rect x="30" y="20" width="60" height="144" rx="30" stroke-width="1"/>
-          <circle cx="60" cy="34" r="3"/><circle cx="60" cy="150" r="3"/>
-        </g>
-        <path d="M60 66 a11 11 0 0 1 6 20 l7 32 h-26 l7-32 a11 11 0 0 1 6-20z" fill="#262523"/>
-      </svg>
+      <div class="puerta" aria-hidden="true">
+        <div class="puerta-hueco"><span class="hueco-luz"></span></div>
+        <div class="puerta-hoja">
+          <svg viewBox="0 0 200 300" preserveAspectRatio="none">
+            <path class="trazo" d="M8 296 V100 A92 92 0 0 1 192 100 V296 Z" style="fill:#CFADC4" stroke-width="3"/>
+            <path class="trazo" d="M30 280 V108 A70 70 0 0 1 170 108 V280 Z" fill="none" stroke-width="1.6"/>
+            <path class="trazo" d="M40 140 V250 M60 120 V262 M140 120 V262 M160 140 V250" stroke-width="1" opacity=".5"/>
+            <circle cx="160" cy="190" r="9" style="fill:#CBA455" class="trazo" stroke-width="2"/>
+            <path d="M160 208 a5 5 0 0 1 3 9 l3 12 h-12 l3 -12 a5 5 0 0 1 3 -9z" fill="#161616"/>
+          </svg>
+        </div>
+        <span class="clavo"></span>
+      </div>
       <button class="llave" id="llave" type="button">
         <svg class="llave-dibujo" viewBox="0 0 70 190" aria-hidden="true">
+          <path d="M35 -60 V8" class="trazo" stroke-width="1.4"/>
           <g class="trazo">
-            <circle cx="35" cy="30" r="24" fill="#D9A63A"/>
-            <circle cx="35" cy="30" r="11" fill="#E6E0D9"/>
-            <path d="M28 54 V168 H42 V54" fill="#D9A63A"/>
-            <path d="M42 150 H56 V160 H48 V168 H42 Z M42 128 H52 V138 H42" fill="#D9A63A"/>
-            <path d="M22 18 q-4 8 0 16" stroke-width="1.2"/>
-            <path d="M33 70 V150" stroke-width="1"/>
+            <circle cx="35" cy="30" r="22" fill="#CBA455"/>
+            <circle cx="35" cy="30" r="10" fill="#F5F2DF"/>
+            <path d="M29 52 V168 H41 V52" fill="#CBA455"/>
+            <path d="M41 150 H54 V160 H47 V168 H41 Z M41 128 H51 V138 H41" fill="#CBA455"/>
           </g>
-          <path d="M8 6 l4 8 M4 10 l12 0" class="trazo" stroke-width="1.2"/>
         </svg>
-        <span class="llave-texto" data-t="entrar">gira la llave para entrar</span>
+        <span class="llave-texto letra" data-t="entrar">gira la llave para entrar</span>
       </button>
     </div>
   </div>
 
-  <!-- La habitación -->
-  <main class="cuarto" id="cuarto" aria-label="Estante de libretas de Elena Brutau">
+  <!-- El mundo: un cuarto en 3D -->
+  <main class="mundo" id="mundo" aria-label="Estante de libretas de Elena Brutau">
     <p class="encabezado"><span class="fecha-txt" data-t="fecha">Fecha:</span> <span id="fecha"></span><span class="sep"> / </span>elenabrutau.com</p>
-
-    <!-- La lámpara -->
-    <svg class="lampara" viewBox="0 0 200 260" aria-hidden="true">
-      <g class="rayos trazo" stroke-width="2">
-        <path d="M100 222 v22 M62 210 l-14 16 M138 210 l14 16 M44 186 l-20 4 M156 186 l20 4"/>
-      </g>
-      <g class="trazo">
-        <path d="M100 0 V118" stroke-width="1.6"/>
-        <path d="M96 118 h8 v10 h-8z" fill="#262523"/>
-        <path d="M78 128 C70 128 46 170 40 186 H160 C154 170 130 128 122 128 Z" fill="#F6F4EF"/>
-        <path d="M56 160 L70 136 M66 170 L80 138 M78 178 L88 140" stroke-width="1"/>
-        <path d="M84 186 a16 16 0 0 0 32 0" class="bombilla"/>
-      </g>
-    </svg>
-
-    <!-- Manchas, garabatos y pegatinas en la pared -->
-    <div class="pared" aria-hidden="true">
-      <svg class="mancha-grande" viewBox="0 0 600 420"><path d="M70 230 C40 120 180 40 300 60 C440 80 560 140 540 260 C520 360 380 400 260 380 C140 360 95 320 70 230Z"/></svg>
-      <svg class="aro" viewBox="0 0 300 300"><path d="M260 120 A115 115 0 1 0 210 245" /></svg>
-      <svg class="garabato g1" viewBox="0 0 40 40"><path d="M6 20 h28 M20 5 v30 M9 9 l22 22 M31 9 L9 31"/></svg>
-      <svg class="garabato g2" viewBox="0 0 40 40"><path d="M8 22 l12 -14 l3 22 l10 -16"/><path d="M6 14 l26 12"/></svg>
-      <svg class="estrella e1" viewBox="0 0 100 100"><path d="M50 2 L58 38 L96 26 L66 52 L92 86 L54 66 L40 98 L38 62 L4 70 L30 46 L10 14 L44 32 Z"/></svg>
-      <svg class="estrella e2" viewBox="0 0 100 100"><path d="M50 4 L60 40 L98 50 L60 60 L50 96 L40 60 L2 50 L40 40 Z"/></svg>
-      <svg class="sello" viewBox="0 0 80 80"><circle cx="40" cy="40" r="34"/><path d="M40 20 v26 M40 56 v4"/></svg>
-      <span class="pegatina-mostaza"></span>
-      <span class="pegatina-oxido"></span>
-    </div>
-
     <h1 class="sr-only">Elena Brutau</h1>
 
-    <section class="estante">
-      <div class="libros" id="libros" role="list"></div>
-      <svg class="tabla" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M2 4 H998 V22 H2 Z" fill="#F6F4EF"/>
-        <g class="trazo" stroke-width="2" vector-effect="non-scaling-stroke">
-          <path d="M2 4 H998 V22 H2 Z" vector-effect="non-scaling-stroke"/>
-          <path d="M120 22 V36 M880 22 V36" vector-effect="non-scaling-stroke"/>
-        </g>
-        <g class="trazo" stroke-width="1" vector-effect="non-scaling-stroke">
-          <path d="M20 22 l10 -18 M40 22 l10 -18 M60 22 l10 -18 M940 22 l10 -18 M960 22 l10 -18 M980 22 l10 -18" vector-effect="non-scaling-stroke"/>
-        </g>
-      </svg>
-      <p class="placa-nombre">Elena Brutau</p>
-    </section>
+    <div class="escena">
+      <div class="cuarto3d" id="cuarto3d">
 
-    <p class="pista" data-t="pista">saca una libreta para abrirla</p>
+        <!-- techo, piso y paredes -->
+        <div class="cara techo" aria-hidden="true"></div>
+        <div class="cara piso" aria-hidden="true">
+          <span class="alfombra"></span>
+        </div>
+        <div class="cara izq" aria-hidden="true">
+          <figure class="marco marco-rosa"><img src="img/rosa.png" alt=""></figure>
+          <svg class="doodle estrella" style="left:66%;top:18%;width:12%" viewBox="0 0 100 100"><path d="M50 2 L58 38 L96 26 L66 52 L92 86 L54 66 L40 98 L38 62 L4 70 L30 46 L10 14 L44 32 Z"/></svg>
+          <svg class="doodle garabato" style="left:12%;top:70%;width:8%" viewBox="0 0 40 40"><path d="M6 20 h28 M20 5 v30 M9 9 l22 22 M31 9 L9 31"/></svg>
+        </div>
+        <div class="cara der" aria-hidden="true">
+          <figure class="cartel"><img src="img/luna-friends.png" alt=""></figure>
+          <svg class="doodle estrella lila" style="left:16%;top:70%;width:10%" viewBox="0 0 100 100"><path d="M50 4 L60 40 L98 50 L60 60 L50 96 L40 60 L2 50 L40 40 Z"/></svg>
+        </div>
+
+        <!-- pared del fondo con el estante -->
+        <div class="cara fondo">
+          <div class="mancha-pared" aria-hidden="true"><svg viewBox="0 0 600 420"><path d="M70 230 C40 120 180 40 300 60 C440 80 560 140 540 260 C520 360 380 400 260 380 C140 360 95 320 70 230Z"/></svg></div>
+
+          <div class="ventana" aria-hidden="true">
+            <svg viewBox="0 0 160 200">
+              <path d="M10 196 V80 A70 70 0 0 1 150 80 V196 Z" fill="#2A2D5E"/>
+              <circle cx="104" cy="72" r="20" fill="#F5F2DF"/><circle cx="114" cy="66" r="18" fill="#2A2D5E"/>
+              <g fill="#F5F2DF"><circle cx="40" cy="60" r="2"/><circle cx="60" cy="110" r="1.6"/><circle cx="120" cy="130" r="2"/><circle cx="34" cy="150" r="1.4"/><circle cx="84" cy="40" r="1.4"/></g>
+              <path class="trazo" d="M10 196 V80 A70 70 0 0 1 150 80 V196 Z M80 12 V196 M10 120 H150" fill="none" stroke-width="5"/>
+              <path class="trazo" d="M2 198 H158" stroke-width="7"/>
+            </svg>
+          </div>
+
+          <svg class="doodle estrella" style="right:12%;top:10%;width:5%" viewBox="0 0 100 100"><path d="M50 2 L58 38 L96 26 L66 52 L92 86 L54 66 L40 98 L38 62 L4 70 L30 46 L10 14 L44 32 Z"/></svg>
+          <svg class="doodle garabato lila" style="right:22%;top:26%;width:3%" viewBox="0 0 40 40"><path d="M6 20 h28 M20 5 v30 M9 9 l22 22 M31 9 L9 31"/></svg>
+          <span class="pegatina mostaza" style="right:8%;top:30%" aria-hidden="true"></span>
+          <span class="pegatina lila" style="left:30%;top:12%" aria-hidden="true"></span>
+
+          <section class="estante">
+            <div class="libros" id="libros" role="list"></div>
+            <div class="tabla" aria-hidden="true">
+              <svg viewBox="0 0 1000 40" preserveAspectRatio="none">
+                <path d="M2 4 H998 V22 H2 Z" fill="#F5F2DF"/>
+                <g class="trazo" stroke-width="2.4">
+                  <path d="M2 4 H998 V22 H2 Z" vector-effect="non-scaling-stroke"/>
+                  <path d="M120 22 V38 M880 22 V38" vector-effect="non-scaling-stroke"/>
+                  <path d="M20 22 l10 -18 M40 22 l10 -18 M60 22 l10 -18 M940 22 l10 -18 M960 22 l10 -18 M980 22 l10 -18" stroke-width="1" vector-effect="non-scaling-stroke"/>
+                </g>
+              </svg>
+              <p class="placa-nombre">Elena Brutau</p>
+            </div>
+          </section>
+        </div>
+
+        <!-- la lámpara cuelga en medio del cuarto -->
+        <div class="lampara3d" aria-hidden="true">
+          <svg class="lampara" viewBox="0 0 200 420">
+            <g class="rayos trazo" stroke-width="2.4">
+              <path d="M100 384 v22 M62 372 l-14 16 M138 372 l14 16 M44 348 l-20 4 M156 348 l20 4"/>
+            </g>
+            <g class="trazo">
+              <path d="M100 0 V280" stroke-width="2"/>
+              <path d="M96 280 h8 v10 h-8z" fill="#161616"/>
+              <path d="M78 290 C70 290 46 332 40 348 H160 C154 332 130 290 122 290 Z" fill="#CFADC4" stroke-width="2.6"/>
+              <path d="M56 322 L70 298 M66 332 L80 300 M78 340 L88 302" stroke-width="1.2"/>
+              <path d="M84 348 a16 16 0 0 0 32 0" class="bombilla"/>
+            </g>
+          </svg>
+        </div>
+
+        <!-- polvo de estrellas flotando en el aire -->
+        <div class="aire" id="aire" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <p class="pista letra" data-t="pista">saca una libreta para abrirla</p>
   </main>
 
   <!-- La libreta abierta -->
@@ -134,7 +161,7 @@
         <div class="tapa-dorso"><div class="hoja hoja-izq" id="hoja-izq"></div></div>
       </div>
     </div>
-    <button class="volver" id="volver" type="button" data-cerrar data-t="volver">devolver al estante</button>
+    <button class="volver letra" id="volver" type="button" data-cerrar data-t="volver">devolver al estante</button>
   </div>
 
   <script src="content.js"></script>

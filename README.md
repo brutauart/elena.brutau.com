@@ -1,11 +1,11 @@
 # elenabrutau.com
 
-Un acceso a mi mente: un estante de libretas negras, cada una con su etiqueta, que se abren al hacer clic.
+Un acceso a mi mente: entras por una puertecita con tu llave y llegas a un cuarto en 3D con un estante de libretas negras. Cada libreta tiene su etiqueta y se abre al hacer clic. Luna vigila desde el estante.
 
 ## Dónde se cambia cada cosa
 
-- **content.js** — todo el contenido de las libretas: títulos, notas, escritos, fotos y productos de clay.
-- **img/** — las fotos que se usan en content.js (por ejemplo `img/arte-1.jpg`).
-- **styles.css** — colores, letras y animaciones.
-- **script.js** — cómo se abren y cierran las libretas.
-- **CNAME** — el dominio de la página. No borrar.
+- **content.js**: todo el contenido de las libretas en español e inglés (títulos, notas, escritos, fotos, productos de luna & friends, Sobre mí).
+- **img/**: las imágenes. `luna.png`, `luna-ojos.png`, `luna-friends.png` y `rosa.png` son dibujos de Elena recortados.
+- **styles.css**: colores (los de luna & friends), letras, el cuarto 3D y las animaciones.
+- **script.js**: la entrada, el movimiento del cuarto, los ojos de Luna, los idiomas y cómo se abren las libretas.
+- **CNAME**: el dominio de la página. No borrar.

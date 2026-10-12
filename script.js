@@ -6,7 +6,8 @@
   const $ = (id) => document.getElementById(id);
 
   const entrada = $("entrada");
-  const cuarto = $("cuarto");
+  const mundo = $("mundo");
+  const cuarto3d = $("cuarto3d");
   const libros = $("libros");
   const lector = $("lector");
   const libreta = $("libreta");
@@ -63,7 +64,7 @@
   function aplicarIdioma() {
     document.documentElement.lang = idioma;
     document.querySelectorAll("[data-t]").forEach((el) => { el.textContent = tx(el.dataset.t); });
-    cuarto.setAttribute("aria-label", tx("estante"));
+    mundo.setAttribute("aria-label", tx("estante"));
     document.querySelectorAll(".idiomas button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.idioma === idioma)));
     libros.querySelectorAll("button.lomo").forEach((b) => {
       const g = GAVETAS.find((x) => x.id === b.dataset.id);
@@ -107,17 +108,39 @@
     v.className = "vasija";
     v.setAttribute("aria-hidden", "true");
     v.innerHTML = `<svg viewBox="0 0 120 200">
-      <path d="M30 120 C10 150 22 196 60 196 C98 196 112 150 88 120 Z" fill="#B9B4AD" opacity=".55" transform="translate(6 4)"/>
+      <path d="M30 120 C10 150 22 196 60 196 C98 196 112 150 88 120 Z" fill="#1C1A1E" opacity=".12" transform="translate(6 4)"/>
       <g class="trazo">
-        <path d="M44 110 h32 v12 C104 140 104 196 60 196 C16 196 16 140 44 122 Z" fill="#F6F4EF"/>
+        <path d="M44 110 h32 v12 C104 140 104 196 60 196 C16 196 16 140 44 122 Z" fill="#CFADC4"/>
         <path d="M30 150 C50 158 72 158 92 150" stroke-width="1.2"/>
         <path d="M34 166 l6 8 l6 -8 l6 8 l6 -8 l6 8 l6 -8 l6 8 l6 -8 l6 8" stroke-width="1.2"/>
         <path d="M58 110 C56 80 44 56 22 34"/><path d="M40 70 C30 66 22 66 14 70"/><path d="M32 52 C30 42 32 34 38 28"/>
         <path d="M62 110 C66 76 76 48 98 20"/><path d="M76 66 C86 64 92 58 96 50"/><path d="M86 38 C84 30 86 22 92 16"/>
       </g>
-      <g fill="#262523"><circle cx="22" cy="33" r="3.2"/><circle cx="98" cy="19" r="3.2"/><circle cx="38" cy="27" r="2.6"/><circle cx="96" cy="49" r="2.6"/><circle cx="14" cy="70" r="2.4"/></g>
+      <g fill="#CBA455" stroke="#1C1A1E" stroke-width="1.2"><circle cx="22" cy="33" r="3.2"/><circle cx="98" cy="19" r="3.2"/><circle cx="38" cy="27" r="2.6"/><circle cx="96" cy="49" r="2.6"/><circle cx="14" cy="70" r="2.4"/></g>
     </svg>`;
     return v;
+  }
+
+  function luna() {
+    const l = document.createElement("div");
+    l.className = "luna";
+    l.id = "luna";
+    l.setAttribute("aria-hidden", "true");
+    l.innerHTML = `<img src="img/luna.png" alt="">
+      <svg viewBox="0 0 494 215" preserveAspectRatio="none">
+        <defs><mask id="ojos-luna" maskUnits="userSpaceOnUse" x="0" y="0" width="494" height="215">
+          <image href="img/luna-ojos.png" width="494" height="215"/>
+        </mask></defs>
+        <g mask="url(#ojos-luna)">
+          <rect width="494" height="215" fill="#CBA455"/>
+          <g class="pupila" id="pupila">
+            <path d="M171 126 q8 24 0 48 q-8 -24 0 -48z" fill="#161616"/>
+            <path d="M357 124 q8 23 0 46 q-8 -23 0 -46z" fill="#161616"/>
+          </g>
+          <rect class="parpado" x="120" y="118" width="290" height="62" fill="#161616"/>
+        </g>
+      </svg>`;
+    return l;
   }
 
   function construirEstante() {
@@ -137,6 +160,7 @@
       b.addEventListener("click", () => abrir(g, b));
       libros.appendChild(b);
     });
+    libros.appendChild(luna());
     for (let i = 1; i < LIBRETAS_VACIAS; i++) {
       libros.appendChild(lomoVacio(i === 1 ? 0.95 : 0.86, true, i === LIBRETAS_VACIAS - 1));
     }
@@ -180,8 +204,11 @@
   tipos.carta = tipos.perfil;
 
   function cabecera(g, idTitulo) {
+    const titulo = g.logo
+      ? `<h2 class="sr-only"${idTitulo ? ` id="${idTitulo}"` : ""}>${esc(L(g.titulo))}</h2><figure class="logo-hoja"><img src="${esc(g.logo)}" alt=""></figure>`
+      : `<h2 class="renglon"${idTitulo ? ` id="${idTitulo}"` : ""}>${esc(L(g.titulo))}</h2>`;
     return `<p class="devolver-a renglon">${esc(tx("devolver"))} <strong>elenabrutau.com</strong></p>
-      <h2 class="renglon"${idTitulo ? ` id="${idTitulo}"` : ""}>${esc(L(g.titulo))}</h2>
+      ${titulo}
       <p class="nota renglon">${esc(L(g.nota))}</p>`;
   }
 
@@ -232,6 +259,7 @@
     hojaIzq.scrollTop = 0;
     hojaDer.scrollTop = 0;
     if (lomoActivo) lomoActivo.classList.add("sacada");
+    cuarto3d.classList.add("acercando");
     try { history.replaceState(null, "", "#" + g.id); } catch (e) {}
 
     setTimeout(() => {
@@ -253,6 +281,7 @@
       lector.classList.remove("visible");
       setTimeout(() => {
         lector.hidden = true;
+        cuarto3d.classList.remove("acercando");
         if (lomoActivo) {
           lomoActivo.classList.remove("sacada");
           lomoActivo.focus({ preventScroll: true });
@@ -283,27 +312,88 @@
 
   /* ---------- La entrada con la llave ---------- */
   function encender() {
-    cuarto.classList.add("encendida");
+    mundo.classList.add("encendida");
   }
 
   function entrar(e) {
     const conTeclado = e && e.detail === 0;
     entrada.classList.add("abierta");
     try { sessionStorage.setItem("entro", "1"); } catch (err) {}
-    setTimeout(encender, t(1100));
+    setTimeout(encender, t(1700));
     setTimeout(() => {
       const primero = libros.querySelector("button.lomo");
       if (primero && conTeclado) primero.focus({ preventScroll: true });
-    }, t(1700));
+    }, t(2600));
   }
 
   $("llave").addEventListener("click", entrar);
+
+  /* ---------- El mundo se mueve contigo ---------- */
+  const aire = $("aire");
+  function soltarPolvo() {
+    const tipos = ["punto", "estrellita", "lilita", "punto", "estrellita"];
+    for (let i = 0; i < 26; i++) {
+      const m = document.createElement("span");
+      m.className = "mota " + tipos[i % tipos.length];
+      const z = -Math.round(40 + Math.random() * 520);
+      const tam = 6 + Math.random() * 10;
+      m.style.left = (6 + Math.random() * 88) + "%";
+      m.style.top = (8 + Math.random() * 70) + "%";
+      m.style.width = m.style.height = tam + "px";
+      m.style.transform = `translateZ(${z}px)`;
+      m.style.setProperty("--dur", (10 + Math.random() * 12).toFixed(1) + "s");
+      m.style.setProperty("--delay", (-Math.random() * 12).toFixed(1) + "s");
+      m.style.setProperty("--dx", Math.round(-30 + Math.random() * 60) + "px");
+      m.style.setProperty("--dy", Math.round(-70 + Math.random() * 40) + "px");
+      m.innerHTML = "<i></i>";
+      aire.appendChild(m);
+    }
+  }
+
+  let meta = { x: 0, y: 0 }, actual = { x: 0, y: 0 }, ultimoGesto = 0;
+  let puntero = { x: innerWidth / 2, y: innerHeight / 2 };
+  function moverA(px, py) {
+    puntero = { x: px, y: py };
+    meta = { x: px / innerWidth - 0.5, y: py / innerHeight - 0.5 };
+    ultimoGesto = performance.now();
+  }
+  window.addEventListener("pointermove", (e) => moverA(e.clientX, e.clientY), { passive: true });
+  window.addEventListener("deviceorientation", (e) => {
+    if (e.gamma == null) return;
+    meta = { x: Math.max(-0.5, Math.min(0.5, e.gamma / 50)), y: Math.max(-0.5, Math.min(0.5, (e.beta - 45) / 60)) };
+    ultimoGesto = performance.now();
+  });
+
+  const pupila = () => $("pupila");
+  const lunaEl = () => $("luna");
+  function cuadro(ahora) {
+    if (!quieto) {
+      if (ahora - ultimoGesto > 4000) {             // si nadie se mueve, el cuarto respira solo
+        meta = { x: Math.sin(ahora / 5200) * 0.25, y: Math.cos(ahora / 6100) * 0.15 };
+      }
+      actual.x += (meta.x - actual.x) * 0.05;
+      actual.y += (meta.y - actual.y) * 0.05;
+      cuarto3d.style.setProperty("--ry", (actual.x * 9).toFixed(3) + "deg");
+      cuarto3d.style.setProperty("--rx", (-actual.y * 6).toFixed(3) + "deg");
+    }
+    const p = pupila(), l = lunaEl();
+    if (p && l) {
+      const r = l.getBoundingClientRect();
+      const cx = r.left + r.width / 2, cy = r.top + r.height * 0.7;
+      const dx = Math.max(-1, Math.min(1, (puntero.x - cx) / (innerWidth / 2)));
+      const dy = Math.max(-1, Math.min(1, (puntero.y - cy) / (innerHeight / 2)));
+      p.setAttribute("transform", `translate(${(dx * 16).toFixed(1)} ${(dy * 5).toFixed(1)})`);
+    }
+    requestAnimationFrame(cuadro);
+  }
 
   /* ---------- Inicio ---------- */
   const hoy = new Date();
   $("fecha").textContent = [hoy.getDate(), hoy.getMonth() + 1, hoy.getFullYear()].map((x) => String(x).padStart(2, "0")).join(" / ");
   construirEstante();
+  soltarPolvo();
   aplicarIdioma();
+  requestAnimationFrame(cuadro);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (abierta) alinear(); });
 
   let yaEntro = false;

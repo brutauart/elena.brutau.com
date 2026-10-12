@@ -11,6 +11,7 @@
     titulo    → título dentro de la libreta
     nota      → frase escrita a mano en la primera página
     tipo      → cómo se muestra el contenido: "galeria", "textos", "recortes", "tienda" o "perfil"
+    logo      → (opcional) un dibujo que reemplaza al título dentro de la libreta
     items     → las cosas que hay dentro
 
   Cualquier texto puede ser { es: "...", en: "..." } o un texto solo (se usa igual en los dos idiomas).
@@ -21,8 +22,8 @@ const GAVETAS = [
   {
     id: "arte",
     etiqueta: { es: "ARTE", en: "ART" },
-    cinta: "#B5652B",
-    tinta: "#F6F4EF",
+    cinta: "#CFADC4",
+    tinta: "#1C1A1E",
     alto: 0.92,
     titulo: { es: "Arte", en: "Art" },
     nota: { es: "Lo que sale de mis manos cuando nadie me está mirando.", en: "What comes out of my hands when no one is watching." },
@@ -37,8 +38,8 @@ const GAVETAS = [
   {
     id: "escritos",
     etiqueta: { es: "ESCRITOS", en: "WRITINGS" },
-    cinta: "#F6F4EF",
-    tinta: "#262523",
+    cinta: "#F5F2DF",
+    tinta: "#1C1A1E",
     alto: 1,
     titulo: { es: "Escritos", en: "Writings" },
     nota: { es: "Pensamientos que no cupieron en voz alta.", en: "Thoughts that didn't fit out loud." },
@@ -65,8 +66,8 @@ const GAVETAS = [
   {
     id: "veo",
     etiqueta: { es: "COSAS QUE VEO", en: "THINGS I SEE" },
-    cinta: "#A9AE95",
-    tinta: "#262523",
+    cinta: "#979B82",
+    tinta: "#F5F2DF",
     alto: 0.96,
     titulo: { es: "Cosas que veo", en: "Things I see" },
     nota: { es: "Recortes del mundo que me hicieron detenerme.", en: "Clippings of the world that made me stop." },
@@ -78,25 +79,26 @@ const GAVETAS = [
     ]
   },
   {
-    id: "clay",
-    etiqueta: "CLAY",
-    cinta: "#D9A63A",
-    tinta: "#262523",
-    alto: 0.88,
-    titulo: "Clay",
-    nota: { es: "Piezas hechas a mano, una por una. Ninguna sale igual a otra.", en: "Handmade pieces, one at a time. No two come out the same." },
+    id: "luna",
+    etiqueta: "LUNA & FRIENDS",
+    cinta: "#CBA455",
+    tinta: "#1C1A1E",
+    alto: 0.9,
+    titulo: "luna & friends",
+    logo: "img/luna-friends.png",   // en vez del título escrito, se muestra este dibujo
+    nota: { es: "Stickers y piezas de clay hechas a mano, con Luna vigilando.", en: "Handmade stickers and clay pieces, with Luna keeping watch." },
     tipo: "tienda",
     items: [
+      { nombre: { es: "Sticker de ejemplo", en: "Sample sticker" }, precio: "$00", detalle: { es: "Tamaño, acabado (mate o brillante).", en: "Size, finish (matte or glossy)." }, imagen: "", enlace: "" },
       { nombre: { es: "Pieza de clay de ejemplo", en: "Sample clay piece" }, precio: "$00", detalle: { es: "Medidas, colores, si es única.", en: "Size, colors, whether it's one of a kind." }, imagen: "", enlace: "" },
-      { nombre: { es: "Otra pieza", en: "Another piece" }, precio: "$00", detalle: { es: "Medidas, colores, si es única.", en: "Size, colors, whether it's one of a kind." }, imagen: "", enlace: "" },
-      { nombre: { es: "Una más", en: "One more" }, precio: "$00", detalle: { es: "Medidas, colores, si es única.", en: "Size, colors, whether it's one of a kind." }, imagen: "", enlace: "" }
+      { nombre: { es: "Otra pieza", en: "Another piece" }, precio: "$00", detalle: { es: "Medidas, colores, si es única.", en: "Size, colors, whether it's one of a kind." }, imagen: "", enlace: "" }
     ]
   },
   {
     id: "yo",
     etiqueta: { es: "SOBRE MÍ", en: "ABOUT ME" },
-    cinta: "#7E7A74",
-    tinta: "#F6F4EF",
+    cinta: "#2A2D5E",
+    tinta: "#F5F2DF",
     alto: 0.9,
     titulo: { es: "Sobre mí", en: "About me" },
     nota: { es: "Si llegaste hasta aquí, ya conoces casi todo.", en: "If you made it this far, you already know almost everything." },
