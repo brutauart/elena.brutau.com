@@ -9,3 +9,10 @@ Un acceso a mi mente: entras por una puertecita con tu llave y llegas a un cuart
 - **styles.css**: colores (los de luna & friends), letras, el cuarto 3D y las animaciones.
 - **script.js**: la entrada, el movimiento del cuarto, los ojos de Luna, los idiomas y cómo se abren las libretas.
 - **CNAME**: el dominio de la página. No borrar.
+
+## Letras del sitio
+
+- **Borel** (gordita, relleno lila con contorno): títulos y frases grandes. Es de reemplazo hasta tener la fuente de Elena.
+- **Sacramento** (cursiva): notas a mano, firmas y pies de foto.
+- **Courier Prime** (máquina de escribir): todo el texto normal, como descripciones, escritos, precios y fechas.
+- **Archivo Narrow** (label maker): solo las cintas de los lomos, los cajones y la vitrina.

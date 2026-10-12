@@ -15,10 +15,15 @@
   --carbon: #1C1A1E;         /* tinta */
   --grafito: #7D7570;        /* lápiz */
 
-  --f-texto: "IM Fell English", "Iowan Old Style", Georgia, serif;
-  --f-maquina: "Courier Prime", "Courier New", monospace;
+  /* LETRAS DEL SITIO: una para cada cosa
+     --f-letra   → títulos y frases grandes (gordita, relleno lila con contorno)
+     --f-cursiva → notas a mano, firmas, pies de foto
+     --f-texto   → todo el texto normal: descripciones, escritos, precios, fechas (máquina de escribir)
+     --f-cinta   → solo las cintas de label maker (lomos, cajones, vitrina) */
+  --f-letra: "Borel", "Sacramento", cursive;   /* de reemplazo hasta tener la fuente de Elena */
   --f-cursiva: "Sacramento", "Snell Roundhand", "Apple Chancery", cursive;
-  --f-letra: "Borel", "Sacramento", cursive;   /* lettering de Elena (de reemplazo hasta tener su fuente) */
+  --f-texto: "Courier Prime", "Courier New", monospace;
+  --f-maquina: var(--f-texto);
   --f-cinta: "Archivo Narrow", "Arial Narrow", sans-serif;
 
   --grano: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .15 0 0 0 0 .14 0 0 0 0 .13 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -438,7 +443,7 @@ button { font: inherit; color: inherit; }
 
 .contratapa, .tapa { position: absolute; top: 0; left: 50%; width: 50%; height: 100%; }
 .contratapa {
-  background: var(--carbon);
+  background: #0B0B0B;
   border-radius: 4px 12px 12px 4px;
   padding: 9px 9px 9px 0;
   box-shadow: 6px 10px 0 rgba(38,37,35,.12);
@@ -453,10 +458,11 @@ button { font: inherit; color: inherit; }
 .tapa-frente, .tapa-dorso { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 .tapa-frente {
   border-radius: 4px 12px 12px 4px;
-  background-color: var(--carbon);
-  background-image: var(--grano-claro);
+  background-color: #0B0B0B;
+  background-image: linear-gradient(90deg, rgba(255,255,255,.05) 0 3px, transparent 3px), radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.05), transparent 60%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
 }
-.elastico { position: absolute; top: 0; bottom: 0; right: 26px; width: 8px; background: #0E0E0D; box-shadow: 2px 0 0 rgba(255,255,255,.06); }
+.elastico { position: absolute; top: 0; bottom: 0; right: 26px; width: 8px; background: #000; box-shadow: 2px 0 0 rgba(255,255,255,.06); }
 .cinta-tapa {
   position: absolute; top: 30%; left: 50%;
   transform: translateX(-50%) rotate(-1.5deg);
@@ -471,7 +477,7 @@ button { font: inherit; color: inherit; }
 }
 .tapa-dorso {
   transform: rotateY(180deg);
-  background: var(--carbon);
+  background: #0B0B0B;
   border-radius: 12px 4px 4px 12px;
   padding: 9px 0 9px 9px;
 }
@@ -486,7 +492,7 @@ button { font: inherit; color: inherit; }
   overflow-y: auto; overscroll-behavior: contain;
   padding: calc(var(--c) * 2) calc(var(--c) * 2) calc(var(--c) * 3);
   color: var(--carbon);
-  font-size: 12.5px; line-height: var(--c);   /* una línea por cuadrito */
+  font-size: 11.5px; line-height: var(--c);   /* una línea por cuadrito */
   background-color: var(--papel);
   background-image:
     linear-gradient(rgba(38,37,35,.09) 1px, transparent 1px),
@@ -542,7 +548,7 @@ button { font: inherit; color: inherit; }
 .galeria { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(var(--c) * 2) var(--c); padding-top: var(--c); }
 .obra:nth-child(odd) { transform: rotate(-1.6deg); }
 .obra:nth-child(even) { transform: rotate(1.4deg) translateY(6px); }
-.obra figcaption { font-size: 12px; line-height: var(--c); margin-top: 8px; }
+.obra figcaption { font-size: 10.5px; line-height: var(--c); margin-top: 8px; }
 .obra figcaption span { display: block; font-family: var(--f-maquina); font-size: 9px; line-height: var(--c); color: var(--grafito); }
 
 /* Spreads (Commonplacing y Diario): fotos horizontales, una por renglón */
@@ -550,7 +556,7 @@ button { font: inherit; color: inherit; }
 .spread .foto { aspect-ratio: 3 / 2; }
 .spread:nth-child(odd) { transform: rotate(-.8deg); }
 .spread:nth-child(even) { transform: rotate(.9deg); }
-.spread figcaption { font-size: 13px; line-height: var(--c); margin-top: 8px; display: flex; justify-content: space-between; gap: var(--c); }
+.spread figcaption { font-size: 11px; line-height: var(--c); margin-top: 8px; display: flex; justify-content: space-between; gap: var(--c); }
 .spread figcaption span { font-family: var(--f-maquina); font-size: 9px; color: var(--grafito); }
 
 /* Escritos */
@@ -560,10 +566,10 @@ button { font: inherit; color: inherit; }
   display: flex; justify-content: space-between; align-items: baseline; gap: var(--c);
 }
 .escrito summary::-webkit-details-marker { display: none; }
-.escrito summary h3 { font-weight: 400; font-size: 17px; line-height: calc(var(--c) * 2); }
+.escrito summary h3 { font-weight: 700; font-size: 13px; line-height: calc(var(--c) * 2); }
 .escrito summary time { font-family: var(--f-maquina); font-size: 9px; color: var(--grafito); white-space: nowrap; }
 .escrito summary:hover h3 { font-style: italic; }
-.escrito p { font-size: 12.5px; max-width: 70ch; }
+.escrito p { font-size: 11.5px; max-width: 64ch; }
 .escrito p + p, .carta p + p { margin-top: var(--c) !important; }   /* una línea en blanco entre párrafos */
 .escrito p:first-of-type { margin-top: var(--c) !important; }
 .escrito p:last-child { margin-bottom: calc(var(--c) * 2) !important; }
@@ -574,7 +580,7 @@ button { font: inherit; color: inherit; }
 .recorte:nth-child(even) { grid-template-columns: 1fr 30%; }
 .recorte:nth-child(even) .foto { order: 2; transform: rotate(2.4deg); }
 .recorte .foto { aspect-ratio: 1; transform: rotate(-2deg); }
-.recorte h3 { font-weight: 400; font-size: 13px; line-height: var(--c); }
+.recorte h3 { font-weight: 700; font-size: 11.5px; line-height: var(--c); }
 .recorte .comentario { font-family: var(--f-cursiva); font-size: 17px; line-height: var(--c); margin-top: var(--c) !important; }
 .recorte a { font-family: var(--f-maquina); font-size: 10px; color: var(--carbon); }
 
@@ -587,7 +593,7 @@ button { font: inherit; color: inherit; }
 .pieza:nth-child(3n+1) .foto:not(.pendiente) { box-shadow: 0 0 0 4px var(--mostaza), 1px 3px 5px 4px rgba(38,37,35,.2); }
 .pieza:nth-child(3n+2) .foto:not(.pendiente) { box-shadow: 0 0 0 4px var(--salvia), 1px 3px 5px 4px rgba(38,37,35,.2); }
 .pieza:nth-child(3n) .foto:not(.pendiente) { box-shadow: 0 0 0 4px var(--rosa), 1px 3px 5px 4px rgba(38,37,35,.2); }
-.pieza h3 { font-weight: 400; font-size: 14px; line-height: var(--c); }
+.pieza h3 { font-weight: 700; font-size: 11.5px; line-height: var(--c); }
 .pieza .precio { font-family: var(--f-maquina); font-size: 11px; line-height: var(--c); margin-top: var(--c) !important; }
 .pieza .detalle { font-size: 12px; line-height: var(--c); color: var(--grafito); }
 .comprar {
@@ -607,9 +613,23 @@ button { font: inherit; color: inherit; }
 .foto.polaroid.pendiente { padding: 7px; }
 .retrato figcaption { font-family: var(--f-cursiva); font-size: 18px; line-height: var(--c); text-align: center; margin-top: 10px; }
 .retrato-der { display: none; }
+.hoja-der:has(.perfil) { display: flex; flex-direction: column; }
+.perfil { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: center; }
+.carta-adornada {
+  position: relative;
+  margin: 0 auto !important; max-width: 44ch;
+  padding: calc(var(--c) * 3) calc(var(--c) * 2.5);
+  text-align: center;
+}
+.carta-adornada .adorno { position: absolute; pointer-events: none; }
+.adorno.rosa-1 { left: -6%; bottom: -2%; width: 15%; transform: rotate(-24deg); }
+.adorno.rosa-2 { right: -6%; top: -3%; width: 13%; transform: rotate(160deg); }
+.adorno.estrella { fill: var(--carbon); filter: url(#tinta); }
+.adorno.estrella.lila { fill: var(--lila); stroke: var(--carbon); stroke-width: 6; }
+.adorno.estrella.oro { fill: var(--mostaza); stroke: var(--carbon); stroke-width: 6; }
 .retrato-izq { width: min(58%, 230px); margin: calc(var(--c) * 3) auto 0 !important; transform: rotate(-2.5deg); }
-.perfil { padding-top: calc(var(--c) * 2); }
-.carta p { font-size: 12.5px; max-width: 62ch; }
+
+.carta p { font-size: 11.5px; }
 .carta a { color: var(--carbon); }
 
 /* Botón para volver */
@@ -746,15 +766,15 @@ button { font: inherit; color: inherit; }
   background: var(--crema); background-image: var(--grano-claro);
   border: 2px solid var(--carbon);
   clip-path: polygon(14px 0, 100% 0, 100% 100%, 14px 100%, 0 50%);
-  font-size: 14px; line-height: 1.35;
+  font-size: 12px; line-height: 1.35;
 }
 .etiqueta-precio::before {   /* agujerito de la etiqueta */
   content: ""; position: absolute; left: 10px; top: 50%; width: 7px; height: 7px; margin-top: -3.5px;
   border-radius: 50%; background: #7A5643; border: 1.5px solid var(--carbon);
 }
-.etiqueta-precio h3 { margin: 0; font-weight: 400; font-size: 16px; line-height: 1.2; }
+.etiqueta-precio h3 { margin: 0; font-weight: 700; font-size: 13px; line-height: 1.25; }
 .etiqueta-precio .precio { margin: 4px 0 0; font-family: var(--f-maquina); font-size: 13px; }
-.etiqueta-precio .detalle { margin: 2px 0 10px; font-size: 13px; color: var(--grafito); }
+.etiqueta-precio .detalle { margin: 2px 0 10px; font-size: 11.5px; color: var(--grafito); }
 .cajon-vacio { grid-column: 1 / -1; margin: 0; padding: 40px 16px; text-align: center; color: var(--crema); font-family: var(--f-cursiva); font-size: 24px; background: #7A5643; border: 2px solid var(--carbon); }
 
 /* ---------- Pantallas pequeñas ---------- */
@@ -788,7 +808,7 @@ button { font: inherit; color: inherit; }
   .compartimentos { grid-template-columns: repeat(2, 1fr); gap: 6px; }
   .cubiculo { padding: 10px 8px; gap: 8px; }
   .etiqueta-precio { padding: 8px 8px 8px 22px; }
-  .etiqueta-precio h3 { font-size: 14px; }
+  .etiqueta-precio h3 { font-size: 12px; }
 
   .libreta, .lector.visible .libreta { transform: translateY(60vh) scale(.7); }
   .lector.visible .libreta, .lector.abierta .libreta { transform: none; }

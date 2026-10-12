@@ -214,6 +214,17 @@
     }
   }
 
+  /* estrellitas y rosas alrededor del texto de Sobre mí */
+  const est4 = "M50 2 L60 40 L98 50 L60 60 L50 98 L40 60 L2 50 L40 40 Z";
+  const est8 = "M50 2 L58 38 L96 26 L66 52 L92 86 L54 66 L40 98 L38 62 L4 70 L30 46 L10 14 L44 32 Z";
+  const estrellas = [
+    [est4, "", "left:4%;top:6%;width:5%"], [est8, "oro", "left:22%;top:1%;width:4%"], [est4, "lila", "right:22%;top:5%;width:6%"],
+    [est4, "", "right:2%;top:30%;width:3.5%"], [est8, "lila", "right:-2%;top:62%;width:5%"], [est4, "oro", "right:10%;bottom:2%;width:5%"],
+    [est4, "lila", "left:30%;bottom:-1%;width:4.5%"], [est8, "", "left:-2%;top:38%;width:4%"], [est4, "oro", "left:6%;top:70%;width:3.5%"]
+  ];
+  const adornos = `<img class="adorno rosa-1" src="img/rosa.png" alt="" aria-hidden="true"><img class="adorno rosa-2" src="img/rosa.png" alt="" aria-hidden="true">` +
+    estrellas.map(([d, cl, st]) => `<svg class="adorno estrella ${cl}" style="${st}" viewBox="0 0 100 100" aria-hidden="true"><path d="${d}"/></svg>`).join("");
+
   /* ---------- Contenido de cada tipo de libreta ---------- */
   const tipos = {
     galeria: (items) => `<div class="galeria">${items.map((o) => `
@@ -250,7 +261,7 @@
       <figure class="retrato retrato-der">${foto(c.imagen, "Elena Brutau", "polaroid")}
         <figcaption>${esc(L(c.pie))}</figcaption>
       </figure>
-      <div class="carta">${parrafos(c.texto).replace(/<p>/g, '<p class="renglon">')}
+      <div class="carta carta-adornada">${adornos}${parrafos(c.texto).replace(/<p>/g, '<p class="renglon">')}
       ${c.contacto ? `<p class="renglon">${esc(tx("escribeme"))} <a href="mailto:${esc(c.contacto)}">${esc(c.contacto)}</a></p>` : ""}</div>
     </div>`).join("")
   };

@@ -38,11 +38,11 @@ const GAVETAS = [
   },
   {
     id: "escritos",
-    etiqueta: { es: "ESCRITOS", en: "WRITINGS" },
+    etiqueta: { es: "ESCRITOS", en: "STORIES & SCRAPS" },
     cinta: "#F5F2DF",
     tinta: "#1C1A1E",
     alto: 1,
-    titulo: { es: "Escritos", en: "Writings" },
+    titulo: { es: "Escritos", en: "Stories & scraps" },
     nota: { es: "Pensamientos que no cupieron en voz alta.", en: "Thoughts that didn't fit out loud." },
     tipo: "textos",
     items: [
