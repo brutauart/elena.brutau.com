@@ -40,11 +40,16 @@
     const v = document.createElement("span");
     v.className = "vasija";
     v.setAttribute("aria-hidden", "true");
-    v.innerHTML = `<svg viewBox="0 0 80 100" fill="none" stroke="#5B3B22" stroke-width="1.6" stroke-linecap="round">
-      <path d="M40 100 C38 70 30 50 14 30"/><path d="M26 48 C20 44 16 44 10 46"/><path d="M20 38 C18 32 20 26 24 22"/>
-      <path d="M41 100 C44 66 52 40 66 14"/><path d="M53 50 C60 48 64 44 68 38"/><path d="M60 30 C58 24 60 18 64 12"/>
-      <circle cx="14" cy="29" r="2.4" fill="#C9A35A" stroke="none"/><circle cx="66" cy="13" r="2.4" fill="#C9A35A" stroke="none"/>
-      <circle cx="24" cy="21" r="2" fill="#C9A35A" stroke="none"/><circle cx="68" cy="37" r="2" fill="#C9A35A" stroke="none"/>
+    v.innerHTML = `<svg viewBox="0 0 120 200">
+      <path d="M30 120 C10 150 22 196 60 196 C98 196 112 150 88 120 Z" fill="#B9B4AD" opacity=".55" transform="translate(6 4)"/>
+      <g class="trazo">
+        <path d="M44 110 h32 v12 C104 140 104 196 60 196 C16 196 16 140 44 122 Z" fill="#F6F4EF"/>
+        <path d="M30 150 C50 158 72 158 92 150" stroke-width="1.2"/>
+        <path d="M34 166 l6 8 l6 -8 l6 8 l6 -8 l6 8 l6 -8 l6 8 l6 -8 l6 8" stroke-width="1.2"/>
+        <path d="M58 110 C56 80 44 56 22 34"/><path d="M40 70 C30 66 22 66 14 70"/><path d="M32 52 C30 42 32 34 38 28"/>
+        <path d="M62 110 C66 76 76 48 98 20"/><path d="M76 66 C86 64 92 58 96 50"/><path d="M86 38 C84 30 86 22 92 16"/>
+      </g>
+      <g fill="#262523"><circle cx="22" cy="33" r="3.2"/><circle cx="98" cy="19" r="3.2"/><circle cx="38" cy="27" r="2.6"/><circle cx="96" cy="49" r="2.6"/><circle cx="14" cy="70" r="2.4"/></g>
     </svg>`;
     return v;
   }
@@ -111,9 +116,15 @@
       <p class="nota">${esc(g.nota)}</p>`;
   }
 
+  const estrellita = `<svg class="estrellita" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 2 L58 38 L96 26 L66 52 L92 86 L54 66 L40 98 L38 62 L4 70 L30 46 L10 14 L44 32 Z"/></svg>`;
+
   function llenar(g) {
-    hojaIzq.innerHTML = cabecera(g, "titulo-libreta") + `<p class="firma">— E.</p>`;
-    hojaDer.innerHTML = `<div class="solo-movil">${cabecera(g)}<br></div>` + (tipos[g.tipo] || tipos.carta)(g.items || []);
+    const n = GAVETAS.indexOf(g) * 14 + 12;
+    const fecha = `<p class="fecha-hoja">Fecha:</p>`;
+    hojaIzq.innerHTML = fecha + cabecera(g, "titulo-libreta") +
+      `<p class="firma">E.${estrellita}</p><p class="pagina">${n}</p>`;
+    hojaDer.innerHTML = fecha + `<div class="solo-movil">${cabecera(g)}</div>` +
+      (tipos[g.tipo] || tipos.carta)(g.items || []) + `<p class="pagina">${n + 1}</p>`;
     hojaIzq.scrollTop = 0;
     hojaDer.scrollTop = 0;
     cintaTapa.textContent = g.etiqueta;
@@ -195,6 +206,8 @@
   $("llave").addEventListener("click", entrar);
 
   /* ---------- Inicio ---------- */
+  const hoy = new Date();
+  $("fecha").textContent = [hoy.getDate(), hoy.getMonth() + 1, hoy.getFullYear()].map((x) => String(x).padStart(2, "0")).join(" / ");
   construirEstante();
 
   let yaEntro = false;
