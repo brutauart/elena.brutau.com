@@ -596,6 +596,9 @@ button { font: inherit; color: inherit; }
 .foto.polaroid { padding: 7px 7px 26px; aspect-ratio: 4 / 5.3; }
 .foto.polaroid.pendiente { padding: 7px; }
 .retrato figcaption { font-family: var(--f-cursiva); font-size: 18px; line-height: var(--c); text-align: center; margin-top: 10px; }
+.retrato-der { display: none; }
+.retrato-izq { width: min(58%, 230px); margin: calc(var(--c) * 3) auto 0 !important; transform: rotate(-2.5deg); }
+.perfil { padding-top: calc(var(--c) * 2); }
 .carta p { font-size: 14px; max-width: 54ch; }
 .carta p + p { margin-top: calc(var(--c) * 2) !important; }
 .carta a { color: var(--carbon); }
@@ -772,6 +775,7 @@ button { font: inherit; color: inherit; }
   .contratapa { padding: 8px; border-radius: 10px; }
   .hoja-der { border-radius: 4px; box-shadow: none; }
   .solo-movil { display: block; margin-bottom: 28px; }
+  .retrato-der { display: block; }
   .nota { font-size: 16px; }
   .lector { padding-top: 46px; }
   .libreta { height: calc(100svh - 120px); }

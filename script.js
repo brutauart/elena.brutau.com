@@ -245,7 +245,7 @@
       </article>`).join("")}</div>`,
 
     perfil: (items) => items.map((c) => `<div class="perfil">
-      <figure class="retrato">${foto(c.imagen, "Elena Brutau", "polaroid")}
+      <figure class="retrato retrato-der">${foto(c.imagen, "Elena Brutau", "polaroid")}
         <figcaption>${esc(L(c.pie))}</figcaption>
       </figure>
       <div class="carta">${parrafos(c.texto).replace(/<p>/g, '<p class="renglon">')}
@@ -268,7 +268,9 @@
   function llenar(g) {
     const n = GAVETAS.indexOf(g) * 14 + 12;
     const fecha = `<p class="fecha-hoja renglon">${esc(tx("fecha"))}</p>`;
-    hojaIzq.innerHTML = fecha + cabecera(g, "titulo-libreta") +
+    const p0 = g.tipo === "perfil" && (g.items || [])[0];
+    const retratoIzq = p0 ? `<figure class="retrato retrato-izq">${foto(p0.imagen, "Elena Brutau", "polaroid")}<figcaption>${esc(L(p0.pie))}</figcaption></figure>` : "";
+    hojaIzq.innerHTML = fecha + cabecera(g, "titulo-libreta") + retratoIzq +
       `<p class="firma renglon">E.${estrellita}</p><p class="pagina renglon">${n}</p>`;
     hojaDer.innerHTML = fecha + `<div class="solo-movil">${cabecera(g)}</div>` +
       (tipos[g.tipo] || tipos.perfil)(g.items || []) + `<p class="pagina renglon">${n + 1}</p>`;
