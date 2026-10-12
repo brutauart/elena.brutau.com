@@ -100,6 +100,7 @@
     b.className = "lomo vacia" + (extra ? " extra" : "") + (recostada ? " recostada" : "");
     b.style.setProperty("--h", h);
     b.setAttribute("aria-hidden", "true");
+    b.innerHTML = sello;
     return b;
   }
 
@@ -168,10 +169,10 @@
     return l;
   }
 
-  function construirEstante() {
-    libros.appendChild(lomoVacio(0.84, false, false));
-    GAVETAS.forEach((g, i) => {
-      if (i === 2) libros.appendChild(vasija());
+  // sellito dorado abajo en el lomo, como el del Hobonichi HON
+  const sello = `<span class="sello-lomo" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M13 3 a8 8 0 1 0 4 13 a6.5 6.5 0 1 1 -4 -13z"/></svg><b>EB</b></span>`;
+
+  function lomoLibreta(g, i) {
       const b = document.createElement("button");
       b.type = "button";
       b.className = "lomo";
@@ -181,11 +182,21 @@
       b.style.setProperty("--color-cinta", g.cinta);
       b.style.setProperty("--color-tinta", g.tinta);
       b.style.setProperty("--giro", giros[i % giros.length] + "deg");
-      b.innerHTML = `<span class="cinta"><span></span></span>`;
+      b.innerHTML = `<span class="cinta"><span></span></span>${sello}`;
       b.addEventListener("click", () => abrir(g, b));
-      libros.appendChild(b);
+      return b;
+  }
+
+  function construirEstante() {
+    libros.appendChild(lomoVacio(0.84, false, false));
+    const izquierda = GAVETAS.filter((g) => g.lado !== "derecha");
+    const derecha = GAVETAS.filter((g) => g.lado === "derecha");
+    izquierda.forEach((g, i) => {
+      if (i === 2) libros.appendChild(vasija());
+      libros.appendChild(lomoLibreta(g, i));
     });
     libros.appendChild(luna());
+    derecha.forEach((g, i) => libros.appendChild(lomoLibreta(g, i + izquierda.length)));
     for (let i = 1; i < LIBRETAS_VACIAS; i++) {
       libros.appendChild(lomoVacio(i === 1 ? 0.95 : 0.86, true, i === LIBRETAS_VACIAS - 1));
     }
@@ -196,6 +207,11 @@
     galeria: (items) => `<div class="galeria">${items.map((o) => `
       <figure class="obra">${foto(o.imagen, L(o.titulo))}
         <figcaption>${esc(L(o.titulo))}<span>${esc(L(o.tecnica))}</span></figcaption>
+      </figure>`).join("")}</div>`,
+
+    spreads: (items) => `<div class="spreads">${items.map((o) => `
+      <figure class="spread">${foto(o.imagen, L(o.titulo))}
+        <figcaption>${esc(L(o.titulo))}<span>${esc(L(o.fecha))}</span></figcaption>
       </figure>`).join("")}</div>`,
 
     textos: (items) => `<div class="escritos">${items.map((e, i) => `
@@ -343,7 +359,6 @@
   function entrar(e) {
     const conTeclado = e && e.detail === 0;
     entrada.classList.add("abierta");
-    try { sessionStorage.setItem("entro", "1"); } catch (err) {}
     setTimeout(encender, t(1700));
     setTimeout(() => {
       const primero = libros.querySelector("button.lomo");
@@ -417,15 +432,20 @@
   $("fecha").textContent = [hoy.getDate(), hoy.getMonth() + 1, hoy.getFullYear()].map((x) => String(x).padStart(2, "0")).join(" / ");
   construirEstante();
   soltarPolvo();
+  // en el celular las paredes laterales quedan muy de perfil: copia la ventana y la rosa a la pared del fondo
+  const fondo = document.querySelector(".cara.fondo");
+  [".der .ventana", ".izq .marco-rosa"].forEach((sel) => {
+    const el = document.querySelector(sel);
+    if (el && fondo) { const copia = el.cloneNode(true); copia.classList.add("en-fondo"); fondo.appendChild(copia); }
+  });
   aplicarIdioma();
   requestAnimationFrame(cuadro);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (abierta) alinear(); });
 
-  let yaEntro = false;
-  try { yaEntro = sessionStorage.getItem("entro") === "1"; } catch (e) {}
+  // la puerta con la llave sale siempre, salvo si alguien llega con el enlace directo a una libreta
   const directa = GAVETAS.find((g) => "#" + g.id === location.hash);
 
-  if (yaEntro || directa) {
+  if (directa) {
     entrada.classList.add("abierta");
     entrada.style.transition = "none";
     encender();

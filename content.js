@@ -10,7 +10,8 @@
     tinta     → color de las letras de la cinta
     titulo    → título dentro de la libreta
     nota      → frase escrita a mano en la primera página
-    tipo      → cómo se muestra el contenido: "galeria", "textos", "recortes", "tienda" o "perfil"
+    tipo      → cómo se muestra el contenido: "galeria", "spreads", "textos", "recortes", "tienda" o "perfil"
+    lado      → (opcional) "derecha" pone la libreta a la derecha de Luna
     logo      → (opcional) un dibujo que reemplaza al título dentro de la libreta
     items     → las cosas que hay dentro
 
@@ -114,8 +115,38 @@ const GAVETAS = [
         contacto: ""         // el correo que quieras mostrar, por ejemplo "hola@elenabrutau.com"
       }
     ]
+  },
+  {
+    id: "commonplace",
+    lado: "derecha",
+    etiqueta: "COMMONPLACING",
+    cinta: "#D7ABC6",
+    tinta: "#1C1A1E",
+    alto: 0.97,
+    titulo: "Commonplacing",
+    nota: { es: "Citas, recortes y cosas que no quiero olvidar, pegadas a mano.", en: "Quotes, clippings and things I don't want to forget, glued in by hand." },
+    tipo: "spreads",
+    items: [
+      { titulo: { es: "Spread de ejemplo", en: "Sample spread" }, fecha: { es: "Octubre 2026", en: "October 2026" }, imagen: "" },
+      { titulo: { es: "Otro spread", en: "Another spread" }, fecha: { es: "Septiembre 2026", en: "September 2026" }, imagen: "" }
+    ]
+  },
+  {
+    id: "diario",
+    lado: "derecha",
+    etiqueta: { es: "DIARIO", en: "JOURNAL" },
+    cinta: "#A88A9F",
+    tinta: "#F5F2DF",
+    alto: 0.9,
+    titulo: { es: "Diario", en: "Journal" },
+    nota: { es: "Mis días, uno por uno, en papel.", en: "My days, one by one, on paper." },
+    tipo: "spreads",
+    items: [
+      { titulo: { es: "Spread de ejemplo", en: "Sample spread" }, fecha: { es: "Octubre 2026", en: "October 2026" }, imagen: "" },
+      { titulo: { es: "Otro spread", en: "Another spread" }, fecha: { es: "Septiembre 2026", en: "September 2026" }, imagen: "" }
+    ]
   }
 ];
 
 /* Libretas sin etiqueta: gavetas que todavía no se abren. Solo decoran el estante. */
-const LIBRETAS_VACIAS = 3;
+const LIBRETAS_VACIAS = 2;
