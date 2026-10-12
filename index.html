@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@600;700&family=Borel&family=Courier+Prime:wght@400;700&family=IM+Fell+English:ital@0;1&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202610121526">
+  <link rel="stylesheet" href="styles.css?v=202610121533">
 </head>
 <body>
 
@@ -177,6 +177,107 @@
             </svg>
           </div>
 
+          <!-- la vitrina de tipógrafo: abre la tienda de luna & friends -->
+          <button class="vitrina" id="vitrina" type="button">
+            <span class="cinta-vitrina" data-t="tienda">LUNA &amp; FRIENDS · TIENDA</span>
+            <svg viewBox="0 -4 200 364" aria-hidden="true">
+              <!-- clavo y cordel -->
+              <path class="trazo" d="M56 28 L100 2 L144 28" stroke-width="1.8"/>
+              <circle cx="100" cy="2" r="3.5" fill="#1C1A1E"/>
+              <!-- marco y fondo -->
+              <rect class="trazo madera" x="4" y="26" width="192" height="330" rx="2" stroke-width="3"/>
+              <rect class="trazo" x="12" y="34" width="176" height="314" fill="#7A5643" stroke-width="2"/>
+              <g fill="#000" opacity=".12"><rect x="12" y="34" width="176" height="6"/><rect x="12" y="103" width="176" height="4"/><rect x="12" y="153" width="176" height="4"/><rect x="12" y="233" width="176" height="4"/><rect x="12" y="293" width="176" height="4"/></g>
+              <!-- repisas y divisiones -->
+              <g class="trazo madera" stroke-width="1.6">
+                <rect x="12" y="97" width="176" height="6"/><rect x="12" y="147" width="176" height="6"/><rect x="12" y="227" width="176" height="6"/><rect x="12" y="287" width="176" height="6"/>
+                <rect x="66" y="34" width="5" height="63"/><rect x="126" y="34" width="5" height="63"/>
+                <rect x="46" y="103" width="5" height="44"/><rect x="96" y="103" width="5" height="44"/><rect x="146" y="103" width="5" height="44"/>
+                <rect x="86" y="153" width="5" height="74"/><rect x="136" y="153" width="5" height="74"/>
+                <rect x="56" y="233" width="5" height="54"/><rect x="116" y="233" width="5" height="54"/>
+                <rect x="76" y="293" width="5" height="55"/><rect x="126" y="293" width="5" height="55"/>
+              </g>
+
+              <!-- A1: Luna de clay -->
+              <path d="M46 92 q9 -3 6 -11" fill="none" stroke="#161616" stroke-width="2.6" stroke-linecap="round"/>
+              <path d="M37 74 L31 96 H47 L41 74 Z" fill="#161616"/>
+              <path d="M27 66 L29 55 L34 62 H44 L49 54 L51 66 Q52 74 39 75 Q26 74 27 66 Z" fill="#161616"/>
+              <ellipse cx="34" cy="67" rx="3.4" ry="2.2" fill="#CBA455"/><ellipse cx="44" cy="67" rx="3.4" ry="2.2" fill="#CBA455"/>
+              <path d="M34.6 65 L33.4 69 M44.6 65 L43.4 69" stroke="#161616" stroke-width="1"/>
+              <!-- A2: hoja de stickers -->
+              <g transform="rotate(-4 99 74)">
+                <rect class="trazo" x="80" y="52" width="38" height="44" rx="2" fill="#F5F2DF" stroke-width="2"/>
+                <path class="trazo" d="M90 67 c-7 -5 -3 -11 0 -6 c3 -5 7 1 0 6 z" fill="#CFADC4" stroke-width="1.2"/>
+                <path class="trazo" d="M107 58 l1.6 4 4 .4 -3 2.6 1 4 -3.6 -2 -3.6 2 1 -4 -3 -2.6 4 -.4 z" fill="#CBA455" stroke-width="1"/>
+                <path d="M88 86 L89 79 L92 83 H97 L100 79 L101 86 Q101 90 94.5 90 Q88 90 88 86 Z" fill="#161616"/>
+                <path class="trazo" d="M111 79 a6 6 0 1 0 3 9 a4.6 4.6 0 1 1 -3 -9 z" fill="#CBA455" stroke-width="1"/>
+              </g>
+              <!-- A3: hongo de clay -->
+              <rect class="trazo" x="152" y="78" width="12" height="19" rx="3" fill="#F5F2DF" stroke-width="2"/>
+              <path class="trazo" d="M139 80 Q158 50 177 80 Z" fill="#D7ABC6" stroke-width="2"/>
+              <g fill="#F5F2DF"><circle cx="151" cy="71" r="2.6"/><circle cx="162" cy="65" r="2"/><circle cx="169" cy="74" r="2.2"/></g>
+
+              <!-- B1: florerito -->
+              <path d="M28 120 q-2 -8 -7 -12 M28 120 q3 -8 8 -10" stroke="#979B82" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+              <ellipse cx="21" cy="108" rx="3" ry="2" fill="#979B82"/><ellipse cx="36" cy="110" rx="3" ry="2" fill="#979B82"/>
+              <path class="trazo" d="M22 147 Q15 133 24 127 V121 H32 V127 Q41 133 34 147 Z" fill="#D7ABC6" stroke-width="2"/>
+              <!-- B2: sticker de corazón -->
+              <path class="trazo" d="M73 141 C57 130 60 114 70 118 Q73 120 73 124 Q73 120 76 118 C86 114 89 130 73 141 Z" fill="#CFADC4" stroke-width="2" transform="rotate(-8 73 128)"/>
+              <!-- B3: frasquito -->
+              <rect class="trazo" x="112" y="122" width="22" height="25" rx="4" fill="#CBA455" stroke-width="2"/>
+              <rect class="trazo" x="110" y="117" width="26" height="7" rx="1.5" fill="#3E2B22" stroke-width="2"/>
+              <rect x="116" y="130" width="14" height="8" fill="#F5F2DF"/>
+              <!-- B4: estrella de clay -->
+              <path class="trazo" d="M168 121 L171.5 130 L181 130.5 L173.5 136.5 L176.5 146 L168 140.5 L159.5 146 L162.5 136.5 L155 130.5 L164.5 130 Z" fill="#CBA455" stroke-width="2"/>
+
+              <!-- C1: tarjetita de luna & friends -->
+              <g transform="rotate(-3 49 198)">
+                <rect class="trazo" x="20" y="170" width="58" height="56" fill="#F5F2DF" stroke-width="2"/>
+                <path d="M28 181 q6 -5 12 0 t12 0 t12 0" fill="none" stroke="#CFADC4" stroke-width="2.6" stroke-linecap="round"/>
+                <path d="M36 205 L38 189 L43 197 H55 L60 189 L62 205 Q62 213 49 213 Q36 213 36 205 Z" fill="#161616"/>
+                <ellipse cx="44" cy="204" rx="3.2" ry="2" fill="#CBA455"/><ellipse cx="54" cy="204" rx="3.2" ry="2" fill="#CBA455"/>
+              </g>
+              <!-- C2: paquetitos de stickers -->
+              <rect class="trazo" x="95" y="188" width="30" height="38" fill="#979B82" stroke-width="2" transform="rotate(-7 110 207)"/>
+              <rect class="trazo" x="103" y="184" width="30" height="43" fill="#F5F2DF" stroke-width="2"/>
+              <path class="trazo" d="M118 205 c-7 -5 -3 -11 0 -6 c3 -5 7 1 0 6 z" fill="#CFADC4" stroke-width="1.2"/>
+              <path d="M106 191 H130" stroke="#CBA455" stroke-width="3"/>
+              <!-- C3: luna de clay -->
+              <path class="trazo" d="M170 184 A21 21 0 1 0 172 226 A16 16 0 1 1 170 184 Z" fill="#CBA455" stroke-width="2"/>
+              <path d="M150 204 v4 M153 210 v3" stroke="#1C1A1E" stroke-width="1.4" stroke-linecap="round"/>
+
+              <!-- D1: posavasos de gatito -->
+              <circle class="trazo" cx="35" cy="270" r="15" fill="#CFADC4" stroke-width="2"/>
+              <path d="M27 274 L28 263 L32 268 H38 L42 263 L43 274 Q43 279 35 279 Q27 279 27 274 Z" fill="#161616"/>
+              <!-- D2: tacita -->
+              <ellipse class="trazo" cx="88" cy="285" rx="19" ry="3.4" fill="#F5F2DF" stroke-width="1.8"/>
+              <path class="trazo" d="M100 266 q9 1 6 10 q-2 4 -8 4" stroke-width="2"/>
+              <path class="trazo" d="M76 261 H100 L97 284 H79 Z" fill="#D7ABC6" stroke-width="2"/>
+              <path d="M81 266 v5 M85 266 v3" stroke="#1C1A1E" stroke-width="1.4" stroke-linecap="round"/>
+              <!-- D3: platito con anillos -->
+              <ellipse class="trazo" cx="154" cy="280" rx="27" ry="7" fill="#979B82" stroke-width="2"/>
+              <ellipse cx="154" cy="279" rx="19" ry="4" fill="#B3B69D"/>
+              <circle cx="146" cy="276" r="4" fill="none" stroke="#CBA455" stroke-width="2.2"/>
+              <circle cx="157" cy="277" r="3.4" fill="none" stroke="#CBA455" stroke-width="2.2"/>
+              <path class="trazo" d="M166 278 c-5 -4 -2 -8 0 -4 c2 -4 5 0 0 4 z" fill="#CFADC4" stroke-width="1.2"/>
+
+              <!-- E1: cinta washi -->
+              <path class="trazo" d="M44 347 H70 L66 340 H48" fill="#CFADC4" stroke-width="1.8"/>
+              <circle class="trazo" cx="44" cy="330" r="17" fill="#CFADC4" stroke-width="2"/>
+              <circle class="trazo" cx="44" cy="330" r="8" fill="#7A5643" stroke-width="2"/>
+              <path d="M32 326 q2 -6 6 -8" stroke="#F5F2DF" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <!-- E2: libretita negra -->
+              <rect x="92" y="311" width="23" height="37" rx="2" fill="#161616"/>
+              <path d="M110 311 V348" stroke="#000" stroke-width="2"/>
+              <rect x="95" y="321" width="12" height="6" fill="#CBA455"/>
+              <!-- E3: plantita -->
+              <path class="trazo" d="M161 331 Q150 317 147 302 Q160 310 161 331 Z" fill="#979B82" stroke-width="1.8"/>
+              <path class="trazo" d="M161 331 Q172 315 179 305 Q177 321 161 331 Z" fill="#979B82" stroke-width="1.8"/>
+              <path class="trazo" d="M161 331 Q159 314 162 297 Q167 314 161 331 Z" fill="#979B82" stroke-width="1.8"/>
+              <path class="trazo" d="M148 348 L151 330 H171 L174 348 Z" fill="#CBA455" stroke-width="2"/>
+            </svg>
+          </button>
+
           <section class="estante">
             <div class="libros" id="libros" role="list"></div>
             <div class="tabla" aria-hidden="true">
@@ -240,7 +341,7 @@
     <button class="volver letra" id="volver" type="button" data-cerrar data-t="volver">devolver al estante</button>
   </div>
 
-  <script src="content.js?v=202610121526"></script>
-  <script src="script.js?v=202610121526"></script>
+  <script src="content.js?v=202610121533"></script>
+  <script src="script.js?v=202610121533"></script>
 </body>
 </html>

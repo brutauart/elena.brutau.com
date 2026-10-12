@@ -32,7 +32,9 @@
       pronto: "Pronto a la venta",
       escribeme: "Escríbeme:",
       abrir: "Abrir la libreta",
-      estante: "Estante de libretas de Elena Brutau"
+      estante: "Estante de libretas de Elena Brutau",
+      tienda: "LUNA & FRIENDS · TIENDA",
+      abrirTienda: "Abrir la tienda de luna & friends"
     },
     en: {
       entrar: "turn the key to come in",
@@ -46,7 +48,9 @@
       pronto: "Coming soon",
       escribeme: "Write to me:",
       abrir: "Open the notebook",
-      estante: "Elena Brutau's shelf of notebooks"
+      estante: "Elena Brutau's shelf of notebooks",
+      tienda: "LUNA & FRIENDS · SHOP",
+      abrirTienda: "Open the luna & friends shop"
     }
   };
 
@@ -65,6 +69,7 @@
     document.documentElement.lang = idioma;
     document.querySelectorAll("[data-t]").forEach((el) => { el.textContent = tx(el.dataset.t); });
     mundo.setAttribute("aria-label", tx("estante"));
+    $("vitrina").setAttribute("aria-label", tx("abrirTienda"));
     document.querySelectorAll(".idiomas button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.idioma === idioma)));
     libros.querySelectorAll("button.lomo").forEach((b) => {
       const g = GAVETAS.find((x) => x.id === b.dataset.id);
@@ -367,6 +372,10 @@
   }
 
   $("llave").addEventListener("click", entrar);
+  $("vitrina").addEventListener("click", () => {
+    const tienda = GAVETAS.find((g) => g.id === "luna");
+    if (tienda) abrir(tienda);
+  });
 
   /* ---------- El mundo se mueve contigo ---------- */
   const aire = $("aire");

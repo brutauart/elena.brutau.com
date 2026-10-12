@@ -368,6 +368,28 @@ button { font: inherit; color: inherit; }
   opacity: 0; transition: opacity 1s 2s;
 }
 
+/* la vitrina de tipógrafo (tienda) */
+.vitrina {
+  position: absolute; right: 3%; bottom: 4%; width: 14%;
+  border: 0; padding: 0; background: none; cursor: pointer;
+  pointer-events: auto;
+  filter: url(#tinta);
+  transition: transform .3s cubic-bezier(.3,.7,.3,1);
+}
+.vitrina:hover, .vitrina:focus-visible { transform: translateY(-6px) rotate(-1deg); }
+.vitrina svg { display: block; width: 100%; height: auto; overflow: visible; }
+.cinta-vitrina {
+  position: absolute; left: 50%; top: 8.4%; z-index: 1;
+  transform: translate(-50%, -50%) rotate(-2deg);
+  padding: 3px 7px;
+  font-family: var(--f-cinta); font-weight: 700; font-size: clamp(8px, .72vw, 11px); letter-spacing: .12em; line-height: 1;
+  color: var(--carbon);
+  background-color: var(--mostaza); background-image: var(--grano-claro);
+  box-shadow: 1px 1px 2px rgba(0,0,0,.4);
+  clip-path: polygon(1px 0, 100% 1px, calc(100% - 2px) 100%, 0 100%);
+  white-space: nowrap;
+}
+
 /* el escritorio y la planta */
 .escritorio { position: absolute; left: 50%; bottom: 0; width: min(800px, 60%); transform: translateX(-50%); filter: url(#tinta); }
 .escritorio svg, .planta3d svg { display: block; width: 100%; height: auto; overflow: visible; }
@@ -613,7 +635,9 @@ button { font: inherit; color: inherit; }
   :root { --fondo: 22vh; --persp: 900px; --alto-estante: clamp(150px, 25vh, 220px); --ancho-lomo: clamp(20px, 5.6vw, 28px); }
   .en-fondo { display: block; }
   .ventana.en-fondo { display: none; }
-  .marco-rosa.en-fondo { left: 50%; right: auto; top: 6%; width: 30%; height: 24%; transform: translateX(-50%) rotate(-1.5deg); }
+  .marco-rosa.en-fondo { left: 10%; right: auto; top: 6%; width: 30%; height: 24%; transform: rotate(-1.5deg); }
+  .vitrina { right: 11%; bottom: auto; top: 5%; width: 25%; }
+  .cinta-vitrina { font-size: 7px; padding: 2px 5px; }
   .izq .marco-rosa, .der .ventana { display: none; }
   body { font-size: 18px; }
   .encabezado { font-size: 12px; }
