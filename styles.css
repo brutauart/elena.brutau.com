@@ -375,10 +375,10 @@ button { font: inherit; color: inherit; }
 /* fotos en marquitos dorados */
 .cuadro-dorado { position: absolute; margin: 0; }
 .cuadro-dorado svg { display: block; width: 100%; height: auto; overflow: visible; }
-.cuadro-1 { left: 3%; top: 11%; width: 14%; transform: rotate(-1.5deg); }
-.cuadro-2 { right: 4%; top: 5%; width: 10%; transform: rotate(1deg); }
-.cuadro-3 { left: 4.2%; top: 38%; width: 9.4%; transform: rotate(1deg); }
-.cuadro-4 { right: 3.5%; top: 34%; width: 10%; transform: none; }
+.cuadro-1 { left: 2.5%; top: 9%; width: 15%; transform: rotate(-1deg); }
+.cuadro-2 { right: 3.5%; top: 3%; width: 12.5%; transform: none; }
+.cuadro-3 { left: 3.6%; top: 36.5%; width: 10.6%; transform: rotate(1deg); }
+.cuadro-4 { right: 3.4%; top: 34%; width: 10.6%; transform: none; }
 
 /* tablerito de corcho con las redes */
 .corcho {
@@ -459,7 +459,7 @@ a.estampita:hover { border-style: solid; }
   padding: 3px 7px;
   font-family: var(--f-cinta); font-weight: 700; font-size: clamp(8px, .72vw, 11px); letter-spacing: .12em; line-height: 1;
   color: var(--carbon);
-  background-color: var(--mostaza); background-image: var(--grano-claro);
+  background-color: var(--crema); background-image: var(--grano-claro);
   box-shadow: 1px 1px 2px rgba(0,0,0,.4);
   clip-path: polygon(1px 0, 100% 1px, calc(100% - 2px) 100%, 0 100%);
   white-space: nowrap;
@@ -807,9 +807,7 @@ a.estampita:hover { border-style: solid; }
   clip-path: polygon(1px 0, 100% 1px, calc(100% - 2px) 100%, 0 100%);
   white-space: nowrap;
 }
-.cinta-cajon.c0 { background-color: var(--rosa); }
-.cinta-cajon.c1 { background-color: var(--mostaza); }
-.cinta-cajon.c2 { background-color: var(--salvia); color: var(--crema); }
+.cinta-cajon.c0, .cinta-cajon.c1, .cinta-cajon.c2 { background-color: var(--crema); color: var(--carbon); }
 
 .compartimentos {
   flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
