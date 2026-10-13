@@ -259,7 +259,7 @@
     [est4, "", "right:2%;top:30%;width:3.5%"], [est8, "lila", "right:-2%;top:62%;width:5%"], [est4, "oro", "right:10%;bottom:2%;width:5%"],
     [est4, "lila", "left:30%;bottom:-1%;width:4.5%"], [est8, "", "left:-2%;top:38%;width:4%"], [est4, "oro", "left:6%;top:70%;width:3.5%"]
   ];
-  const adornos = `<img class="adorno rosa-1" src="img/rosa.png" alt="" aria-hidden="true"><img class="adorno rosa-2" src="img/rosa.png" alt="" aria-hidden="true">` +
+  const adornos = `<img class="adorno rosa-1" src="img/rosa-azul.png" alt="" aria-hidden="true"><img class="adorno rosa-2" src="img/rosa-azul.png" alt="" aria-hidden="true">` +
     estrellas.map(([d, cl, st]) => `<svg class="adorno estrella ${cl}" style="${st}" viewBox="0 0 100 100" aria-hidden="true"><path d="${d}"/></svg>`).join("");
 
   /* ---------- Contenido de cada tipo de libreta ---------- */
