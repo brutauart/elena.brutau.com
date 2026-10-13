@@ -5,12 +5,12 @@
   --plata: #BFC2C7;
   --plata-clara: #ECEEF0;
   --plata-oscura: #6E727A;
-  --lila: #CFADC4;           /* las letras de luna & friends */
-  --lila-honda: #A88A9F;
+  --lila: #9FB0C2;            /* acento: azul gris frío */
+  --lila-honda: #6F8195;
   --negro: #161616;          /* Luna */
   --mostaza: #CBA455;        /* los ojos de Luna */
   --salvia: #979B82;         /* las hojas de la rosa */
-  --rosa: #D7ABC6;
+  --rosa: #C4CFDB;
   --madera: #2A2725;         /* madera oscura */
   --madera-honda: #141312;
 
@@ -19,7 +19,7 @@
   --grafito: #7D7570;        /* lápiz */
 
   /* LETRAS DEL SITIO: una para cada cosa
-     --f-letra   → títulos y frases grandes: se dibujan con cinta.js (trazo rosa con contorno negro);
+     --f-letra   → títulos y frases grandes: se dibujan con cinta.js (trazo azul gris con contorno negro);
                    esta fuente solo se ve un instante mientras carga
      --f-cursiva → notas a mano, firmas, pies de foto
      --f-texto   → todo el texto normal: descripciones, escritos, precios, fechas (máquina de escribir)
@@ -454,7 +454,7 @@ a.sticker-red:hover, a.sticker-red:focus-visible { transform: scale(1.08) rotate
 .estampita .usuario-red { display: none; }
 .estampita .nombre-red { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .estampita .usuario-red:empty { display: none; }
-.red-instagram.estampita { background: #EBD9E4; }
+.red-instagram.estampita { background: #DCE3EB; }
 .red-youtube.estampita { background: #ECEEF0; }
 a.estampita:hover { border-style: solid; }
 
@@ -609,7 +609,7 @@ a.estampita:hover { border-style: solid; }
 .foto::after {
   content: ""; position: absolute; top: -8px; left: 50%; width: 46%; height: 15px;
   transform: translateX(-50%) rotate(-4deg);
-  background-color: rgba(207,173,196,.6);
+  background-color: rgba(159,176,194,.6);
   background-image: var(--grano-claro);
 }
 .foto.pendiente {

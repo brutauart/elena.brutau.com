@@ -90,7 +90,7 @@ const GAVETAS = [
     tipo: "perfil",
     items: [
       {
-        imagen: "img/elena.jpg",
+        imagen: "img/elena.jpg?v=202610122309",
         pie: { es: "yo, cuando me río", en: "me, when I laugh" },
         texto: {
           es: "¡Hola! Me llamo Elena Brutau. Desde pequeña he estado obsesionada con plasmar mi vida en libretas.\n\nCuando me fui de Cuba a México a los 17, lo único que me llevé fueron mis diarios. Hice lo mismo nueve años más tarde, cuando vine a vivir a Estados Unidos.\n\nA esa obsesión temprana se le han sumado algunas nuevas: escribir historias, el polymer clay y hacer stickers (además del café, los libros y mis four cat babies: Tom, Ash, Luna y Félix, por supuesto).\n\nEsta página no solo agrupa todas mis obsesiones: también me permite compartirlas con ustedes, mis fellow journal friends.",

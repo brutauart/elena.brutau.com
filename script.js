@@ -142,8 +142,8 @@
         <path d="M42 66 Q20 58 16 40 Q36 44 42 66 Z" fill="#979B82"/>
         <path d="M76 62 Q98 56 104 38 Q84 40 76 62 Z" fill="#979B82"/>
         <path d="M60 46 Q46 34 50 16 Q62 28 60 46 Z" fill="#979B82"/>
-        <path d="M28 32 Q22 18 34 12 Q44 18 36 32 Z" fill="#D7ABC6"/>
-        <path d="M88 24 Q86 10 98 8 Q104 20 94 28 Z" fill="#CFADC4"/>
+        <path d="M28 32 Q22 18 34 12 Q44 18 36 32 Z" fill="#C4CFDB"/>
+        <path d="M88 24 Q86 10 98 8 Q104 20 94 28 Z" fill="#9FB0C2"/>
       </g>
       <g class="trazo" stroke-width="1"><path d="M40 64 L22 44 M78 60 L98 42 M59 44 L52 22"/></g>
       <path class="trazo" d="M48 108 H72 V118 C96 130 100 170 88 186 Q60 200 32 186 C20 170 24 130 48 118 Z" fill="#161616" stroke-width="2.6"/>
@@ -471,7 +471,7 @@
   const dibujosCajon = {
     clay: `<svg viewBox="0 0 90 60" aria-hidden="true">
       <rect class="trazo" x="50" y="34" width="10" height="20" rx="3" fill="#F5F2DF" stroke-width="2"/>
-      <path class="trazo" d="M40 36 Q55 12 70 36 Z" fill="#D7ABC6" stroke-width="2"/>
+      <path class="trazo" d="M40 36 Q55 12 70 36 Z" fill="#C4CFDB" stroke-width="2"/>
       <g fill="#F5F2DF"><circle cx="50" cy="28" r="2.2"/><circle cx="58" cy="24" r="1.8"/><circle cx="63" cy="31" r="1.8"/></g>
       <path d="M32 50 q7 -2 5 -9" fill="none" stroke="#161616" stroke-width="2.2" stroke-linecap="round"/>
       <path d="M24 38 L19 55 H32 L28 38 Z" fill="#161616"/>
@@ -481,19 +481,19 @@
     stickers: `<svg viewBox="0 0 90 60" aria-hidden="true">
       <g transform="rotate(-5 45 30)">
         <rect class="trazo" x="26" y="6" width="40" height="50" rx="2" fill="#F5F2DF" stroke-width="2"/>
-        <path class="trazo" d="M37 24 c-8 -6 -3 -12 0 -7 c3 -5 8 1 0 7 z" fill="#CFADC4" stroke-width="1.2"/>
+        <path class="trazo" d="M37 24 c-8 -6 -3 -12 0 -7 c3 -5 8 1 0 7 z" fill="#9FB0C2" stroke-width="1.2"/>
         <path class="trazo" d="M55 13 l1.8 4.4 4.6 .4 -3.4 3 1 4.6 -4 -2.4 -4 2.4 1 -4.6 -3.4 -3 4.6 -.4 z" fill="#BFC2C7" stroke-width="1"/>
         <path d="M33 47 L34 39 L37 43 H43 L46 39 L47 47 Q47 51 40 51 Q33 51 33 47 Z" fill="#161616"/>
         <path class="trazo" d="M57 38 a6 6 0 1 0 3 10 a4.6 4.6 0 1 1 -3 -10 z" fill="#BFC2C7" stroke-width="1"/>
       </g>
     </svg>`,
     mas: `<svg viewBox="0 0 90 60" aria-hidden="true">
-      <path class="trazo" d="M30 54 H52 L48 48 H32" fill="#CFADC4" stroke-width="1.8"/>
-      <circle class="trazo" cx="30" cy="38" r="16" fill="#CFADC4" stroke-width="2"/>
+      <path class="trazo" d="M30 54 H52 L48 48 H32" fill="#9FB0C2" stroke-width="1.8"/>
+      <circle class="trazo" cx="30" cy="38" r="16" fill="#9FB0C2" stroke-width="2"/>
       <circle class="trazo" cx="30" cy="38" r="7" fill="#35302E" stroke-width="2"/>
       <g transform="rotate(6 66 32)">
         <rect class="trazo" x="54" y="14" width="26" height="36" fill="#F5F2DF" stroke-width="2"/>
-        <path d="M58 21 q4 -3 8 0 t8 0" fill="none" stroke="#CFADC4" stroke-width="2" stroke-linecap="round"/>
+        <path d="M58 21 q4 -3 8 0 t8 0" fill="none" stroke="#9FB0C2" stroke-width="2" stroke-linecap="round"/>
         <path d="M60 41 L61 33 L64 37 H70 L73 33 L74 41 Q74 45 67 45 Q60 45 60 41 Z" fill="#161616"/>
       </g>
     </svg>`
