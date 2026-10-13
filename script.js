@@ -482,15 +482,15 @@
       <g transform="rotate(-5 45 30)">
         <rect class="trazo" x="26" y="6" width="40" height="50" rx="2" fill="#F5F2DF" stroke-width="2"/>
         <path class="trazo" d="M37 24 c-8 -6 -3 -12 0 -7 c3 -5 8 1 0 7 z" fill="#CFADC4" stroke-width="1.2"/>
-        <path class="trazo" d="M55 13 l1.8 4.4 4.6 .4 -3.4 3 1 4.6 -4 -2.4 -4 2.4 1 -4.6 -3.4 -3 4.6 -.4 z" fill="#CBA455" stroke-width="1"/>
+        <path class="trazo" d="M55 13 l1.8 4.4 4.6 .4 -3.4 3 1 4.6 -4 -2.4 -4 2.4 1 -4.6 -3.4 -3 4.6 -.4 z" fill="#BFC2C7" stroke-width="1"/>
         <path d="M33 47 L34 39 L37 43 H43 L46 39 L47 47 Q47 51 40 51 Q33 51 33 47 Z" fill="#161616"/>
-        <path class="trazo" d="M57 38 a6 6 0 1 0 3 10 a4.6 4.6 0 1 1 -3 -10 z" fill="#CBA455" stroke-width="1"/>
+        <path class="trazo" d="M57 38 a6 6 0 1 0 3 10 a4.6 4.6 0 1 1 -3 -10 z" fill="#BFC2C7" stroke-width="1"/>
       </g>
     </svg>`,
     mas: `<svg viewBox="0 0 90 60" aria-hidden="true">
       <path class="trazo" d="M30 54 H52 L48 48 H32" fill="#CFADC4" stroke-width="1.8"/>
       <circle class="trazo" cx="30" cy="38" r="16" fill="#CFADC4" stroke-width="2"/>
-      <circle class="trazo" cx="30" cy="38" r="7" fill="#7A5643" stroke-width="2"/>
+      <circle class="trazo" cx="30" cy="38" r="7" fill="#35302E" stroke-width="2"/>
       <g transform="rotate(6 66 32)">
         <rect class="trazo" x="54" y="14" width="26" height="36" fill="#F5F2DF" stroke-width="2"/>
         <path d="M58 21 q4 -3 8 0 t8 0" fill="none" stroke="#CFADC4" stroke-width="2" stroke-linecap="round"/>
