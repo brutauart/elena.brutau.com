@@ -12,12 +12,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@600;700&family=Borel&family=Courier+Prime:wght@400;700&family=Sacramento&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202610122341">
+  <link rel="stylesheet" href="styles.css?v=202610130904">
 </head>
 <body>
 
   <!-- Filtros de dibujo: borde de tinta tembloroso y manchas de acuarela -->
   <svg class="filtros" aria-hidden="true" focusable="false">
+    <filter id="contorno" x="-10%" y="-10%" width="120%" height="120%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="3.4" result="fuera"/>
+      <feMorphology in="SourceAlpha" operator="dilate" radius="2.2" result="dentro"/>
+      <feComposite in="fuera" in2="dentro" operator="out" result="anillo"/>
+      <feFlood flood-color="#1C1A1E"/>
+      <feComposite in2="anillo" operator="in" result="linea"/>
+      <feMerge><feMergeNode in="linea"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
     <filter id="tinta" x="-5%" y="-5%" width="110%" height="110%">
       <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="1" seed="7" result="ruido"/>
       <feDisplacementMap in="SourceGraphic" in2="ruido" scale="2" xChannelSelector="R" yChannelSelector="G"/>
@@ -93,15 +101,15 @@
               <g fill="#F5F2DF"><circle cx="70" cy="100" r="2.4"/><circle cx="92" cy="170" r="2"/><circle cx="150" cy="200" r="2.4"/><circle cx="62" cy="226" r="1.8"/><circle cx="160" cy="150" r="1.6"/></g>
               <path d="M78 140 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z" fill="#9FB0C2"/>
               <!-- marco de madera oscura -->
-              <path class="trazo madera" d="M26 278 V116 A84 84 0 0 1 194 116 V278 Z M36 268 V118 A74 74 0 0 1 184 118 V268 Z" fill-rule="evenodd" stroke-width="3"/>
-              <path class="trazo" d="M110 36 V268 M36 178 H184" stroke="#141312" stroke-width="7"/>
-              <path class="trazo madera" d="M14 276 H206 V292 H14 Z" stroke-width="3"/>
+              <path class="trazo madera" d="M26 278 V116 A84 84 0 0 1 194 116 V278 Z M36 268 V118 A74 74 0 0 1 184 118 V268 Z" fill-rule="evenodd" stroke-width="1.5"/>
+              <path class="trazo" d="M110 36 V268 M36 178 H184" stroke="#141312" stroke-width="3"/>
+              <path class="trazo madera" d="M14 276 H206 V292 H14 Z" stroke-width="1.5"/>
               <!-- cortinas lila -->
-              <path class="trazo" d="M18 40 Q60 30 70 44 Q58 120 66 200 Q48 214 40 290 L18 290 Z" fill="#9FB0C2" stroke-width="3"/>
-              <path class="trazo" d="M202 40 Q160 30 150 44 Q162 120 154 200 Q172 214 180 290 L202 290 Z" fill="#9FB0C2" stroke-width="3"/>
+              <path class="trazo" d="M18 40 Q60 30 70 44 Q58 120 66 200 Q48 214 40 290 L18 290 Z" fill="#9FB0C2" stroke-width="1.5"/>
+              <path class="trazo" d="M202 40 Q160 30 150 44 Q162 120 154 200 Q172 214 180 290 L202 290 Z" fill="#9FB0C2" stroke-width="1.5"/>
               <path class="trazo" d="M34 70 Q30 150 30 270 M186 70 Q190 150 190 270" stroke-width="1.4" opacity=".6"/>
-              <path class="trazo" d="M8 40 H212" stroke-width="4"/>
-              <circle cx="8" cy="40" r="6" fill="#BFC2C7" class="trazo" stroke-width="2"/><circle cx="212" cy="40" r="6" fill="#BFC2C7" class="trazo" stroke-width="2"/>
+              <path class="trazo" d="M8 40 H212" stroke-width="2"/>
+              <circle cx="8" cy="40" r="6" fill="#BFC2C7" class="trazo" stroke-width="1.2"/><circle cx="212" cy="40" r="6" fill="#BFC2C7" class="trazo" stroke-width="1.2"/>
             </svg>
           </div>
           <!-- aquí irá otro dibujo de Elena -->
@@ -113,7 +121,7 @@
           <div class="mancha-pared" aria-hidden="true"><svg viewBox="0 0 600 420"><path d="M70 230 C40 120 180 40 300 60 C440 80 560 140 540 260 C520 360 380 400 260 380 C140 360 95 320 70 230Z"/></svg></div>
 
 
-          <svg class="doodle estrella" style="right:16%;top:7%;width:4%" viewBox="0 0 100 100"><path d="M50 2 L58 38 L96 26 L66 52 L92 86 L54 66 L40 98 L38 62 L4 70 L30 46 L10 14 L44 32 Z"/></svg>
+          <svg class="doodle estrella" style="right:21%;top:12%;width:3.4%" viewBox="0 0 100 100"><path d="M50 2 L58 38 L96 26 L66 52 L92 86 L54 66 L40 98 L38 62 L4 70 L30 46 L10 14 L44 32 Z"/></svg>
           <svg class="doodle garabato lila" style="right:22%;top:26%;width:3%" viewBox="0 0 40 40"><path d="M6 20 h28 M20 5 v30 M9 9 l22 22 M31 9 L9 31"/></svg>
           <span class="pegatina rosa" style="right:21%;top:60%" aria-hidden="true"></span>
           <span class="pegatina negra" style="left:27%;top:6%" aria-hidden="true"></span>
@@ -123,37 +131,36 @@
           <div class="escritorio" aria-hidden="true">
             <svg viewBox="0 -64 640 324">
               <!-- sombra en la pared -->
-              <path d="M24 70 H630 V258 H24 Z" fill="#1C1A1E" opacity=".08" transform="translate(10 6)"/>
-              <!-- cajonera -->
-              <path class="trazo madera" d="M40 72 H230 V256 H40 Z" stroke-width="3"/>
-              <path class="trazo" d="M40 132 H230 M40 194 H230" stroke-width="3"/>
-              <g class="trazo" stroke-width="2.4"><circle cx="135" cy="102" r="7" fill="#BFC2C7"/><circle cx="135" cy="163" r="7" fill="#BFC2C7"/><circle cx="135" cy="225" r="7" fill="#BFC2C7"/></g>
+                            <!-- cajonera -->
+              <path class="trazo madera" d="M40 72 H230 V256 H40 Z" stroke-width="1.5"/>
+              <path d="M46 132 H224 M46 194 H224" stroke="#5E5B58" stroke-width="1.3" fill="none"/>
+              <g class="trazo" stroke-width="1.3"><circle cx="135" cy="102" r="7" fill="#BFC2C7"/><circle cx="135" cy="163" r="7" fill="#BFC2C7"/><circle cx="135" cy="225" r="7" fill="#BFC2C7"/></g>
               <!-- pata derecha y travesaño con cajón fino -->
-              <path class="trazo madera" d="M574 72 H604 V256 H574 Z" stroke-width="3"/>
-              <path class="trazo madera" d="M230 72 H574 V104 H230 Z" stroke-width="3"/>
-              <path class="trazo" d="M380 88 H424" stroke-width="5"/>
+              <path class="trazo madera" d="M574 72 H604 V256 H574 Z" stroke-width="1.5"/>
+              <path class="trazo madera" d="M230 72 H574 V104 H230 Z" stroke-width="1.5"/>
+              <path d="M380 88 H424" stroke="#8A8D93" stroke-width="2.4" stroke-linecap="round"/>
               <!-- tablero -->
-              <path class="trazo madera" d="M14 48 H630 V74 H14 Z" stroke-width="3"/>
+              <path class="trazo madera" d="M14 48 H630 V74 H14 Z" stroke-width="1.5"/>
               <!-- vetas y brillitos a su estilo -->
-              <g class="trazo" stroke="#000000" stroke-width="1.4" opacity=".7">
+              <g class="trazo" stroke="#5E5B58" stroke-width="1.1">
                 <path d="M60 58 q40 -4 80 0 M300 64 q50 -4 100 0 M520 56 q30 -3 60 0"/>
                 <ellipse cx="80" cy="226" rx="9" ry="4"/><ellipse cx="196" cy="148" rx="7" ry="3"/>
               </g>
               <g stroke="#F5F2DF" stroke-width="2" stroke-linecap="round" opacity=".5"><path d="M24 54 v6 M30 54 v4 M586 82 v8 M592 82 v5"/></g>
 
               <!-- encima: libretas apiladas -->
-              <path class="trazo" d="M64 34 H186 V48 H64 Z" fill="#161616" stroke-width="2.4"/>
-              <path class="trazo" d="M72 20 H178 V34 H72 Z" fill="#161616" stroke-width="2.4"/>
+              <path class="trazo" d="M64 34 H186 V48 H64 Z" fill="#161616" stroke-width="1.3"/>
+              <path class="trazo" d="M72 20 H178 V34 H72 Z" fill="#161616" stroke-width="1.3"/>
               <path d="M150 20 h10 v14 h-10z" fill="#F5F2DF"/>
               <path d="M110 34 h14 v14 h-14z" fill="#C4CFDB"/>
               <!-- lamparita de escritorio: se enciende al entrar -->
-              <g class="trazo" stroke-width="2.6">
+              <g class="trazo" stroke-width="1.4">
                 <path d="M222 48 Q240 38 258 48 Z" fill="#161616"/>
                 <path d="M240 44 V-40" stroke-width="4"/>
                 <path d="M222 -46 H258 L270 -16 H210 Z" fill="#161616"/>
                 <path d="M230 -16 a10 10 0 0 0 20 0" class="bombilla"/>
               </g>
-              <g class="rayos trazo" stroke-width="2.4"><path d="M240 0 v10 M222 -4 l-8 8 M258 -4 l8 8 M206 -14 l-10 2 M274 -14 l10 2"/></g>
+              <g class="rayos trazo" stroke-width="1.3"><path d="M240 0 v10 M222 -4 l-8 8 M258 -4 l8 8 M206 -14 l-10 2 M274 -14 l10 2"/></g>
               <path d="M226 -40 v6 M231 -40 v4" stroke="#F5F2DF" stroke-width="1.6" stroke-linecap="round"/>
               <!-- taza con lápices -->
               <path class="trazo" d="M300 0 L308 30 M312 -6 L314 30 M324 2 L318 30" stroke-width="5"/>
@@ -161,18 +168,18 @@
               <path d="M301 6 L307 28" stroke="#BFC2C7" stroke-width="3" stroke-linecap="round"/>
               <path d="M312.6 2 L314 28" stroke="#979B82" stroke-width="3" stroke-linecap="round"/>
               <path d="M322 9 L318.6 28" stroke="#9FB0C2" stroke-width="3" stroke-linecap="round"/>
-              <path class="trazo" d="M290 22 H336 L332 48 H294 Z" fill="#161616" stroke-width="2.6"/>
-              <path class="trazo" d="M335 28 q14 2 10 12 q-3 6 -11 5" stroke-width="2.6"/>
+              <path class="trazo" d="M290 22 H336 L332 48 H294 Z" fill="#161616" stroke-width="1.4"/>
+              <path class="trazo" d="M335 28 q14 2 10 12 q-3 6 -11 5" stroke-width="1.4"/>
               <path d="M300 30 v6 M305 30 v3" stroke="#F5F2DF" stroke-width="1.6" stroke-linecap="round"/>
               <!-- macetita con hojas a su estilo -->
-              <path class="trazo" d="M470 34 Q456 6 470 -18 Q480 4 470 34 Z" fill="#979B82" stroke-width="2.4"/>
-              <path class="trazo" d="M474 34 Q500 10 514 -2 Q508 26 474 34 Z" fill="#979B82" stroke-width="2.4"/>
-              <path class="trazo" d="M468 34 Q440 18 430 4 Q452 6 468 34 Z" fill="#979B82" stroke-width="2.4"/>
+              <path class="trazo" d="M470 34 Q456 6 470 -18 Q480 4 470 34 Z" fill="#979B82" stroke-width="1.3"/>
+              <path class="trazo" d="M474 34 Q500 10 514 -2 Q508 26 474 34 Z" fill="#979B82" stroke-width="1.3"/>
+              <path class="trazo" d="M468 34 Q440 18 430 4 Q452 6 468 34 Z" fill="#979B82" stroke-width="1.3"/>
               <path class="trazo" d="M470 30 V-12 M476 32 L506 4 M466 32 L436 8" stroke-width="1.2"/>
-              <path class="trazo" d="M452 30 H492 L486 48 H458 Z" fill="#161616" stroke-width="2.6"/>
+              <path class="trazo" d="M452 30 H492 L486 48 H458 Z" fill="#161616" stroke-width="1.4"/>
               <path d="M462 36 v5 M467 36 v3" stroke="#1C1A1E" stroke-width="1.6" stroke-linecap="round"/>
               <!-- piedrita de clay -->
-              <path class="trazo" d="M548 48 Q544 30 562 28 Q582 26 584 42 L584 48 Z" fill="#F5F2DF" stroke-width="2.4"/>
+              <path class="trazo" d="M548 48 Q544 30 562 28 Q582 26 584 42 L584 48 Z" fill="#F5F2DF" stroke-width="1.3"/>
               <path d="M556 36 l4 3 M570 34 l3 3" stroke="#1C1A1E" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </div>
@@ -194,11 +201,11 @@
               <path class="trazo" d="M56 28 L100 2 L144 28" stroke-width="1.8"/>
               <circle cx="100" cy="2" r="3.5" fill="#1C1A1E"/>
               <!-- marco y fondo -->
-              <rect class="trazo madera" x="4" y="26" width="192" height="330" rx="2" stroke-width="3"/>
-              <rect class="trazo" x="12" y="34" width="176" height="314" fill="#35302E" stroke-width="2"/>
+              <rect class="trazo madera" x="4" y="26" width="192" height="330" rx="2" stroke-width="1.5"/>
+              <rect class="trazo" x="12" y="34" width="176" height="314" fill="#35302E" stroke="#5E5B58" stroke-width="1.1"/>
               <g fill="#000" opacity=".12"><rect x="12" y="34" width="176" height="6"/><rect x="12" y="103" width="176" height="4"/><rect x="12" y="153" width="176" height="4"/><rect x="12" y="233" width="176" height="4"/><rect x="12" y="293" width="176" height="4"/></g>
               <!-- repisas y divisiones -->
-              <g class="trazo madera" stroke-width="1.6">
+              <g class="trazo madera" stroke="#5E5B58" stroke-width="1">
                 <rect x="12" y="97" width="176" height="6"/><rect x="12" y="147" width="176" height="6"/><rect x="12" y="227" width="176" height="6"/><rect x="12" y="287" width="176" height="6"/>
                 <rect x="66" y="34" width="5" height="63"/><rect x="126" y="34" width="5" height="63"/>
                 <rect x="46" y="103" width="5" height="44"/><rect x="96" y="103" width="5" height="44"/><rect x="146" y="103" width="5" height="44"/>
@@ -293,7 +300,7 @@
               <svg viewBox="0 0 1000 40" preserveAspectRatio="none">
                 <path d="M2 4 H998 V22 H2 Z" fill="#D6D7D9"/>
                 <path d="M2 4 H998 V8 H2 Z" fill="#ECEDEF"/>
-                <g class="trazo" stroke-width="2.4">
+                <g class="trazo" stroke-width="1.2">
                   <path d="M2 4 H998 V22 H2 Z" vector-effect="non-scaling-stroke"/>
                   <path d="M120 22 V38 M880 22 V38" vector-effect="non-scaling-stroke"/>
                   <path d="M20 14 q60 -3 120 0 M420 10 q80 -3 160 0 M820 15 q60 -3 120 0" stroke="#9A9EA5" stroke-width="1.2" vector-effect="non-scaling-stroke"/>
@@ -301,7 +308,7 @@
               </svg>
               <p class="placa-nombre">Elena Brutau</p>
             </div>
-            <p class="pista letra" data-t="pista">saca una libreta para abrirla</p>
+            <p class="pista" data-t="pista">saca una libreta para abrirla</p>
           </section>
         </div>
 
@@ -369,8 +376,8 @@
     <button class="volver letra" type="button" data-cerrar-tienda data-t="cerrarTienda">cerrar la vitrina</button>
   </div>
 
-  <script src="cinta.js?v=202610122341"></script>
-  <script src="content.js?v=202610122341"></script>
-  <script src="script.js?v=202610122341"></script>
+  <script src="cinta.js?v=202610130904"></script>
+  <script src="content.js?v=202610130904"></script>
+  <script src="script.js?v=202610130904"></script>
 </body>
 </html>

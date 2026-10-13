@@ -178,8 +178,8 @@ button { font: inherit; color: inherit; }
   transform: translateZ(calc(var(--fondo) * -1)) rotateX(90deg);
   background:
     linear-gradient(180deg, rgba(28,26,30,.25), rgba(28,26,30,.0) 40%, rgba(28,26,30,.2)),
-    repeating-linear-gradient(90deg, transparent 0 86px, #0E0D0C 86px 89px),
-    repeating-linear-gradient(0deg, transparent 0 260px, rgba(0,0,0,.6) 260px 262px),
+    repeating-linear-gradient(90deg, transparent 0 87px, #55514E 87px 88.5px),
+    repeating-linear-gradient(0deg, transparent 0 260px, #4A4643 260px 261.5px),
     var(--madera);
 }
 .techo {
@@ -291,16 +291,16 @@ button { font: inherit; color: inherit; }
 }
 
 /* ---------- El estante (en la pared del fondo) ---------- */
-.estante { position: absolute; left: 50%; bottom: 47%; width: min(1100px, 84%); transform: translateX(-50%); }
+.estante { position: absolute; left: 50%; bottom: 47%; width: min(860px, 56%); transform: translateX(-50%); }
 .libros { position: relative; z-index: 2;
   display: flex; align-items: flex-end; justify-content: center;
   gap: 5px; height: var(--alto-estante);
   padding: 0 4%;
 }
-.tabla { position: relative; z-index: 1; height: 42px; margin-top: -2px; filter: url(#tinta); }
+.tabla { position: relative; z-index: 1; height: 34px; margin-top: -2px; filter: url(#tinta); }
 .tabla svg { width: 100%; height: 100%; display: block; overflow: visible; }
 .placa-nombre {
-  position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%) rotate(-1deg);
+  position: absolute; left: 30%; bottom: 10px; transform: translateX(-50%) rotate(-1deg);
   margin: 0; padding: 0 10px;
   font-family: var(--f-maquina); font-size: 14px; line-height: 1.5;
   background: var(--crema); border: 1.5px solid var(--carbon); white-space: nowrap;
@@ -316,7 +316,7 @@ button { font: inherit; color: inherit; }
   border-radius: 7px 7px 3px 3px;
   background-color: #0B0B0B;
   background-image: linear-gradient(90deg, rgba(255,255,255,.09) 0 2px, transparent 2px calc(100% - 3px), rgba(0,0,0,.5) calc(100% - 3px));
-  box-shadow: 3px 0 0 rgba(28,26,30,.18);
+  box-shadow: 0 0 0 2px var(--crema), 0 0 0 3.2px var(--carbon);
   filter: url(#tinta);
   transition: transform .35s cubic-bezier(.3,.7,.3,1);
 }
@@ -365,7 +365,7 @@ button { font: inherit; color: inherit; }
 .lomo.recostada:hover { transform: rotate(9deg) translateX(4px); }
 
 .vasija { position: relative; flex: 0 0 auto; width: calc(var(--ancho-lomo) * 1.8); height: 42%; margin: 0 10px 0 14px; align-self: flex-end; }
-.vasija svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; filter: url(#tinta); }
+.vasija svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; filter: url(#contorno) url(#tinta); }
 
 /* Luna, sentada en el estante */
 .luna {
@@ -375,25 +375,26 @@ button { font: inherit; color: inherit; }
   transform-origin: 50% 100%;
   animation: respirar 4.5s ease-in-out infinite;
 }
-.luna svg { display: block; width: 100%; height: auto; overflow: visible; filter: url(#tinta); }
+.luna svg { display: block; width: 100%; height: auto; overflow: visible; filter: url(#contorno) url(#tinta); }
 .pupila { transition: transform .25s ease-out; }
 .parpado { transform-box: fill-box; transform-origin: 50% 0; transform: scaleY(0); animation: parpadear 6s infinite; }
 @keyframes respirar { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.02); } }
 @keyframes parpadear { 0%, 92%, 100% { transform: scaleY(0); } 95% { transform: scaleY(1); } }
 
 .pista {
-  margin: 12px 0 0; text-align: center;
-  font-size: clamp(26px, 2.9vw, 42px); white-space: nowrap;
+  margin: 2px 0 0; text-align: center;
+  font-family: var(--f-texto); font-size: clamp(11px, .85vw, 13px); letter-spacing: .14em;
+  color: var(--plata-oscura); white-space: nowrap;
   opacity: 0; transition: opacity 1s 2s;
 }
 
 /* fotos en marquitos dorados */
 .cuadro-dorado { position: absolute; margin: 0; }
 .cuadro-dorado svg { display: block; width: 100%; height: auto; overflow: visible; }
-.cuadro-1 { left: 2.5%; top: 9%; width: 15%; transform: rotate(-1deg); }
-.cuadro-2 { right: 3.5%; top: 3%; width: 12.5%; transform: none; }
-.cuadro-3 { left: 3.6%; top: 36.5%; width: 10.6%; transform: rotate(1deg); }
-.cuadro-4 { right: 3.4%; top: 34%; width: 10.6%; transform: none; }
+.cuadro-1 { left: 4%; top: 7%; width: 12.5%; transform: rotate(-1deg); }
+.cuadro-3 { left: 6.5%; top: 33%; width: 8.5%; transform: rotate(1deg); }
+.cuadro-2 { right: 8.5%; top: 5%; width: 9.5%; transform: none; }
+.cuadro-4 { right: 3%; top: 27%; width: 7.5%; transform: none; }
 
 /* tablerito de corcho con las redes */
 .corcho {
@@ -405,9 +406,9 @@ button { font: inherit; color: inherit; }
     radial-gradient(circle at 70% 60%, rgba(0,0,0,.35) 0 1px, transparent 1.4px),
     radial-gradient(circle at 45% 80%, rgba(255,255,255,.05) 0 1px, transparent 1.4px);
   background-size: 9px 9px, 11px 11px, 13px 13px;
-  border: 5px solid var(--madera);
-  outline: 2px solid var(--carbon);
-  box-shadow: 0 0 0 2px var(--carbon) inset, 5px 7px 0 rgba(28,26,30,.13);
+  border: 4px solid var(--madera);
+  outline: 1.2px solid var(--carbon); outline-offset: 2.5px;
+  box-shadow: 0 0 0 1px #5E5B58 inset;
   filter: url(#tinta);
   transform: rotate(-1.5deg);
 }
@@ -463,7 +464,7 @@ a.estampita:hover { border-style: solid; }
   position: absolute; right: 3%; bottom: 4%; width: 14%;
   border: 0; padding: 0; background: none; cursor: pointer;
   pointer-events: auto;
-  filter: url(#tinta);
+  filter: url(#contorno) url(#tinta);
   transition: transform .3s cubic-bezier(.3,.7,.3,1);
 }
 .vitrina:hover, .vitrina:focus-visible { transform: translateY(-6px) rotate(-1deg); }
@@ -481,13 +482,13 @@ a.estampita:hover { border-style: solid; }
 }
 
 /* el escritorio y la planta */
-.escritorio { position: absolute; left: 50%; bottom: 0; width: min(800px, 60%); transform: translateX(-50%); filter: url(#tinta); }
+.escritorio { position: absolute; left: 50%; bottom: 0; width: min(800px, 60%); transform: translateX(-50%); filter: url(#contorno) url(#tinta); }
 .escritorio svg, .planta3d svg { display: block; width: 100%; height: auto; overflow: visible; }
 .planta3d {
   position: absolute; left: 3%; bottom: 0; width: clamp(110px, 13vw, 200px);
   transform: translateZ(calc(var(--fondo) * -.78));
   transform-origin: 50% 100%;
-  filter: url(#tinta);
+  filter: url(#contorno) url(#tinta);
 }
 .encendida .pista { opacity: 1; }
 
@@ -885,7 +886,7 @@ a.estampita:hover { border-style: solid; }
   .vasija, .lomo.extra { display: none; }
   .luna { --w: calc(var(--ancho-lomo) * 3.4); margin-left: 6px; }
   .lampara3d { width: 110px; }
-  .pista { font-size: 24px; }
+  .pista { font-size: 10px; }
   .tienda-abierta { padding-top: 46px; }
   .mueble { max-height: calc(100svh - 120px); padding: 7px; gap: 6px; transform-origin: 70% 12%; }
   .cartelito { gap: 10px; padding: 8px 12px; }
