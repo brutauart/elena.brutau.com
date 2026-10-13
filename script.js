@@ -128,7 +128,6 @@
     b.className = "lomo vacia" + (extra ? " extra" : "") + (recostada ? " recostada" : "");
     b.style.setProperty("--h", h);
     b.setAttribute("aria-hidden", "true");
-    b.innerHTML = sello;
     return b;
   }
 
@@ -210,7 +209,7 @@
       b.style.setProperty("--color-cinta", g.cinta);
       b.style.setProperty("--color-tinta", g.tinta);
       b.style.setProperty("--giro", giros[i % giros.length] + "deg");
-      b.innerHTML = `<span class="cinta"><span></span></span>${sello}`;
+      b.innerHTML = `<span class="cinta"><span></span></span>`;
       b.addEventListener("click", () => abrir(g, b));
       return b;
   }
