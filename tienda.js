@@ -7,48 +7,48 @@
 
   const PIEZAS = [
     { id: 'gatito', precio: 30, tag: 'gatitos', fotos: 6, fijo: '',
-      es: { nombre: 'gatito de suéter naranja', tipo: 'figurita', desc: 'un gatito negro con suéter de otoño y ojos mostaza. se sienta en el borde de tu escritorio y te mira trabajar.' },
-      en: { nombre: 'orange sweater kitty', tipo: 'figurine', desc: 'a black kitty in an autumn sweater with mustard eyes. it sits on the edge of your desk and watches you work.' },
+      es: { nombre: 'gatito negro', tipo: 'figurita', desc: 'un gatito negro con suéter de otoño y ojos mostaza. se sienta en el borde de tu escritorio y te mira trabajar.' },
+      en: { nombre: 'black kitty', tipo: 'figurine', desc: 'a black kitty in an autumn sweater with mustard eyes. it sits on the edge of your desk and watches you work.' },
       st: [[17, 25, 8.5, 5, -12], [87, 33, 7.5, 4, 10]] },
     { id: 'gatita', precio: 30, tag: 'gatitos', fotos: 5, fijo: '',
-      es: { nombre: 'gatita de suéter lila', tipo: 'figurita', desc: 'una gatita blanca de ojos azules con su suéter lila. tranquila, un poco tímida, ideal para una repisa con libros.' },
-      en: { nombre: 'lilac sweater kitty', tipo: 'figurine', desc: 'a white kitty with blue eyes in her lilac sweater. calm, a little shy, perfect for a shelf full of books.' },
+      es: { nombre: 'gatita blanca', tipo: 'figurita', desc: 'una gatita blanca de ojos azules con su suéter lila. tranquila, un poco tímida, ideal para una repisa con libros.' },
+      en: { nombre: 'white kitty', tipo: 'figurine', desc: 'a white kitty with blue eyes in her lilac sweater. calm, a little shy, perfect for a shelf full of books.' },
       st: [[17, 24, 8.5, 5, 8], [86, 33, 7.5, 4, -10]] },
-    { id: 'escarabajo', precio: 15, tag: 'bichitos', fotos: 6, fijo: '',
-      es: { nombre: 'escarabajo de estrellas', tipo: 'amiguito de escritorio', desc: 'un escarabajo azul con brillo y estrellitas blancas pintadas a mano. un amigo de escritorio que no se va volando.' },
-      en: { nombre: 'starry beetle', tipo: 'desk friend', desc: 'a sparkly blue beetle with little white stars painted by hand. a desk friend that won’t fly away.' },
+    { id: 'escarabajo', precio: 15, tag: 'pals', fotos: 6, fijo: '',
+      es: { nombre: 'escarabajo de estrellas', tipo: 'desktop pal', desc: 'un escarabajo azul con brillo y estrellitas blancas pintadas a mano. un amigo de escritorio que no se va volando.' },
+      en: { nombre: 'starry beetle', tipo: 'desktop pal', desc: 'a sparkly blue beetle with little white stars painted by hand. a desk friend that won’t fly away.' },
       st: [[20, 15, 8.5, 5, -8], [88, 30, 7.5, 4, 12]] },
-    { id: 'mariquita', precio: 12, tag: 'bichitos', fotos: 5, fijo: '',
-      es: { nombre: 'mariquita de estrellas', tipo: 'amiguito de escritorio', desc: 'una mariquita roja con estrellas en vez de puntitos. cabe en la punta de dos dedos.' },
-      en: { nombre: 'starry ladybug', tipo: 'desk friend', desc: 'a red ladybug with stars instead of spots. it fits on the tips of two fingers.' },
+    { id: 'mariquita', precio: 12, tag: 'pals', fotos: 5, fijo: '',
+      es: { nombre: 'mariquita de estrellas', tipo: 'desktop pal', desc: 'una mariquita roja con estrellas en vez de puntitos. cabe en la punta de dos dedos.' },
+      en: { nombre: 'starry ladybug', tipo: 'desktop pal', desc: 'a red ladybug with stars instead of spots. it fits on the tips of two fingers.' },
       st: [[64, 9, 8.5, 5, 10], [93, 24, 7.5, 4, -8]] },
     { id: 'arandano', precio: 14, tag: 'floreritos', fotos: 5, fijo: '',
-      es: { nombre: 'florerito arándano', tipo: 'florerito', desc: 'un florerito azul con forma de arándano, para una sola flor seca.' },
-      en: { nombre: 'blueberry bud vase', tipo: 'bud vase', desc: 'a tiny blue vase shaped like a blueberry, for a single dried flower.' },
+      es: { nombre: 'mini florerito blueberry', tipo: 'mini florerito', desc: 'un florerito azul con forma de arándano, para una sola flor seca.' },
+      en: { nombre: 'mini blueberry bud vase', tipo: 'mini bud vase', desc: 'a tiny blue vase shaped like a blueberry, for a single dried flower.' },
       st: [[27, 30, 8.5, 5, 8], [85, 46, 7.5, 4, -12]] },
     { id: 'margaritas', precio: 14, tag: 'floreritos', fotos: 3, fijo: '',
-      es: { nombre: 'florerito de margaritas', tipo: 'florerito', desc: 'un florerito rojo con margaritas pintadas a mano, para una sola flor seca.' },
-      en: { nombre: 'daisy bud vase', tipo: 'bud vase', desc: 'a tiny red vase with hand-painted daisies, for a single dried flower.' },
+      es: { nombre: 'mini florerito de margaritas', tipo: 'mini florerito', desc: 'un florerito rojo con margaritas pintadas a mano, para una sola flor seca.' },
+      en: { nombre: 'mini daisy bud vase', tipo: 'mini bud vase', desc: 'a tiny red vase with hand-painted daisies, for a single dried flower.' },
       st: [[21, 36, 8.5, 5, -10], [71, 42, 7.5, 4, 8]] },
     { id: 'verde', precio: 14, tag: 'floreritos', fotos: 3, fijo: '',
-      es: { nombre: 'florerito verde', tipo: 'florerito', desc: 'un florerito verde en forma de gota, para una sola flor seca.' },
-      en: { nombre: 'green drop bud vase', tipo: 'bud vase', desc: 'a tiny green vase shaped like a drop, for a single dried flower.' },
+      es: { nombre: 'florerito verde', tipo: 'mini florerito', desc: 'un florerito verde en forma de gota, para una sola flor seca.' },
+      en: { nombre: 'green drop bud vase', tipo: 'mini bud vase', desc: 'a tiny green vase shaped like a drop, for a single dried flower.' },
       st: [[24, 40, 8.5, 5, 12], [73, 30, 7.5, 4, -8]] },
     { id: 'rayas', precio: 14, tag: 'floreritos', fotos: 3, fijo: '',
-      es: { nombre: 'florerito de rayas', tipo: 'florerito', desc: 'un florerito de rayas celestes y blancas, para una sola flor seca.' },
-      en: { nombre: 'striped bud vase', tipo: 'bud vase', desc: 'a tiny vase with light-blue and white stripes, for a single dried flower.' },
+      es: { nombre: 'florerito de rayas', tipo: 'mini florerito', desc: 'un florerito de rayas celestes y blancas, para una sola flor seca.' },
+      en: { nombre: 'striped bud vase', tipo: 'mini bud vase', desc: 'a tiny vase with light-blue and white stripes, for a single dried flower.' },
       st: [[13, 40, 8.5, 5, -8], [60, 33, 7.5, 4, 10]] },
-    { id: 'berenjena', precio: 12, tag: 'bichitos', fotos: 3, fijo: 'azul',
-      es: { nombre: 'berenjenita', tipo: 'figurita', desc: 'una berenjena chiquita y brillante. no es un bichito, pero vive con ellos.' },
-      en: { nombre: 'little eggplant', tipo: 'figurine', desc: 'a tiny shiny eggplant. not a bug, but it lives with them.' },
+    { id: 'berenjena', precio: 12, tag: 'pals', fotos: 3, fijo: 'azul',
+      es: { nombre: 'berenjenita (mini berenjena)', tipo: 'desktop pal · para escritorio o librero', desc: 'una berenjena chiquita y brillante. no es un bichito, pero vive con ellos.' },
+      en: { nombre: 'little eggplant (mini eggplant)', tipo: 'desktop pal · for your desk or bookshelf', desc: 'a tiny shiny eggplant. not a bug, but it lives with them.' },
       st: [[76, 22, 8.5, 5, -14], [82, 60, 7.5, 4, 8]] },
   ];
   // el set de floreritos: si están los 4 en la bolsa, cuestan 48 en vez de 56
   const SET = { ids: ['arandano', 'margaritas', 'verde', 'rayas'], precio: 48 };
 
   const T = {
-    es: { todo: 'todo', gatitos: 'gatitos', bichitos: 'bichitos', floreritos: 'floreritos', material: 'material', materialV: 'polymer clay, pintado a mano con acrílico, glaze de resina uv', hecho: 'hecho', hechoV: 'a mano por elena, pieza única', envio: 'envío', envioV: `$${ENVIO} en EE. UU. · gratis desde $${GRATIS_DESDE}`, quiero: 'lo quiero', enBolsa: 'en tu bolsa ✓', vendido: 'vendido', bolsa: 'tu bolsa', vacia: 'tu bolsa está vacía', quitar: 'quitar', subtotal: 'subtotal', envioCorto: 'envío', gratis: 'gratis', total: 'total', pagar: 'pagar con paypal', nota: 'pagas con tu cuenta de paypal o con tarjeta. envíos solo dentro de EE. UU.', setNota: 'set de 4 floreritos: −$8', foto: 'foto', faltan: n => `te faltan $${n} para el envío gratis`, gracias: '¡gracias por tu compra! te escribo desde hello@elenabrutau.com cuando tu pieza salga en camino.', abierta: 'al abrir una pieza' },
-    en: { todo: 'all', gatitos: 'kitties', bichitos: 'little bugs', floreritos: 'bud vases', material: 'material', materialV: 'polymer clay, hand-painted with acrylics, uv resin glaze', hecho: 'made', hechoV: 'by hand by elena, one of a kind', envio: 'shipping', envioV: `$${ENVIO} in the US · free from $${GRATIS_DESDE}`, quiero: 'i want it', enBolsa: 'in your bag ✓', vendido: 'sold', bolsa: 'your bag', vacia: 'your bag is empty', quitar: 'remove', subtotal: 'subtotal', envioCorto: 'shipping', gratis: 'free', total: 'total', pagar: 'pay with paypal', nota: 'pay with your paypal account or a card. shipping within the US only.', setNota: 'set of 4 bud vases: −$8', foto: 'photo', faltan: n => `$${n} more for free shipping`, gracias: 'thank you for your order! i’ll write you from hello@elenabrutau.com when your piece is on its way.', abierta: 'open piece' },
+    es: { todo: 'todo', gatitos: 'gatitos', pals: 'desktop pals', floreritos: 'floreritos', material: 'material', materialV: 'polymer clay, pintado a mano con acrílico, glaze de resina uv', hecho: 'hecho', hechoV: 'a mano por elena, pieza única', envio: 'envío', envioV: `$${ENVIO} en EE. UU. · gratis desde $${GRATIS_DESDE}`, quiero: 'lo quiero', enBolsa: 'en tu bolsa ✓', vendido: 'vendido', bolsa: 'tu bolsa', vacia: 'tu bolsa está vacía', quitar: 'quitar', subtotal: 'subtotal', envioCorto: 'envío', gratis: 'gratis', total: 'total', pagar: 'pagar con paypal', nota: 'pagas con tu cuenta de paypal o con tarjeta. envíos solo dentro de EE. UU.', setNota: 'set de 4 floreritos: −$8', foto: 'foto', faltan: n => `te faltan $${n} para el envío gratis`, gracias: '¡gracias por tu compra! te escribo desde hello@elenabrutau.com cuando tu pieza salga en camino.', abierta: 'al abrir una pieza' },
+    en: { todo: 'all', gatitos: 'kitties', pals: 'desktop pals', floreritos: 'bud vases', material: 'material', materialV: 'polymer clay, hand-painted with acrylics, uv resin glaze', hecho: 'made', hechoV: 'by hand by elena, one of a kind', envio: 'shipping', envioV: `$${ENVIO} in the US · free from $${GRATIS_DESDE}`, quiero: 'i want it', enBolsa: 'in your bag ✓', vendido: 'sold', bolsa: 'your bag', vacia: 'your bag is empty', quitar: 'remove', subtotal: 'subtotal', envioCorto: 'shipping', gratis: 'free', total: 'total', pagar: 'pay with paypal', nota: 'pay with your paypal account or a card. shipping within the US only.', setNota: 'set of 4 bud vases: −$8', foto: 'photo', faltan: n => `$${n} more for free shipping`, gracias: 'thank you for your order! i’ll write you from hello@elenabrutau.com when your piece is on its way.', abierta: 'open piece' },
   };
 
   const rej = document.getElementById('rejilla');
@@ -109,7 +109,7 @@
         <div class="miniaturas">${fotos.map(n => `<button type="button" data-n="${n}" aria-label="${tt.foto} ${n}" aria-current="${n === nFoto}"><img src="${foto(p.id, n, true)}" alt="" loading="lazy"></button>`).join('')}</div>
       </div>
       <div class="info">
-        <span class="sub">${p[L].tipo} · ${tt[p.tag]}</span>
+        <span class="sub">${p[L].tipo}</span>
         <h2>${p[L].nombre}<img class="st" src="img/v2/estrella-e5.png" alt=""></h2>
         <span class="precio">$${p.precio}</span>
         <p>${p[L].desc}</p>
