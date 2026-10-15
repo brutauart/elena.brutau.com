@@ -6,11 +6,11 @@
   const GRATIS_DESDE = 50;  // envío gratis desde este subtotal
 
   const PIEZAS = [
-    { id: 'gatito', precio: 30, tag: 'gatitos', fotos: 6, fijo: '',
+    { id: 'gatito', precio: 30, tag: 'gatitos pals', fotos: 6, fijo: '',
       es: { nombre: 'gatito negro', tipo: 'figurita', desc: 'un gatito negro con suéter de otoño y ojos mostaza. se sienta en el borde de tu escritorio y te mira trabajar.' },
       en: { nombre: 'black kitty', tipo: 'figurine', desc: 'a black kitty in an autumn sweater with mustard eyes. it sits on the edge of your desk and watches you work.' },
       st: [[17, 25, 8.5, 5, -12], [87, 33, 7.5, 4, 10]] },
-    { id: 'gatita', precio: 30, tag: 'gatitos', fotos: 5, fijo: '',
+    { id: 'gatita', precio: 30, tag: 'gatitos pals', fotos: 5, fijo: '',
       es: { nombre: 'gatita blanca', tipo: 'figurita', desc: 'una gatita blanca de ojos azules con su suéter lila. tranquila, un poco tímida, ideal para una repisa con libros.' },
       en: { nombre: 'white kitty', tipo: 'figurine', desc: 'a white kitty with blue eyes in her lilac sweater. calm, a little shy, perfect for a shelf full of books.' },
       st: [[17, 24, 8.5, 5, 8], [86, 33, 7.5, 4, -10]] },
@@ -87,7 +87,7 @@
   function pintarRejilla() {
     const L = lang();
     rej.innerHTML = PIEZAS.map(p => `
-      <button type="button" class="pieza" data-id="${p.id}" ${filtro !== 'todo' && p.tag !== filtro ? 'hidden' : ''}>
+      <button type="button" class="pieza" data-id="${p.id}" ${filtro !== 'todo' && !p.tag.split(' ').includes(filtro) ? 'hidden' : ''}>
         <span class="foto">
           <img class="ph" src="${foto(p.id, 1, true)}" alt="${p[L].nombre}" loading="lazy" width="440" height="550">
           ${p.fotos > 1 ? `<img class="ph2" src="${foto(p.id, 2, true)}" alt="" loading="lazy">` : ''}
