@@ -14,7 +14,7 @@
       es: { nombre: 'gatita blanca', tipo: 'figurita', desc: 'una gatita blanca de ojos azules con su suéter lila. tranquila, un poco tímida, ideal para una repisa con libros.' },
       en: { nombre: 'white kitty', tipo: 'figurine', desc: 'a white kitty with blue eyes in her lilac sweater. calm, a little shy, perfect for a shelf full of books.' },
       st: [[17, 24, 8.5, 5, 8], [86, 33, 7.5, 4, -10]] },
-    { id: 'escarabajo', precio: 15, tag: 'pals', fotos: 5, fijo: '',
+    { id: 'escarabajo', precio: 15, tag: 'pals', fotos: 6, fijo: '',
       es: { nombre: 'escarabajo de estrellas', tipo: 'desktop pal', desc: 'un escarabajo azul con brillo y estrellitas blancas pintadas a mano. un amigo de escritorio que no se va volando.' },
       en: { nombre: 'starry beetle', tipo: 'desktop pal', desc: 'a sparkly blue beetle with little white stars painted by hand. a desk friend that won’t fly away.' },
       st: [[20, 15, 8.5, 5, -8], [88, 30, 7.5, 4, 12]] },
