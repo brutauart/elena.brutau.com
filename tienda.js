@@ -6,39 +6,39 @@
   const GRATIS_DESDE = 50;  // envío gratis desde este subtotal
 
   const PIEZAS = [
-    { id: 'gatito', precio: 30, tag: 'gatitos pals', fotos: 6, fijo: '',
+    { id: 'gatito', precio: 30, tag: 'gatitos pals', fotos: 4, fijo: '',
       es: { nombre: 'gatito negro', tipo: 'figurita', desc: 'un gatito negro con suéter de otoño y ojos mostaza. se sienta en el borde de tu escritorio y te mira trabajar.' },
       en: { nombre: 'black kitty', tipo: 'figurine', desc: 'a black kitty in an autumn sweater with mustard eyes. it sits on the edge of your desk and watches you work.' },
       st: [[17, 25, 8.5, 5, -12], [87, 33, 7.5, 4, 10]] },
-    { id: 'gatita', precio: 30, tag: 'gatitos pals', fotos: 5, fijo: '',
+    { id: 'gatita', precio: 30, tag: 'gatitos pals', fotos: 3, fijo: '',
       es: { nombre: 'gatita blanca', tipo: 'figurita', desc: 'una gatita blanca de ojos azules con su suéter lila. tranquila, un poco tímida, ideal para una repisa con libros.' },
       en: { nombre: 'white kitty', tipo: 'figurine', desc: 'a white kitty with blue eyes in her lilac sweater. calm, a little shy, perfect for a shelf full of books.' },
       st: [[17, 24, 8.5, 5, 8], [86, 33, 7.5, 4, -10]] },
-    { id: 'escarabajo', precio: 15, tag: 'pals', fotos: 6, fijo: '',
+    { id: 'escarabajo', precio: 15, tag: 'pals', fotos: 5, fijo: '',
       es: { nombre: 'escarabajo de estrellas', tipo: 'desktop pal', desc: 'un escarabajo azul con brillo y estrellitas blancas pintadas a mano. un amigo de escritorio que no se va volando.' },
       en: { nombre: 'starry beetle', tipo: 'desktop pal', desc: 'a sparkly blue beetle with little white stars painted by hand. a desk friend that won’t fly away.' },
       st: [[20, 15, 8.5, 5, -8], [88, 30, 7.5, 4, 12]] },
-    { id: 'mariquita', precio: 12, tag: 'pals', fotos: 5, fijo: '',
+    { id: 'mariquita', precio: 12, tag: 'pals', fotos: 3, fijo: '',
       es: { nombre: 'mariquita de estrellas', tipo: 'desktop pal', desc: 'una mariquita roja con estrellas en vez de puntitos. cabe en la punta de dos dedos.' },
       en: { nombre: 'starry ladybug', tipo: 'desktop pal', desc: 'a red ladybug with stars instead of spots. it fits on the tips of two fingers.' },
       st: [[64, 9, 8.5, 5, 10], [93, 24, 7.5, 4, -8]] },
-    { id: 'arandano', precio: 14, tag: 'floreritos', fotos: 5, fijo: '',
+    { id: 'arandano', precio: 14, tag: 'floreritos', fotos: 3, fijo: '',
       es: { nombre: 'mini florerito blueberry', tipo: 'mini florerito', desc: 'un florerito azul con forma de arándano, para una sola flor seca.' },
       en: { nombre: 'mini blueberry bud vase', tipo: 'mini bud vase', desc: 'a tiny blue vase shaped like a blueberry, for a single dried flower.' },
       st: [[27, 30, 8.5, 5, 8], [85, 46, 7.5, 4, -12]] },
-    { id: 'margaritas', precio: 14, tag: 'floreritos', fotos: 3, fijo: '',
+    { id: 'margaritas', precio: 14, tag: 'floreritos', fotos: 2, fijo: '',
       es: { nombre: 'mini florerito de margaritas', tipo: 'mini florerito', desc: 'un florerito rojo con margaritas pintadas a mano, para una sola flor seca.' },
       en: { nombre: 'mini daisy bud vase', tipo: 'mini bud vase', desc: 'a tiny red vase with hand-painted daisies, for a single dried flower.' },
       st: [[21, 36, 8.5, 5, -10], [71, 42, 7.5, 4, 8]] },
-    { id: 'verde', precio: 14, tag: 'floreritos', fotos: 3, fijo: '',
+    { id: 'verde', precio: 14, tag: 'floreritos', fotos: 2, fijo: '',
       es: { nombre: 'mini florerito vintage', tipo: 'mini florerito', desc: 'un florerito verde en forma de gota, para una sola flor seca.' },
       en: { nombre: 'mini vintage bud vase', tipo: 'mini bud vase', desc: 'a tiny green vase shaped like a drop, for a single dried flower.' },
       st: [[24, 40, 8.5, 5, 12], [73, 30, 7.5, 4, -8]] },
-    { id: 'rayas', precio: 14, tag: 'floreritos', fotos: 3, fijo: '',
+    { id: 'rayas', precio: 14, tag: 'floreritos', fotos: 2, fijo: '',
       es: { nombre: 'mini florerito de rayitas azules', tipo: 'mini florerito', desc: 'un florerito de rayas celestes y blancas, para una sola flor seca.' },
       en: { nombre: 'mini blue-striped bud vase', tipo: 'mini bud vase', desc: 'a tiny vase with light-blue and white stripes, for a single dried flower.' },
       st: [[13, 40, 8.5, 5, -8], [60, 33, 7.5, 4, 10]] },
-    { id: 'berenjena', precio: 12, tag: 'pals', fotos: 3, fijo: 'azul',
+    { id: 'berenjena', precio: 12, tag: 'pals', fotos: 1, fijo: 'azul',
       es: { nombre: 'berenjenita (mini berenjena)', tipo: 'desktop pal · para escritorio o librero', desc: 'una berenjena chiquita y brillante. no es un bichito, pero vive con ellos.' },
       en: { nombre: 'little eggplant (mini eggplant)', tipo: 'desktop pal · for your desk or bookshelf', desc: 'a tiny shiny eggplant. not a bug, but it lives with them.' },
       st: [[76, 22, 8.5, 5, -14], [82, 60, 7.5, 4, 8]] },
@@ -58,7 +58,7 @@
   const raiz = document.documentElement;
   const lang = () => (raiz.getAttribute('data-lang') === 'es' ? 'es' : 'en');
   const t = () => T[lang()];
-  const foto = (id, n, mini) => `img/tienda/${id}-${n}${mini ? '-mini' : ''}.webp`;
+  const foto = (id, n, mini) => `img/tienda/${id}-${n}${mini ? '-mini' : ''}.webp?v=2`;
   const estrella = (p, s) => `img/v2/estrella-${p.fijo === 'azul' ? 'e' : 'c'}${s}.png`;
   const $ = (id) => PIEZAS.find(p => p.id === id);
 
