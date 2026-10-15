@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=20261015">
+<link rel="stylesheet" href="site.css?v=20261015b">
 </head>
 <body>
 <main class="pagina">
@@ -31,19 +31,26 @@
 <header class="cabeza-seccion">
 <img src="img/v2/gato-naranja.png" alt="" width="528" height="700">
 <h1><span class="es">mi tienda</span><span class="en">my shop</span></h1>
-<p><span class="es">luna &amp; friends · clay y stickers hechos a mano</span><span class="en">luna &amp; friends · handmade clay &amp; stickers</span></p>
+<p><span class="es">luna &amp; friends · gatitos, bichitos y floreritos de clay hechos a mano</span><span class="en">luna &amp; friends · handmade clay kitties, little bugs &amp; bud vases</span></p>
 </header>
-<div class="productos" style="max-width:900px;margin:0 auto;width:100%">
-<div class="producto"><div class="foto"><span class="es">pronto</span><span class="en">soon</span></div><span><span class="es">figuritas de clay</span><span class="en">clay figurines</span></span></div>
-<div class="producto"><div class="foto"><span class="es">pronto</span><span class="en">soon</span></div><span>charms</span></div>
-<div class="producto"><div class="foto"><span class="es">pronto</span><span class="en">soon</span></div><span>stickers</span></div>
+<p class="gracias" id="gracias" role="status" hidden></p>
+<div class="filtros" role="group" aria-label="filter">
+<button type="button" data-f="todo" aria-pressed="true">todo</button>
+<button type="button" data-f="gatitos" aria-pressed="false">gatitos</button>
+<button type="button" data-f="bichitos" aria-pressed="false">bichitos</button>
+<button type="button" data-f="floreritos" aria-pressed="false">floreritos</button>
 </div>
-<p class="pronto"><span class="es">La tienda abre pronto. Mientras tanto, puedes ver lo que hago en</span><span class="en">The shop opens soon. In the meantime, you can see what I'm making on</span> <a class="enlace-linea" href="https://www.instagram.com/elenabrutau/" target="_blank" rel="noopener">instagram</a>.</p>
+<div class="tienda" id="rejilla"></div>
+<div class="sep" id="abierta"><span>al abrir una pieza</span></div>
+<section class="ficha" id="ficha" aria-live="polite"></section>
+<aside class="bolsa" id="bolsa" aria-live="polite"></aside>
+<p class="pronto"><span class="es">¿preguntas o algo especial? escríbeme a</span><span class="en">questions or something special in mind? write me at</span> <a class="enlace-linea" href="mailto:hello@elenabrutau.com">hello@elenabrutau.com</a></p>
 <footer class="pie">
 <span>@elenabrutau</span>
 <nav aria-label="social"><a href="https://www.instagram.com/elenabrutau/" target="_blank" rel="noopener">instagram</a> · <a href="https://www.youtube.com/@elenabrutau" target="_blank" rel="noopener">youtube</a> · <a href="https://elenabrutau.substack.com" target="_blank" rel="noopener">substack</a></nav>
 </footer>
 </main>
 <script src="site.js?v=20261015"></script>
+<script src="tienda.js?v=20261015"></script>
 </body>
 </html>
