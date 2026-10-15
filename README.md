@@ -1,18 +1,16 @@
 # elenabrutau.com
 
-Un acceso a mi mente: entras por una puertecita con tu llave y llegas a un cuarto en 3D con un estante de libretas negras. Cada libreta tiene su etiqueta y se abre al hacer clic. Luna vigila desde el estante.
+Página personal de Elena Brutau: journals, words, about me y la tienda luna & friends.
 
-## Dónde se cambia cada cosa
+## Reglas del diseño
+- El azul (#5381D3) es la mano de Elena: su nombre y las estrellitas.
+- Los gatos guardianes son dibujos de Elena (Procreate), uno por sección.
+- Todo lo demás va en letra de máquina (DM Mono) sobre papel crema.
 
-- **content.js**: todo el contenido de las libretas en español e inglés (títulos, notas, escritos, fotos, productos de luna & friends, Sobre mí).
-- **img/**: las imágenes. `luna.png`, `luna-ojos.png`, `luna-friends.png` y `rosa.png` son dibujos de Elena recortados.
-- **styles.css**: colores (los de luna & friends), letras, el cuarto 3D y las animaciones.
-- **script.js**: la entrada, el movimiento del cuarto, los ojos de Luna, los idiomas y cómo se abren las libretas.
-- **CNAME**: el dominio de la página. No borrar.
-
-## Letras del sitio
-
-- **Letra de cinta** (cinta.js + fonts/cinta-script.json): títulos y frases grandes. Cada trazo se dibuja rosa con su propio contorno negro, así se ven los cruces, como en el lettering de Elena. La forma de las letras es Hershey Script (Dr. A. V. Hershey, U.S. National Bureau of Standards; datos de James Hurt, Cognition, Inc.) hasta tener la fuente de Elena.
-- **Sacramento** (cursiva): notas a mano, firmas y pies de foto.
-- **Courier Prime** (máquina de escribir): todo el texto normal, como descripciones, escritos, precios y fechas.
-- **Archivo Narrow** (label maker): solo las cintas de los lomos, los cajones y la vitrina.
+## Archivos
+- `index.html`, `journals.html`, `words.html`, `about.html`, `shop.html`: las páginas.
+- `site.css`: estilos. `site.js`: idioma ES/EN y visor del diario.
+- `diario.js`: lista de páginas del diario con su fecha. Para agregar una página, guarda `img/diario/diario-NN.webp` (grande) y `img/diario/mini/diario-NN.webp` (chica) y añade una línea.
+- `img/v2/`: gatos, nombre, estrellitas y foto de Elena.
+- `v1/`: la versión anterior (el cuarto 3D), guardada por si acaso.
+- `CNAME`: el dominio. No borrar.
