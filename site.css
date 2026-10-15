@@ -196,3 +196,9 @@ img { max-width: 100%; }
   .bolsa .cta.pagar { justify-content: center; }
   .bolsa .nota { text-align: left; }
 }
+.ir-bolsa { align-self: flex-start; }
+.bolsa { scroll-margin-top: 20px; }
+.pill-bolsa { position: fixed; z-index: 40; right: max(20px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom)); display: inline-flex; align-items: center; gap: 8px; background: var(--tinta); color: var(--papel); border-radius: 999px; padding: 11px 18px; font-size: 12px; letter-spacing: .12em; box-shadow: 0 10px 24px -12px rgba(28,26,30,.6); }
+.pill-bolsa:hover, .pill-bolsa:focus-visible { background: var(--azul); color: var(--papel); }
+.pill-bolsa[hidden] { display: none; }
+.pill-bolsa img { width: 13px; }

@@ -47,8 +47,8 @@
   const SET = { ids: ['arandano', 'margaritas', 'verde', 'rayas'], precio: 48 };
 
   const T = {
-    es: { todo: 'todo', gatitos: 'gatitos', pals: 'desktop pals', floreritos: 'floreritos', material: 'material', materialV: 'polymer clay, pintado a mano con acrílico, glaze de resina uv', hecho: 'hecho', hechoV: 'a mano por elena, pieza única', envio: 'envío', envioV: `$${ENVIO} en EE. UU. · gratis desde $${GRATIS_DESDE}`, quiero: 'lo quiero', enBolsa: 'en tu bolsa ✓', vendido: 'vendido', bolsa: 'tu bolsa', vacia: 'tu bolsa está vacía', quitar: 'quitar', subtotal: 'subtotal', envioCorto: 'envío', gratis: 'gratis', total: 'total', pagar: 'pagar con paypal', nota: 'pagas con tu cuenta de paypal o con tarjeta. envíos solo dentro de EE. UU.', setNota: 'set de 4 floreritos: −$8', foto: 'foto', faltan: n => `te faltan $${n} para el envío gratis`, gracias: '¡gracias por tu compra! te escribo desde hello@elenabrutau.com cuando tu pieza salga en camino.', abierta: 'al abrir una pieza' },
-    en: { todo: 'all', gatitos: 'kitties', pals: 'desktop pals', floreritos: 'bud vases', material: 'material', materialV: 'polymer clay, hand-painted with acrylics, uv resin glaze', hecho: 'made', hechoV: 'by hand by elena, one of a kind', envio: 'shipping', envioV: `$${ENVIO} in the US · free from $${GRATIS_DESDE}`, quiero: 'i want it', enBolsa: 'in your bag ✓', vendido: 'sold', bolsa: 'your bag', vacia: 'your bag is empty', quitar: 'remove', subtotal: 'subtotal', envioCorto: 'shipping', gratis: 'free', total: 'total', pagar: 'pay with paypal', nota: 'pay with your paypal account or a card. shipping within the US only.', setNota: 'set of 4 bud vases: −$8', foto: 'photo', faltan: n => `$${n} more for free shipping`, gracias: 'thank you for your order! i’ll write you from hello@elenabrutau.com when your piece is on its way.', abierta: 'open piece' },
+    es: { todo: 'todo', gatitos: 'gatitos', pals: 'desktop pals', floreritos: 'floreritos', material: 'material', materialV: 'polymer clay, pintado a mano con acrílico, glaze de resina uv', hecho: 'hecho', hechoV: 'a mano por elena, pieza única', envio: 'envío', envioV: `$${ENVIO} en EE. UU. · gratis desde $${GRATIS_DESDE}`, quiero: 'lo quiero', enBolsa: 'en tu bolsa ✓', vendido: 'vendido', bolsa: 'tu bolsa', vacia: 'tu bolsa está vacía', quitar: 'quitar', subtotal: 'subtotal', envioCorto: 'envío', gratis: 'gratis', total: 'total', pagar: 'pagar con paypal', nota: 'pagas con tu cuenta de paypal o con tarjeta. envíos solo dentro de EE. UU.', setNota: 'set de 4 floreritos: −$8', foto: 'foto', faltan: n => `te faltan $${n} para el envío gratis`, gracias: '¡gracias por tu compra! te escribo desde hello@elenabrutau.com cuando tu pieza salga en camino.', abierta: 'al abrir una pieza', verBolsa: 'ver bolsa y pagar →', pill: 'bolsa' },
+    en: { todo: 'all', gatitos: 'kitties', pals: 'desktop pals', floreritos: 'bud vases', material: 'material', materialV: 'polymer clay, hand-painted with acrylics, uv resin glaze', hecho: 'made', hechoV: 'by hand by elena, one of a kind', envio: 'shipping', envioV: `$${ENVIO} in the US · free from $${GRATIS_DESDE}`, quiero: 'i want it', enBolsa: 'in your bag ✓', vendido: 'sold', bolsa: 'your bag', vacia: 'your bag is empty', quitar: 'remove', subtotal: 'subtotal', envioCorto: 'shipping', gratis: 'free', total: 'total', pagar: 'pay with paypal', nota: 'pay with your paypal account or a card. shipping within the US only.', setNota: 'set of 4 bud vases: −$8', foto: 'photo', faltan: n => `$${n} more for free shipping`, gracias: 'thank you for your order! i’ll write you from hello@elenabrutau.com when your piece is on its way.', abierta: 'open piece', verBolsa: 'see bag & checkout →', pill: 'bag' },
   };
 
   const rej = document.getElementById('rejilla');
@@ -120,11 +120,22 @@
         </ul>
         ${p.vendido
           ? `<span class="cta apagado">${tt.vendido}</span>`
-          : `<button type="button" class="cta" data-quiero="${p.id}" ${enBolsa ? 'aria-pressed="true"' : ''}><img src="img/v2/estrella-e4.png" alt="">${enBolsa ? tt.enBolsa : tt.quiero}</button>`}
+          : `<button type="button" class="cta" data-quiero="${p.id}" ${enBolsa ? 'aria-pressed="true"' : ''}><img src="img/v2/estrella-e4.png" alt="">${enBolsa ? tt.enBolsa : tt.quiero}</button>${enBolsa ? `<a class="enlace-linea ir-bolsa" href="#bolsa">${tt.verBolsa}</a>` : ''}`}
       </div>`;
   }
 
+  const pill = document.createElement('a');
+  pill.className = 'pill-bolsa'; pill.href = '#bolsa'; pill.hidden = true;
+  document.body.appendChild(pill);
+  let bolsaVisible = false;
+  if ('IntersectionObserver' in window) new IntersectionObserver(es => { bolsaVisible = es[0].isIntersecting; pintarPill(); }).observe(bolsaEl);
+  function pintarPill() {
+    const c = cuentas();
+    pill.hidden = !bolsa.length || bolsaVisible;
+    pill.innerHTML = `<img src="img/v2/estrella-e4.png" alt="">${t().pill} (${bolsa.length}) · $${c.total}`;
+  }
   function pintarBolsa() {
+    pintarPill();
     const L = lang(), tt = t(), c = cuentas();
     if (!bolsa.length) { bolsaEl.innerHTML = `<h2>${tt.bolsa}</h2><p class="vacia">${tt.vacia}</p>`; bolsaEl.classList.remove('llena'); return; }
     bolsaEl.classList.add('llena');
@@ -184,6 +195,11 @@
     const x = e.target.closest('[data-quitar]');
     if (x) { bolsa = bolsa.filter(id => id !== x.dataset.quitar); guardar(); pintarFicha(); pintarBolsa(); return; }
     if (e.target.closest('[data-pagar]')) pagar();
+  });
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href="#bolsa"]'); if (!a) return;
+    e.preventDefault();
+    bolsaEl.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   });
   document.querySelectorAll('.idiomas button').forEach(b => b.addEventListener('click', todo));
 
